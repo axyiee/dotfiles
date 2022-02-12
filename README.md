@@ -22,7 +22,7 @@ tweak some of the settings.
 ## Screenshots
 
 *outdated*
-<img src="./github/unknown.png" /> 
+<img src="./.github/unknown.png" /> 
 
 ## Installation
 
