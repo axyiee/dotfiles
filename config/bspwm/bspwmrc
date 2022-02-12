@@ -1,0 +1,36 @@
+#!/bin/bash
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+# audio
+/usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/pipewire-media-session &
+
+# keybind handling daemon
+export SXHKD_SHELL=sh
+pgrep -x sxhkd > /dev/null || sxhkd -c ~/sxhkd/sxhkdrc &
+
+# all bspwm workspaces
+bspc monitor -d    ﭮ    ﭧ
+
+# start compositor
+picom --experimental-backends --config ~/picom/picom.conf &
+
+# polkit auth agent
+/usr/lib/xfce-polkit/xfce-polkit &
+
+# notifications/
+dunst -c ~/.config/dunst/dunstrc &
+
+# static wallpaper
+feh --bg-scale ~/wallpapers/wallhaven-kwoxqm.jpg &
+
+# general settings for bspwm
+#bspc config focused_border_color \#4C566A &
+#bspc config active_border_color  \#4C566A &
+#bspc config normal_border_color  \#4C566A &
+bspc config border_width                0 &
+bspc config window_gap                 16 &
+bspc config split_ratio               0.6 &
+
+# polybar
+polybar -c ~/.config/polybar/polybar.conf time &
+polybar -c ~/.config/polybar/polybar.conf workspaces &

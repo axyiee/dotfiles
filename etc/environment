@@ -1,0 +1,6 @@
+QT_QPA_PLATFORMTHEME=gtk2
+QT_STYLE_OVERRIDE=gtk
+BROWSER=firefox
+EDITOR=nvim
+_JAVA_AWT_WM_NONREPARENTING=1
+QTWEBENGINE_CHROMIUM_FLAGS="-blink-settings=darkModeEnabled=true -enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter
