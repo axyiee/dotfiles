@@ -20,9 +20,11 @@ tweak some of the settings.
 * **Text Editor**: Neovim
 
 
-## Screenshots
+## Showcase
 
-<img src="./.showcase/current.png" /> 
+<img src="./showcase/current.png" /> 
+
+<img src="./showcase/wpp_blur.gif" />
 
 ## Installation
 
