@@ -1,4 +1,4 @@
-#
+# 
 # wm independent hotkeys
 #
 
@@ -121,15 +121,18 @@ super + Return
 super + shift + Return
 	dolphin
 
-#reload sxhkd:
+#reload sxhkd
 super + shift + r
 	pkill -USR1 -x sxhkd
 
-# maim screenshot
+# open neovide
+super + shift + n
+	neovim
+
+#flameshot screenshot
 alt + shift + s
         flameshot gui
-	#maim -s | xclip -selection clipboard -t image/png
-
+        #bash /home/exst/.config/sxhkd/scripts/screenshot.sh
 #################################################################
 #     MULTIMEDIA KEYS
 #################################################################
@@ -181,4 +184,8 @@ XF86MonBrightnessDown
 
 #Toggle the compositor
 ctrl + alt + o
-    ~/.config/bspwm/scripts/toggle-compositor.sh
+    ~/.config/sxhkd/scripts/toggle-compositor.sh
+
+# reload polybar
+ctrl + alt + p
+    polybar-msg cmd restart

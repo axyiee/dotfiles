@@ -1,0 +1,47 @@
+# Colors (Night Owl by Sarah Drasner)
+colors:
+  # Default colors
+  primary:
+    background: '0x000000'
+    foreground: '0xd6deeb'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0xffffff'
+    cursor: '0x7e57c2'
+
+  # Normal colors
+  normal:
+    black:   '0x000000'
+    red:     '0xef5350'
+    green:   '0x22da6e'
+    yellow:  '0xaddb67'
+    blue:    '0x82aaff'
+    magenta: '0xc792ea'
+    cyan:    '0x21c7a8'
+    white:   '0xffffff'
+
+  # Bright colors
+  bright:
+    black:   '0x575656'
+    red:     '0xef5350'
+    green:   '0x22da6e'
+    yellow:  '0xffeb95'
+    blue:    '0x82aaff'
+    magenta: '0xc792ea'
+    cyan:    '0x7fdbca'
+    white:   '0xffffff'
+
+window:
+  opacity: 0.80
+  dynamic_padding: true
+  padding:
+    x: 10
+    y: 10
+
+font:
+  size: 10
+  normal:
+    family: CaskaydiaCove Nerd Font
+    #family: FuraCode Nerd Font
+

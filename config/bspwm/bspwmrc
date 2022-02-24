@@ -6,13 +6,14 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # keybind handling daemon
 export SXHKD_SHELL=sh
-pgrep -x sxhkd > /dev/null || sxhkd -c ~/sxhkd/sxhkdrc &
+pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 # all bspwm workspaces
 bspc monitor -d    ﭮ    ﭧ
 
 # start compositor
-picom --experimental-backends --config ~/picom/picom.conf &
+picom --experimental-backends --config ~/.config/picom/picom.conf &
+bash $SCRIPTPATH/scripts/blur_wallpaper.sh &
 
 # polkit auth agent
 /usr/lib/xfce-polkit/xfce-polkit &
@@ -21,7 +22,7 @@ picom --experimental-backends --config ~/picom/picom.conf &
 dunst -c ~/.config/dunst/dunstrc &
 
 # static wallpaper
-feh --bg-scale ~/wallpapers/wallhaven-kwoxqm.jpg &
+feh --bg-scale ~/wallpapers/guaygoh9lzi81.png &
 
 # general settings for bspwm
 #bspc config focused_border_color \#4C566A &
