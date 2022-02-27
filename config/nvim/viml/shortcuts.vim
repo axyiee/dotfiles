@@ -19,3 +19,7 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 noremap  <silent> <C-X>         :bdelete!<CR>
 vnoremap <silent> <C-X>         <C-C>:bdelete!<CR>
 inoremap <silent> <C-X>         <C-O>:bdelete!<CR>
+
+" Smooth scrolling support for mouse wheel 
+map <ScrollWheelUp> <C-u>
+map <ScrollWheelDown> <C-d>

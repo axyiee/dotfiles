@@ -1,0 +1,30 @@
+#!/bin/sh
+export LIBVA_DRIVER_NAME=radeonsi
+RESOLUTION_W=1920
+RESOLUTION_H=1080
+FPS=60
+FILENAME=~/Videos/recording-$(date +"%d-%m-%Y-%H-%M")
+DEVICE=/dev/dri/card0
+VAAPI_DEVICE=/dev/dri/renderD128
+THREAD_QUEUE_SIZE=140048
+AUDIO_DEVICE=alsa_output.usb-C-Media_Electronics_Inc._USB_PnP_Sound_Device-00.analog-stereo.monitor # You can list your audio devices by using the 'pactl list' command.
+
+# Stop recording if the provided argument is equals to 'stop'.
+if [ "$1" == "stop" ]; then
+	killall ffmpeg
+	echo "> Recording stopped."
+	exit
+fi
+
+# If output return any errors, run the command 'setcap cap_sys_admin+ep /usr/bin/ffmpeg' as super-user and edit the above variables if needed.
+# You'll need tmux to record both audio and screen.
+tmux new-session -d
+tmux set-option remain-on-exit on
+
+# Record the screen
+tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12' -c:v hevc_vaapi -pix_fmt yuv420p -sei hdr -qp:v 0 $FILENAME.mp4"
+
+# Record audio
+tmux split-window "ffmpeg -thread_queue_size $THREAD_QUEUE_SIZE -f pulse -ac 2 -i $AUDIO_DEVICE $FILENAME-audio.opus"
+
+echo "> The recording started. To stop, use '$0 stop'."

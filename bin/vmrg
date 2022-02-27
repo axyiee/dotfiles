@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <filename>"
+    echo "vmrg (video-merge) is a tool for merging separate video and audio files into a single file."
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "File $1 does not exist."
+    exit 1
+fi 
+
+DIR=`dirname $1`
+BASENAME=`basename $1 .mp4`
+AUDIO="$DIR/$BASENAME-audio.opus"
+FILENAME="$1"
+RESULT_FILENAME="merged-$BASENAME.mp4"
+
+ffmpeg -i "$FILENAME" -i "$AUDIO" -c:v copy -c:a aac "$RESULT_FILENAME"

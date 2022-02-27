@@ -1,16 +1,3 @@
-"    _      _ __        _
-"   (_)__  (_) /_ _  __(_)_ _
-"  / / _ \/ / __/| |/ / /  ' \
-" /_/_//_/_/\__(_)___/_/_/_/_/
-
-runtime viml/general.vim
-runtime viml/clipboard.vim
-runtime viml/style.vim
-runtime viml/tree.vim
-runtime viml/autostart.vim
-runtime viml/shortcuts.vim
-runtime viml/neovide.vim
-
 "     __               ____        _      __  _
 "    / /  __ _____ _  / __/_______(_)__  / /_(_)__  ___ _
 "   / /__/ // / _ `/ _\ \/ __/ __/ / _ \/ __/ / _ \/ _ `/
@@ -24,6 +11,23 @@ lua require('plugins')
 lua require('style')
 lua require('lsp')
 lua require('fuzzy_finder')
+
+
+"   _   ___         ____        _      __  _
+"  | | / (_)_ _    / __/_______(_)__  / /_(_)__  ___ _
+"  | |/ / /  ' \  _\ \/ __/ __/ / _ \/ __/ / _ \/ _ `/
+"  |___/_/_/_/_/ /___/\__/_/ /_/ .__/\__/_/_//_/\_, /
+"                             /_/              /___/
+
+runtime viml/general.vim
+runtime viml/clipboard.vim
+runtime viml/style.vim
+runtime viml/tree.vim
+runtime viml/autostart.vim
+runtime viml/shortcuts.vim
+runtime viml/neovide.vim
+runtime viml/programming.vim
+runtime viml/wildmenu.vim
 
 
 "    ______       __      ____    __  __  _

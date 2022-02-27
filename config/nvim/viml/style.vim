@@ -5,21 +5,27 @@
 "         /___/
 
 set completeopt=menu,menuone,noselect
-
-" Enable black background. You can disable it if you want by commenting the
-" following lines.
-augroup BlackBackground
-    autocmd!
-    autocmd ColorScheme * hi Normal ctermbg=16 guibg=#000000
-                      \ | hi LineNr ctermbg=16 guibg=#000000
-augroup END
-
-" Enable the color scheme
 syntax enable
 set termguicolors
-let g:vscode_style = "dark"
-let g:vscode_disable_nvimtree_bg = v:true 
-colorscheme vscode
+
+" Enable black background. You can enable it if you want by uncommenting the
+" following lines.
+" augroup BlackBackground
+"     autocmd!
+"     autocmd ColorScheme * hi Normal ctermbg=16 guibg=#000000
+"                       \ | hi LineNr ctermbg=16 guibg=#000000
+" augroup END
+
+" Enable the color scheme
+let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
+
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:github_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+set background=light
+colorscheme xcodelight
 
 " Allow 4 spaces for indentation
 set expandtab
@@ -29,3 +35,4 @@ set softtabstop=4
 set autoindent
 set smarttab
 set smartindent
+

@@ -182,10 +182,14 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
     xbacklight -dec 10
 
+# Toggle the blur wallpaper script 
+ctrl + alt + i
+    ~/.config/sxhkd/scripts/toggle-blur-wallpaper.sh
+
 #Toggle the compositor
 ctrl + alt + o
     ~/.config/sxhkd/scripts/toggle-compositor.sh
 
-# reload polybar
-ctrl + alt + p
-    polybar-msg cmd restart
+# toggle polybar
+ctrl + alt+ p
+    polybar-msg cmd toggle

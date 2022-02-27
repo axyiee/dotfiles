@@ -18,28 +18,32 @@ return require('packer').startup(function()
   use 'github/copilot.vim'
 
   -- Customization: Color schemes
+  use 'folke/tokyonight.nvim'
   use 'haishanh/night-owl.vim'
-  use 'wojciechkepka/vim-github-dark'
+  use 'projekt0n/github-nvim-theme'
   use 'Mofiqul/vscode.nvim'
-
-  -- Customization: Transparent background
-  -- Comment if don't you want to make your background transparent
-  -- use 'xiyaowong/nvim-transparent'
+  use 'dracula/vim'
+  use 'Shatur/neovim-ayu'
+  use 'jdsimcoe/abstract.vim'
+  use 'arzg/vim-colors-xcode'
 
   -- UI
   use 'kyazdani42/nvim-web-devicons'
   use 'romgrk/barbar.nvim'
   use 'nvim-lualine/lualine.nvim'
-  use 'lewis6991/gitsigns.nvim'
+  use { 'lewis6991/gitsigns.nvim', config = function() require'gitsigns'.setup {} end }
   use 'karb94/neoscroll.nvim'
   use 'akinsho/toggleterm.nvim'
   use 'hood/popui.nvim'
-  
+  use 'stevearc/dressing.nvim'
+  use 'rcarriga/nvim-notify'
+  use 'gelguy/wilder.nvim'
+
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
   use 'folke/lsp-colors.nvim'
-  use { "folke/trouble.nvim", config = function() require"trouble".setup {} end}
+  use 'folke/trouble.nvim'
   use { "norcalli/nvim-colorizer.lua", config = function() require'colorizer'.setup {} end }
   use { 'j-hui/fidget.nvim', config = function() require'fidget'.setup {} end }
   use 'onsails/lspkind-nvim'
@@ -60,9 +64,10 @@ return require('packer').startup(function()
   -- Editor
   use 'tpope/vim-surround'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use 'mattn/emmet-vim'
   use 'editorconfig/editorconfig-vim'
+  use { 'Pocco81/AutoSave.nvim', config = function() require'autosave'.config {} end }
 
   -- Improved highlighting support | [Setup] :TSUpdate
   use 'nvim-treesitter/nvim-treesitter'
@@ -88,10 +93,14 @@ return require('packer').startup(function()
   }
   use 'simrat39/rust-tools.nvim'
 
+  -- Fennel support
+  use 'Olical/conjure'
+  use 'Olical/aniseed'
+
   -- Debugging
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  use 'michaelb/sniprun'
+  use { 'michaelb/sniprun', config = function() require'sniprun'.setup {} end }
 end)
 
 

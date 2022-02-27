@@ -64,32 +64,37 @@ cmp.setup.filetype(
 )
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-    "/",
-    {
-        sources = {
-            {name = "buffer"}
-        }
-    }
-)
+-- cmp.setup.cmdline(
+--    "/",
+--     {
+--         sources = {
+--             {name = "buffer"}
+--         }
+--     }
+-- )
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(
-    ":",
-    {
-        sources = cmp.config.sources(
-            {
-                {name = "path"}
-            },
-            {
-                {name = "cmdline"}
-            }
-        )
-    }
-)
+-- cmp.setup.cmdline(
+--     ":",
+--     {
+--         sources = cmp.config.sources(
+--             {
+--                 {name = "path"}
+--             },
+--             {
+--                 {name = "cmdline"}
+--             }
+--         )
+--     }
+-- )
+
+-- Setup autopairs
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local cmp = require('cmp')
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 -- Setup lspkind.
-local lspkind = require('lspkind')
+local lspkind = require'lspkind'
 lspkind.init({
     mode = 'symbol_text',
     preset = 'default',
@@ -132,12 +137,12 @@ end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-nvim_lsp.rust_analyzer.setup({
+nvim_lsp.rust_analyzer.setup {
     on_attach=on_attach,
     settings = {
         ["rust-analyzer"] = {
             assist = {
-                importGranularity = "module",
+                importGracnularity = "module",
                 importPrefix = "by_self",
             },
             cargo = {
@@ -149,5 +154,5 @@ nvim_lsp.rust_analyzer.setup({
         }
     },
     capabilities = capabilities,
-})
+}
 
