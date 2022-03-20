@@ -14,13 +14,15 @@ installations.
 * `-cups -printsupport`: I don't have a printer.
 * `-wayland X`: I don't use wayland.
 * `-nvidia -nvenc`: I don't have a NVIDIA card.
-* `-webengine -telepathy -rdp -pulseaudio pipewire -aqua -smartcard -clamav -neon -quicktime -3dfx -emboss -ios -motif`: Extra features that I don't use.
+* `-pulseaudio pipewire`: I don't use PulseAudio.
+* `persist`: I use opendoas instead of sudo, so persist is a cool feature to enable. 
+* `-webengine -telepathy -rdp -aqua -smartcard -clamav -neon -quicktime -3dfx -emboss -ios -motif`: Extra features that I don't use.
 
 ```
 USE="-systemd -multilib -geoloc -geoip -gnome -kde -handbook \ 
     -bindist cdda -dvd -dvdr -a52 -upower -ipv6 -cups -clamav \
-    -printsupport -wayland X -nvidia -nvenc -webengine -telepathy \
-    -rdp -aqua -pulseaudio pipewire -smartcard -neon -quicktime \
+    -printsupport -wayland X -nvidia -nvenc -pulseaudio pipewire \
+    -webengine -telepathy -rdp -aqua -smartcard -neon -quicktime \
     -3dfx -emboss -ios -motif"
 ```
 
