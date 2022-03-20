@@ -16,11 +16,13 @@ installations.
 * `-nvidia -nvenc`: I don't have a NVIDIA card.
 * `-webengine -telepathy -rdp -pulseaudio pipewire -aqua -smartcard -clamav -neon -quicktime -3dfx -emboss -ios -motif`: Extra features that I don't use.
 
-`USE="-systemd -multilib -geoloc -geoip -gnome -kde -handbook \ 
+```
+USE="-systemd -multilib -geoloc -geoip -gnome -kde -handbook \ 
     -bindist cdda -dvd -dvdr -a52 -upower -ipv6 -cups -clamav \
     -printsupport -wayland X -nvidia -nvenc -webengine -telepathy \
     -rdp -aqua -pulseaudio pipewire -smartcard -neon -quicktime \
-    -3dfx -emboss -ios -motif"`
+    -3dfx -emboss -ios -motif"
+```
 
 
 # Graphics
