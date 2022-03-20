@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <filename>"
+    echo "vrsmp (video-resample) is a resampling a high framerate video into a lower framerate one."
+    exit 1
+fi
+
+if [ ! -f "$1" ]; then
+    echo "File $1 does not exist."
+    exit 1
+fi 
+
+FPS=${FPS:-60}
+NEW_SCALE=${NEW_SCALE:-3840x2160}
+DIR=`dirname $1`
+BASENAME=`basename $1 .mp4`
+FILENAME="$1"
+RESULT_FILENAME="resampled-$FPS-$BASENAME.mp4"
+
+echo "> Resampling and scaling video to $FPS FPS ~ $NEW_SCALE."
+ffmpeg -i "$FILENAME" -vf scale=$NEW_SCALE:flags=neighbor -r $FPS -preset fast -c:a copy "$RESULT_FILENAME"

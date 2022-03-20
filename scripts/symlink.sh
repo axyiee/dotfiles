@@ -15,3 +15,7 @@ for file in ./*; do
         ln -nfs "$PWD/$file" "/home/$USER/.config/$file"
 done
 
+cd ../etc
+for file in ./*; do
+        sudo ln -nfs "$PWD/$file" "/etc/$file"
+done

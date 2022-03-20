@@ -13,8 +13,12 @@ fi
 
 DIR=`dirname $1`
 BASENAME=`basename $1 .mp4`
-AUDIO="$DIR/$BASENAME-audio.opus"
+AUDIOS="$DIR/$BASENAME-audio*.opus"
+AUDIO=""
+for a in $AUDIOS; do
+    AUDIO="-i $a $AUDIO"
+done
 FILENAME="$1"
 RESULT_FILENAME="merged-$BASENAME.mp4"
 
-ffmpeg -i "$FILENAME" -i "$AUDIO" -c:v copy -c:a aac "$RESULT_FILENAME"
+ffmpeg -i "$FILENAME" $AUDIO -c:v copy -c:a aac "$RESULT_FILENAME"

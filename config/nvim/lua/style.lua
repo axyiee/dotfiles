@@ -41,8 +41,6 @@ require('dressing').setup({
     -- These are passed to nvim_open_win
     anchor = "SW",
     relative = "cursor",
-    row = 0,
-    col = 0,
     border = "rounded",
 
     -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -104,8 +102,6 @@ require('dressing').setup({
       -- These are passed to nvim_open_win
       anchor = "NW",
       relative = "cursor",
-      row = 0,
-      col = 0,
       border = "rounded",
 
       -- Window transparency (0-100)
@@ -129,6 +125,26 @@ require('dressing').setup({
     get_config = nil,
   },
 })
+
+local autosave = require("autosave")
+
+autosave.setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+)
 
 require('statusline')
 require('startpage')

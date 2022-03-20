@@ -14,7 +14,7 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-lua/popup.nvim'
 
-  -- GitHub Copilot | [Setup] :Copilot init
+  -- GitHub Copilot | [Setup] :Copilot setup
   use 'github/copilot.vim'
 
   -- Customization: Color schemes
@@ -64,10 +64,10 @@ return require('packer').startup(function()
   -- Editor
   use 'tpope/vim-surround'
   use 'lukas-reineke/indent-blankline.nvim'
-  use 'windwp/nvim-autopairs'
+  use 'jiangmiao/auto-pairs'
   use 'mattn/emmet-vim'
   use 'editorconfig/editorconfig-vim'
-  use { 'Pocco81/AutoSave.nvim', config = function() require'autosave'.config {} end }
+  use 'Pocco81/AutoSave.nvim'
 
   -- Improved highlighting support | [Setup] :TSUpdate
   use 'nvim-treesitter/nvim-treesitter'
@@ -81,6 +81,7 @@ return require('packer').startup(function()
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
+  use 'hrsh7th/cmp-emoji'
 
   -- Start screen
   use 'startup-nvim/startup.nvim'

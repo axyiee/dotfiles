@@ -7,6 +7,11 @@
 set completeopt=menu,menuone,noselect
 syntax enable
 set termguicolors
+let g:copilot_filetypes = {
+            \ '*': v:true,
+            \ 'markdown': v:true,
+            \ 'yaml': v:true,
+            \ }
 
 " Enable black background. You can enable it if you want by uncommenting the
 " following lines.

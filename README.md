@@ -11,8 +11,6 @@ tweak some of the settings.
 
 * **GTK Theme + Icons**: Kora Icon Theme + \<any-gtk-theme>
 
-* **Browser**: Ungoogled Chromium
-
 * **Audio**: Pipewire
 
 * **Top Bar**: Polybar

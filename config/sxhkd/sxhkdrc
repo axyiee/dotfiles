@@ -119,7 +119,7 @@ super + Return
 
 #File-Manager
 super + shift + Return
-	dolphin
+	nautilus
 
 #reload sxhkd
 super + shift + r
@@ -131,8 +131,7 @@ super + shift + n
 
 #flameshot screenshot
 alt + shift + s
-        flameshot gui
-        #bash /home/exst/.config/sxhkd/scripts/screenshot.sh
+        ~/.config/sxhkd/scripts/screenshot.sh
 #################################################################
 #     MULTIMEDIA KEYS
 #################################################################
@@ -191,5 +190,5 @@ ctrl + alt + o
     ~/.config/sxhkd/scripts/toggle-compositor.sh
 
 # toggle polybar
-ctrl + alt+ p
+ctrl + alt + p
     polybar-msg cmd toggle
