@@ -30,7 +30,7 @@ let g:github_colors = {
   \ 'error': '#ff0000'
 \ }
 set background=light
-colorscheme xcodelight
+colorscheme gotham
 
 " Allow 4 spaces for indentation
 set expandtab

@@ -4,11 +4,6 @@
 --  /___/\__/\_, /_/\__/
 --          /___/
 
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
 vim.ui.select = require"popui.ui-overrider"
 vim.notify = require("notify")
 
@@ -64,10 +59,7 @@ require('dressing').setup({
     backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
 
     -- Options for telescope selector
-    telescope = {
-      -- can be 'dropdown', 'cursor', or 'ivy'
-      theme = "dropdown",
-    },
+    telescope = require('telescope.themes').get_dropdown{},
 
     -- Options for fzf selector
     fzf = {

@@ -15,18 +15,11 @@ return require('packer').startup(function()
   use 'nvim-lua/popup.nvim'
 
   -- GitHub Copilot | [Setup] :Copilot setup
-  use 'github/copilot.vim'
+  use 'whatyouhide/vim-gotham'
 
   -- Customization: Color schemes
-  use 'folke/tokyonight.nvim'
-  use 'haishanh/night-owl.vim'
-  use 'projekt0n/github-nvim-theme'
-  use 'Mofiqul/vscode.nvim'
   use 'dracula/vim'
-  use 'Shatur/neovim-ayu'
-  use 'jdsimcoe/abstract.vim'
-  use 'arzg/vim-colors-xcode'
-
+  
   -- UI
   use 'kyazdani42/nvim-web-devicons'
   use 'romgrk/barbar.nvim'
