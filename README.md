@@ -1,31 +1,16 @@
 # Azalea
 
-Azalea is a personal collection of dotfiles that I made for development and gaming on Linux. It may work in FreeBSD if you 
-tweak some of the settings.
- 
-* **Distro**: Artix Linux (OpenRC) *amd64*
+Just a simple desktop setup that I use daily for gaming and programming.
 
-* **Packages**: See `arch/packages.sh`
+| Window Manager                                                                                | GTK/QT Theme | Icon Theme                             | Audio                                            | Top Bar                                       | Text Editor                                |
+|-----------------------------------------------------------------------------------------------|--------------|----------------------------------------|--------------------------------------------------|-----------------------------------------------|--------------------------------------------|
+| [bspwm](https://github.com/baskerville/bspwm) + [sxhkd](https://github.com/baskerville/sxhkd) | *any*        | [Kora](https://github.com/bikass/kora) | [PipeWire](https://github.com/PipeWire/pipewire) | [polybar](https://github.com/polybar/polybar) | [neovim](https://github.com/neovim/neovim) |
 
-* **Window Manager + Keybinding Handler**: bspwm + sxhkd
+## Installation
 
-* **GTK Theme + Icons**: Kora Icon Theme + \<any-gtk-theme>
-
-* **Audio**: Pipewire
-
-* **Top Bar**: Polybar
-
-* **Text Editor**: Neovim
-
+* **Gentoo (OpenRC/amd64)** `gentoo/packages.sh`
+* **Artix Linux (OpenRC/amd64)** `arch/packages.sh`
 
 ## Showcase
 
 <img src="./showcase/current.png" /> 
-
-<img src="./showcase/wpp_blur.gif" />
-
-## Installation
-
-**Arch Linux**: Install `yay`, then run `./arch/packages.sh` (if needed, tweak it) and `./scripts/symlink.sh`.
-
-**Debian/Ubuntu**: Not implemented yet. For symlinking use the `./scripts/symlink.sh` script.
