@@ -1,0 +1,21 @@
+# Disable Network Manager in Firefox/LibreWolf package
+www-client/firefox -wifi
+www-client/librewolf -wifi
+
+# Audio
+media-sound/pulseaudio -alsa-plugin
+media-video/pipewire pipewire-alsa
+
+# Dunst and neovim
+>=app-text/xmlto-0.0.28-r8 text
+>=app-text/ghostscript-gpl-9.55.0-r1 cups
+>=dev-lua/mpack-1.0.9-r1 lua_targets_luajit
+
+# Python
+>=media-libs/libvpx-1.11.0 postproc
+>=dev-lang/python-3.10.2_p1 sqlite
+
+# Video
+>=x11-libs/gtk+-3.24.31 wayland
+>=media-libs/mesa-22.0.0 wayland
+

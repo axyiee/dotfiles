@@ -2,7 +2,8 @@
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # audio
-/usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/pipewire-media-session &
+#/usr/bin/pipewire & /usr/bin/pipewire-pulse & /usr/bin/pipewire-media-session &
+gentoo-pipewire-launcher &
 
 # keybind handling daemon
 export SXHKD_SHELL=sh
