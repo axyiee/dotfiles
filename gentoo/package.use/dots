@@ -5,6 +5,7 @@ www-client/librewolf -wifi
 # Audio
 media-sound/pulseaudio -alsa-plugin
 media-video/pipewire pipewire-alsa
+media-sound/cmus pulseaudio
 
 # Dunst and neovim
 >=app-text/xmlto-0.0.28-r8 text
@@ -15,7 +16,20 @@ media-video/pipewire pipewire-alsa
 >=media-libs/libvpx-1.11.0 postproc
 >=dev-lang/python-3.10.2_p1 sqlite
 
-# Video
->=x11-libs/gtk+-3.24.31 wayland
->=media-libs/mesa-22.0.0 wayland
+# Misc
+app-misc/openrazer daemon client
+dev-python/PyQt5 svg
+dev-qt/qtsql sqlite
+dev-lang/python gdbm
 
+# Video
+x11-libs/gtk+ wayland
+media-libs/mesa wayland -vaapi # Disable VAAPI with -vaapi and compile Mesa when installing Steam, then renaable and recompile Mesa again
+media-video/ffmpeg pulseaudio chromium
+sys-libs/zlib minizip
+
+# Browser
+www-client/firefox-bin wayland
+
+# Games
+games-util/game-device-udev-rules -acl

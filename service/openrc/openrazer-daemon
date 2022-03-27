@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="Daemon to manage razer devices in userspace"
+supervisor="supervise-daemon"
+command="/usr/bin/openrazer-daemon"
+command_args="-F"
+command_user="exst:plugdev"
+
+depend() {
+    need dbus
+}

@@ -15,11 +15,11 @@ return require('packer').startup(function()
   use 'nvim-lua/popup.nvim'
 
   -- GitHub Copilot | [Setup] :Copilot setup
-  use 'whatyouhide/vim-gotham'
+  use 'github/copilot.vim'
 
   -- Customization: Color schemes
-  use 'dracula/vim'
-  
+  use 'whatyouhide/vim-gotham'
+
   -- UI
   use 'kyazdani42/nvim-web-devicons'
   use 'romgrk/barbar.nvim'
