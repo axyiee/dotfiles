@@ -21,6 +21,8 @@ app-misc/openrazer daemon client
 dev-python/PyQt5 svg
 dev-qt/qtsql sqlite
 dev-lang/python gdbm
+app-crypt/gcr gtk
+media-fonts/nerd-fonts cascadiacode firacode jetbrainsmono
 
 # Video
 x11-libs/gtk+ wayland
@@ -33,3 +35,4 @@ www-client/firefox-bin wayland
 
 # Games
 games-util/game-device-udev-rules -acl
+app-emulation/wine-osu -abi_x86_32 abi_x86_64

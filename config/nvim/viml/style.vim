@@ -22,15 +22,8 @@ let g:copilot_filetypes = {
 " augroup END
 
 " Enable the color scheme
-let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
-
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:github_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
-set background=light
-colorscheme gotham
+set background=dark
+colorscheme catppuccin
 
 " Allow 4 spaces for indentation
 set expandtab

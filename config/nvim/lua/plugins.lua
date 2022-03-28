@@ -18,7 +18,7 @@ return require('packer').startup(function()
   use 'github/copilot.vim'
 
   -- Customization: Color schemes
-  use 'whatyouhide/vim-gotham'
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- UI
   use 'kyazdani42/nvim-web-devicons'

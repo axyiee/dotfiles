@@ -3,5 +3,5 @@
 --   _\ \/ __/ _ `/ __/ // (_-</ / / _ \/ -_)
 --  /___/\__/\_,_/\__/\_,_/___/_/_/_//_/\__/
 
-require('lualine').setup({options = {theme = 'auto'}})
+require('lualine').setup({options = {theme = 'catppuccin'}})
 

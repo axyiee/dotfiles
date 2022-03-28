@@ -27,6 +27,8 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 super + d
 	bspc node focused -t \~floating
+super + x 
+    ~/.config/bspwm/scripts/center.sh
 
 # set the node flags
 super + ctrl + {m,x,y,z}
