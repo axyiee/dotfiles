@@ -49,6 +49,6 @@ env:
 font:
   size: 10
   normal:
-    family: JetBrains Mono NL
+    family: JetBrainsMono Nerd Font
     
 

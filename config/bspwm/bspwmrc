@@ -10,7 +10,7 @@ export SXHKD_SHELL=sh
 pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 # all bspwm workspaces
-bspc monitor -d    ﭮ    ﭧ
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
 # start compositor
 picom --experimental-backends --config ~/.config/picom/picom.conf &
@@ -23,19 +23,18 @@ picom --experimental-backends --config ~/.config/picom/picom.conf &
 dunst -c ~/.config/dunst/dunstrc &
 
 # static wallpaper
-feh --bg-scale ~/wallpapers/wallhaven-wqve97_1920x1080.png & 
+feh --bg-scale ~/wallpapers/72ph699eh3p81.jpg & 
 
 # general settings for bspwm
-#bspc config focused_border_color \#4C566A &
-#bspc config active_border_color  \#4C566A &
-#bspc config normal_border_color  \#4C566A &
-bspc config border_width                0 &
-bspc config window_gap                 16 &
-bspc config split_ratio               0.6 &
+bspc config focused_border_color \#6E6C7E
+bspc config active_border_color  \#575268
+bspc config normal_border_color  \#575268
+bspc config border_width                1
+bspc config window_gap                 16
+bspc config split_ratio               0.6
 
 # polybar
-polybar -c ~/.config/polybar/polybar.conf time &
-polybar -c ~/.config/polybar/polybar.conf workspaces &
+polybar -c ~/.config/polybar/polybar.conf main &
 
 # tiled firefox fix 
 bspc rule -a firefox state=tiled
