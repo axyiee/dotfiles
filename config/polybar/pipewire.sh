@@ -15,5 +15,5 @@ case $1 in
         pamixer --toggle-mute
         ;;
     *)
-        echo "  ${VOLUME}"
+        echo "${VOLUME}"
 esac
