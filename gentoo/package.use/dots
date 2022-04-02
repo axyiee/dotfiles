@@ -23,6 +23,8 @@ dev-qt/qtsql sqlite
 dev-lang/python gdbm
 app-crypt/gcr gtk
 media-fonts/nerd-fonts cascadiacode firacode jetbrainsmono
+dev-qt/qtwebkit printsupport
+sys-libs/ncurses unicode
 
 # Video
 x11-libs/gtk+ wayland

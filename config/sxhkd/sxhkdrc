@@ -106,7 +106,7 @@ super + {Left,Down,Up,Right}
 
 #Rofi Fullscreen
 alt + p
-	rofi -no-lazy-grab -show drun -modi drun -theme "~/.config/rofi/rofi.rasi"
+	rofi -show drun -show run -show window
 
 alt + F2
 	dmenu_run

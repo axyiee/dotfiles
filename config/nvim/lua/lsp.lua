@@ -156,3 +156,7 @@ nvim_lsp.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
+nvim_lsp.clangd.setup {
+    on_attach=on_attach,
+    capabilities = capabilities,
+}
