@@ -36,10 +36,13 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
   use 'folke/lsp-colors.nvim'
-  use 'folke/trouble.nvim'
+  use { 'folke/trouble.nvim', config = function() require'trouble'.setup {} end }
   use { "norcalli/nvim-colorizer.lua", config = function() require'colorizer'.setup {} end }
   use { 'j-hui/fidget.nvim', config = function() require'fidget'.setup {} end }
   use 'onsails/lspkind-nvim'
+
+  -- Util
+  use 'nathom/filetype.nvim'
 
   -- File explorer
   use {
@@ -61,6 +64,8 @@ return require('packer').startup(function()
   use 'mattn/emmet-vim'
   use 'editorconfig/editorconfig-vim'
   use 'Pocco81/AutoSave.nvim'
+  use { "folke/which-key.nvim", config = function() require("which-key").setup {} end }
+  use { 'numToStr/Comment.nvim', config = function() require'Comment'.setup {} end }
 
   -- Improved highlighting support | [Setup] :TSUpdate
   use 'nvim-treesitter/nvim-treesitter'

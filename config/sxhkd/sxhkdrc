@@ -131,13 +131,9 @@ super + shift + r
 super + shift + n
 	neovim
 
-#maim screenshot
 super + shift + s
-        #~/.config/sxhkd/scripts/screenshot.sh
-        maim -s -u | xclip -selection clipboard -t image/png
+    ~/.config/sxhkd/scripts/screenshot.sh
 
-super + shift + m
-        maim -s -u ~/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
 #################################################################
 #     MULTIMEDIA KEYS
 #################################################################

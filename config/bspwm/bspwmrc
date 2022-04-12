@@ -10,7 +10,7 @@ export SXHKD_SHELL=sh
 pgrep -x sxhkd > /dev/null || sxhkd -c ~/.config/sxhkd/sxhkdrc &
 
 # all bspwm workspaces 
-bspc monitor -d  爵    﫢 ﭧ
+bspc monitor -d     﫢   ﭧ
 # start compositor
 picom --experimental-backends --config ~/.config/picom/picom.conf &
 # bash $SCRIPTPATH/scripts/blur_wallpaper.sh &

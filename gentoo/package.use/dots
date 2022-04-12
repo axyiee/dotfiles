@@ -6,6 +6,7 @@ www-client/librewolf -wifi
 media-sound/pulseaudio -alsa-plugin
 media-video/pipewire pipewire-alsa
 media-sound/cmus pulseaudio
+media-libs/rubberband ladspa
 
 # Dunst and neovim
 >=app-text/xmlto-0.0.28-r8 text
@@ -25,10 +26,11 @@ app-crypt/gcr gtk
 media-fonts/nerd-fonts cascadiacode firacode jetbrainsmono
 dev-qt/qtwebkit printsupport
 sys-libs/ncurses unicode
+net-vpn/tor caps server
 
 # Video
 x11-libs/gtk+ wayland
-media-libs/mesa wayland -vaapi # Disable VAAPI with -vaapi and compile Mesa when installing Steam, then renaable and recompile Mesa again
+media-libs/mesa wayland # -vaapi # Disable VAAPI with -vaapi and compile Mesa when installing Steam, then renaable and recompile Mesa again
 media-video/ffmpeg pulseaudio chromium
 sys-libs/zlib minizip
 
@@ -37,4 +39,7 @@ www-client/firefox-bin wayland
 
 # Games
 games-util/game-device-udev-rules -acl
-app-emulation/wine-osu -abi_x86_32 abi_x86_64
+=app-emulation/wine-staging-7.4 -gecko -mono -scanner -kerberos -cups -gphoto2 -vkd3d -dxvk -vulkan 
+>=x11-libs/gdk-pixbuf-2.42.6-r1 jpeg
+>=dev-lang/python-3.9.9-r1:3.9 sqlite
+>=media-libs/harfbuzz-3.2.0 icu

@@ -1,9 +1,6 @@
 #!/bin/bash
 
-#maim -s | xclip -selection clipboard -t image/png
-maim -u /tmp/screenshot.png
-feh -x -F /tmp/screenshot.png &
-id=$!
-maim -s -u | xclip -selection clipboard -t image/png
-kill $id
+FILE="$HOME/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png"
 
+maim -s -u "$FILE"
+cat "$FILE" | xclip -selection clipboard -t image/png

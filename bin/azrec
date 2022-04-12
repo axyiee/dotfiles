@@ -32,7 +32,7 @@ tmux set-option remain-on-exit on
 echo "> Starting video recording in $FPS FPS => $FILENAME"
 
 # Record the screen
-tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12' -c:v hevc_vaapi -pix_fmt yuv420p -sei hdr -qp:v 0 $FILENAME.mp4"
+tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12' -c:v hevc_vaapi -sei hdr -qp:v 0 $FILENAME.mp4"
 
 # Record audio devices
 for index in "${!AUDIO_DEVICES[@]}"; do 
