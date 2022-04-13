@@ -12,6 +12,7 @@ media-libs/rubberband ladspa
 >=app-text/xmlto-0.0.28-r8 text
 >=app-text/ghostscript-gpl-9.55.0-r1 cups
 >=dev-lua/mpack-1.0.9-r1 lua_targets_luajit
+dev-lua/luv lua_targets_luajit -lua_targets_lua5-4
 
 # Python
 >=media-libs/libvpx-1.11.0 postproc
@@ -39,7 +40,7 @@ www-client/firefox-bin wayland
 
 # Games
 games-util/game-device-udev-rules -acl
-=app-emulation/wine-staging-7.4 -gecko -mono -scanner -kerberos -cups -gphoto2 -vkd3d -dxvk -vulkan 
+=app-emulation/wine-staging-7.4 -gecko -mono -scanner -kerberos -cups -gphoto2
 >=x11-libs/gdk-pixbuf-2.42.6-r1 jpeg
 >=dev-lang/python-3.9.9-r1:3.9 sqlite
 >=media-libs/harfbuzz-3.2.0 icu
