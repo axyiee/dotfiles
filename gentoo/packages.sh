@@ -8,7 +8,7 @@ fi
 emerge --verbose dev-vcs/git app-eselect/eselect-repository
 
 eselect repository enable elementary guru vifino-overlay
-eselect repository add eexsty https://github.com/eexsty/gentoo-overlay
+eselect repository add eexsty git https://github.com/eexsty/gentoo-overlay
 emerge --sync
 
 # need to install lfimg and web browser manually
