@@ -7,7 +7,7 @@ fi
 
 emerge --verbose dev-vcs/git app-eselect/eselect-repository
 
-eselect repository enable elementary guru vifino-overlay
+eselect repository enable elementary guru vifino-overlay alxu
 eselect repository add eexsty git https://github.com/eexsty/gentoo-overlay
 emerge --sync
 
