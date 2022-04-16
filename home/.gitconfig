@@ -16,6 +16,7 @@
 [user]
 	name = eexsty
 	email = hello@exst.fun
+	signingkey = 400C0D7302F57481
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
@@ -25,4 +26,9 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [commit]
-	gpgsign = false
+	gpgsign = true
+[alias]
+	logs = log --show-signature
+	x = commit -S
+[gpg]
+	program = gpg

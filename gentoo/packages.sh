@@ -6,9 +6,6 @@ if [ "$UID" -ne 0 ]; then
 fi
 
 emerge --verbose dev-vcs/git app-eselect/eselect-repository
-
-eselect repository enable elementary guru vifino-overlay alxu
-eselect repository add eexsty git https://github.com/eexsty/gentoo-overlay
 emerge --sync
 
 # need to install lfimg and web browser manually
@@ -21,16 +18,22 @@ emerge --ask --verbose media-fonts/inter media-fonts/noto-emoji media-fonts/noto
     app-shells/zsh-autosuggestions app-shells/zsh-syntax-highlighting app-shells/fzf sys-apps/dbus \
     net-wireless/wpa_supplicant net-misc/dhcpcd sys-kernel/linux-firmware sys-apps/usb_modeswitch \
     media-gfx/maim x11-apps/setxkbmap x11-misc/picom-animations app-shells/zoxide x11-misc/wmutils-core \
-    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer
+    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer dev-libs/libinput x11-apps/xinput
 
 # Enabling all required services
 rc-update add wpa_supplicant
 rc-update add dbus
 rc-update add dhcpcd
 
-# Installing fonts
-curl -o ~/.local/share/fonts/fonts/ttf/UBraille.ttf "https://yudit.org/download/fonts/UBraille/UBraille.ttf"
-curl -o ~/.local/share/fonts/fonts/ttf/JetBrainsMono.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip"
+# Installing fonts 
+wget https://yudit.org/download/fonts/UBraille/UBraille.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20for%20Powerline.ttf -P "$HOME"/.local/share/fonts/fonts/ttf 
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Italic%20for%20Powerline.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20for%20Powerline.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20Italic%20for%20Powerline.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete%20Mono.ttf -P "$HOME"/.local/share/fonts/fonts/ttf
 (cd ~/.local/share/fonts/fonts/ttf && unzip JetBrainsMono.zip && rm -f JetBrainsMono.zip)
 fc-cache -fv
 
