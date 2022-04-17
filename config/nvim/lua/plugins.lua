@@ -40,6 +40,7 @@ return require('packer').startup(function()
   use { "norcalli/nvim-colorizer.lua", config = function() require'colorizer'.setup {} end }
   use { 'j-hui/fidget.nvim', config = function() require'fidget'.setup {} end }
   use 'onsails/lspkind-nvim'
+  use { 'lukas-reineke/lsp-format.nvim', config = function() require'lsp-format'.setup {} end }
 
   -- Util
   use 'nathom/filetype.nvim'
@@ -47,7 +48,7 @@ return require('packer').startup(function()
   -- File explorer
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require'nvim-tree'.setup { view = { side = "right", auto_resize = true } } end
+    config = function() require'nvim-tree'.setup { view = { side = "right", auto_resize = false } } end
   }
 
   -- Fuzzy finder support | [Deps] git-delta-git fzf bat

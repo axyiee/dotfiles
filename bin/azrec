@@ -1,7 +1,6 @@
 #!/bin/sh
 export LIBVA_DRIVER_NAME=radeonsi
-RESOLUTION_W=1920
-RESOLUTION_H=1080
+RESOLUTION=1920x1080
 FPS=${FPS:-60}
 FN=~/Videos/recording-$(date +"%d-%m-%Y-%H-%M")
 FILENAME=${1:-$FN}
@@ -9,7 +8,7 @@ DEVICE=/dev/dri/card0
 VAAPI_DEVICE=/dev/dri/renderD128
 THREAD_QUEUE_SIZE=140048
 # You can list your audio devices by using the 'pactl list' command.
-AUDIO_DEVICES=("alsa_output.usb-C-Media_Electronics_Inc._USB_PnP_Sound_Device-00.analog-stereo.monitor") #"alsa_input.usb-Sony_Interactive_Entertainment_Wireless_Controller-00.analog-stereo")
+AUDIO_DEVICES=("alsa_output.usb-C-Media_Electronics_Inc._USB_PnP_Sound_Device-00.analog-stereo.monitor" "alsa_input.usb-Sony_Interactive_Entertainment_Wireless_Controller-00.analog-stereo")
 
 # Stop recording if the provided argument is equals to 'stop'.
 if [ "$1" == "stop" ]; then
@@ -32,7 +31,8 @@ tmux set-option remain-on-exit on
 echo "> Starting video recording in $FPS FPS => $FILENAME"
 
 # Record the screen
-tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf 'hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12' -c:v hevc_vaapi -sei hdr -qp:v 0 $FILENAME.mp4"
+export VAAPI_DISABLE_INTERLACE=1
+tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f x11grab -video_size $RESOLUTION -i :0 -vf 'hwupload,scale_vaapi=format=nv12' -c:v h264_vaapi -qp 24 $FILENAME.mp4"
 
 # Record audio devices
 for index in "${!AUDIO_DEVICES[@]}"; do 

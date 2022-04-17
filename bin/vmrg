@@ -19,6 +19,7 @@ for a in $AUDIOS; do
     AUDIO="-i $a $AUDIO"
 done
 FILENAME="$1"
-RESULT_FILENAME="merged-$BASENAME.mp4"
-
-ffmpeg -i "$FILENAME" $AUDIO -c:v copy -c:a aac "$RESULT_FILENAME"
+RESULT_FILENAME="merged-$1"
+AUDIO_COUNT=`ls $AUDIOS | wc -l`
+echo "> Merging $AUDIO_COUNT audio files and a video into $FILENAME"
+ffmpeg -i "$FILENAME" $AUDIO -filter_complex amix=inputs=$AUDIO_COUNT:duration=first "$RESULT_FILENAME"

@@ -18,7 +18,7 @@ emerge --ask --verbose media-fonts/inter media-fonts/noto-emoji media-fonts/noto
     app-shells/zsh-autosuggestions app-shells/zsh-syntax-highlighting app-shells/fzf sys-apps/dbus \
     net-wireless/wpa_supplicant net-misc/dhcpcd sys-kernel/linux-firmware sys-apps/usb_modeswitch \
     media-gfx/maim x11-apps/setxkbmap x11-misc/picom-animations app-shells/zoxide x11-misc/wmutils-core \
-    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer dev-libs/libinput x11-apps/xinput
+    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer dev-libs/libinput x11-apps/xinput app-misc/tmux x11-misc/qt5ct
 
 # Enabling all required services
 rc-update add wpa_supplicant
@@ -61,6 +61,9 @@ fc-cache -fv
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/Aloxaf/fzf-tab.git ~/.oh-my-zsh/custom/plugins/fzf-tab
+git clone https://github.com/bikass/kora ~/.icons
+
+(mkdir -p ~/.themes && cd ~/.themes && wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-yellow.zip && unzip Catppuccin-yellow.zip && rm -f Catpuccin-yellow.zip)
 
 PACKER_PATH="/home/$USER/.local/share/nvim/site/pack/packer/start/packer.nvim"
 PACKER_REPO="https://github.com/wbthomason/packer.nvim"

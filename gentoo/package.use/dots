@@ -29,12 +29,14 @@ dev-qt/qtwebkit printsupport
 sys-libs/ncurses unicode
 net-vpn/tor caps server
 dev-vcs/git gnome-keyring gpg curl
+dev-qt/qtwidgets gtk
 
 # Video
 x11-libs/gtk+ wayland
 media-libs/mesa wayland vaapi # Disable VAAPI with -vaapi and compile Mesa when installing Steam, then renaable and recompile Mesa again
 media-video/ffmpeg pulseaudio chromium
 sys-libs/zlib minizip
+media-video/obs-studio pipewire
 
 # Browser
 www-client/firefox-bin wayland
