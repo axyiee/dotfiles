@@ -18,7 +18,7 @@ emerge --ask --verbose media-fonts/inter media-fonts/noto-emoji media-fonts/noto
     app-shells/zsh-autosuggestions app-shells/zsh-syntax-highlighting app-shells/fzf sys-apps/dbus \
     net-wireless/wpa_supplicant net-misc/dhcpcd sys-kernel/linux-firmware sys-apps/usb_modeswitch \
     media-gfx/maim x11-apps/setxkbmap x11-misc/picom-animations app-shells/zoxide x11-misc/wmutils-core \
-    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer dev-libs/libinput x11-apps/xinput app-misc/tmux x11-misc/qt5ct
+    x11-misc/xdo x11-misc/xdotool media-gfx/ueberzug media-sound/playerctl dev-python/dbus-python media-sound/pamixer dev-libs/libinput x11-apps/xinput app-misc/tmux x11-misc/qt5ct media-libs/vulkan-loader
 
 # Enabling all required services
 rc-update add wpa_supplicant

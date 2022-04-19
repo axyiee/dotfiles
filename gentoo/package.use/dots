@@ -34,9 +34,23 @@ dev-qt/qtwidgets gtk
 # Video
 x11-libs/gtk+ wayland
 media-libs/mesa wayland vaapi # Disable VAAPI with -vaapi and compile Mesa when installing Steam, then renaable and recompile Mesa again
-media-video/ffmpeg pulseaudio chromium
+media-video/ffmpeg pulseaudio chromium sdl
 sys-libs/zlib minizip
-media-video/obs-studio pipewire
+media-video/obs-studio pipewire pulseaudio alsa
+media-libs/vulkan-loader layers wayland
+
+# Editing
+media-libs/mlt sdl xml qt5 frei0r
+media-libs/opencv contribdnn qt5 contrib
+dev-python/PyQt5 widgets gui
+>=dev-qt/qtmultimedia-5.15.3 widgets
+>=media-video/ffmpeg-4.4.1-r5 vpx theora
+>=net-libs/zeromq-4.3.4-r1 drafts
+>=dev-python/PyQt5-5.15.4-r1 network printsupport webchannel
+>=dev-qt/qtwebengine-5.15.3_p20220406 widgets
+>=dev-libs/libxml2-2.9.13-r1 icu
+>=dev-qt/qtwebchannel-5.15.3 qml
+#media-libs/opencolorio -opengl # Disable OpenGL with -opengl and compile OpenColorio when installing Blender, then reenable and recompile OpenColorio again
 
 # Browser
 www-client/firefox-bin wayland
