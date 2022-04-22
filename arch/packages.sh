@@ -1,6 +1,6 @@
 #!/bin/sh
 KERNEL="linux-tkg-bmq-generic_v3-headers linux-tkg-bmq-generic_v3"
-FONTS="inter-font noto-fonts-emoji nerd-fonts-jetbrains-mono"
+FONTS="inter-font noto-fonts-emoji"
 XORG="xorg-server xorg-xinit xorg-xrandr xclip feh"
 WM="sxhkd-git bspwm-git polybar picom-animations-git xfce-polkit rofi"
 AUDIO="pipewire pipewire-pulse pipewire-alsa pipewire-media-session lib32-pipewire pavucontrol easyeffects"
