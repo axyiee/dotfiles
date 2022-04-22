@@ -17,7 +17,7 @@ Just a simple desktop setup that I use daily for gaming and programming.
 * **Gentoo (OpenRC/amd64)** 
 * * `./gentoo/packages.sh`
 * * `./gentoo/link.sh`
-* **Artix Linux (OpenRC/amd64)** 
+* **Arch Linux (Systemd/amd64)** 
 * * `./arch/packages.sh`
 * `./scripts/symlink.sh`
 * `./scripts/bin.sh`
