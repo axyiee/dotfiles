@@ -94,6 +94,9 @@ function toh265 {
 alias gupdate="doas emerge --ask --verbose --update --deep --newuse @world"
 alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
 
+# Apps 
+alias minecraft="~/Apps/minecraft-launcher/minecraft-launcher --workDir /media/files/Games/.minecraft"
+
 # Fetch system information befofre loading oh-my-zsh.
 rxfetch
 

@@ -1,1 +1,1 @@
-/opt/wine-ge-proton7-8/bin/function_grep.pl
+/opt/wine-tkg/bin/function_grep.pl

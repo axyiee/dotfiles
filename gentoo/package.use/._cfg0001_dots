@@ -55,12 +55,6 @@ dev-python/PyQt5 widgets gui
 # Browser
 www-client/firefox-bin wayland
 =media-libs/libvpx-1.9.0 postproc
-# required by www-client/qutebrowser-2.5.0::gentoo
-# required by qutebrowser (argument)
->=dev-qt/qtcore-5.15.3 icu
-# required by www-client/qutebrowser-2.5.0::gentoo[python_single_target_python3_9]
-# required by qutebrowser (argument)
->=dev-python/PyQt5-5.15.4-r1 sql multimedia declarative
 
 # Games
 games-util/game-device-udev-rules -acl
@@ -70,3 +64,9 @@ games-util/game-device-udev-rules -acl
 >=media-libs/harfbuzz-3.2.0 icu
 
 
+# required by www-client/qutebrowser-2.5.0::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtcore-5.15.3 icu
+# required by www-client/qutebrowser-2.5.0::gentoo[python_single_target_python3_9]
+# required by qutebrowser (argument)
+>=dev-python/PyQt5-5.15.4-r1 declarative sql multimedia

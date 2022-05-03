@@ -1,3 +1,8 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
 BROWSER=firefox-bin
 EDITOR=nvim
 _JAVA_AWT_WM_NONREPARENTING=1 

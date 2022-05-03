@@ -63,7 +63,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/
 git clone https://github.com/Aloxaf/fzf-tab.git ~/.oh-my-zsh/custom/plugins/fzf-tab
 git clone https://github.com/bikass/kora ~/.icons
 
-(mkdir -p ~/.themes && cd ~/.themes && wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-yellow.zip && unzip Catppuccin-yellow.zip && rm -f Catpuccin-yellow.zip)
+(mkdir -p ~/.themes && cd ~/.themes && wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-purple.zip && unzip Catppuccin-purple.zip && rm -f Catppuccin-yellow.zip)
 
 PACKER_PATH="/home/$USER/.local/share/nvim/site/pack/packer/start/packer.nvim"
 PACKER_REPO="https://github.com/wbthomason/packer.nvim"
