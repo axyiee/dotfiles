@@ -3,9 +3,9 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
-BROWSER=firefox-bin
+BROWSER=qutebrowser
 EDITOR=nvim
 _JAVA_AWT_WM_NONREPARENTING=1 
-GTK_IM_MODULE=cedilla
-QT_IM_MODULE=cedilla
+#GTK_IM_MODULE=cedilla
+#QT_IM_MODULE=cedilla
 QT_QPA_PLATFORMTHEME=gtk2

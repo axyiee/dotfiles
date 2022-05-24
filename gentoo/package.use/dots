@@ -5,6 +5,7 @@ www-client/librewolf -wifi
 # Audio
 media-sound/pulseaudio -alsa-plugin
 media-video/pipewire pipewire-alsa
+media-video/wireplumber lua_single_target_lua5-4
 media-sound/cmus pulseaudio
 media-libs/rubberband ladspa
 
@@ -30,6 +31,8 @@ sys-libs/ncurses unicode
 net-vpn/tor caps server
 dev-vcs/git gnome-keyring gpg curl
 dev-qt/qtwidgets gtk
+sys-fs/squashfs-tools lzma
+>=net-libs/nodejs-14.19.0 inspector
 
 # Video
 x11-libs/gtk+ wayland
@@ -38,7 +41,9 @@ media-video/ffmpeg pulseaudio chromium sdl
 sys-libs/zlib minizip
 media-video/obs-studio pipewire pulseaudio alsa
 media-libs/vulkan-loader layers wayland
-
+media-video/vlc matroska mpeg pulseaudio optimisememory png svg vpx v4l qt5 gnutls live lua rtsp theora upnp vcdx lua_single_target_lua5-1
+>=net-libs/libupnp-1.14.12-r1 ipv6
+>=media-video/mpv-0.33.1-r3 libmpv
 # Editing
 media-libs/mlt sdl xml qt5 frei0r
 media-libs/opencv contribdnn qt5 contrib
@@ -61,12 +66,15 @@ www-client/firefox-bin wayland
 # required by www-client/qutebrowser-2.5.0::gentoo[python_single_target_python3_9]
 # required by qutebrowser (argument)
 >=dev-python/PyQt5-5.15.4-r1 sql multimedia declarative
+www-plugins/chrome-binary-plugins widevine
+www-client/chromium widevine
+www-client/qutebrowser widevine adblock
 
 # Games
+games-util/gamemode elogind
 games-util/game-device-udev-rules -acl
 =app-emulation/wine-staging-7.4 -gecko -mono -scanner -kerberos -cups -gphoto2
 >=x11-libs/gdk-pixbuf-2.42.6-r1 jpeg
 >=dev-lang/python-3.9.9-r1:3.9 sqlite
 >=media-libs/harfbuzz-3.2.0 icu
-
 

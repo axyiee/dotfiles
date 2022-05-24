@@ -17,13 +17,16 @@ fi
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export VISUAL='nvim'
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' # Improve text rendering in AWT apps
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' # Improve text rendering in AWT apps
 zstyle ':completion:*:ssh:*' hosts off
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
 export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
+
+alias addping="doas tc qdisc add dev wlan0 root netem delay"
+alias delping="doas tc qdisc del dev wlan0 root"
 
 # Add shortcut for toggling Alacritty padding setting
 switchallacrityconfig() {
@@ -53,6 +56,11 @@ fi
 if [ -d "$HOME/.cargo/bin" ];
  then PATH="$HOME/.cargo/bin:$PATH"
 fi 
+
+PATH="/opt/jdk-19/bin:$PATH"
+JDK_HOME="/opt/jdk-19"
+JAVA_HOME="/opt/jdk-19"
+JAVAC="/opt/jdk-19/bin/javac"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -92,10 +100,10 @@ function toh265 {
 }
 
 alias gupdate="doas emerge --ask --verbose --update --deep --newuse @world"
-alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
+#alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
 
 # Apps 
-alias minecraft="~/Apps/minecraft-launcher/minecraft-launcher --workDir /media/files/Games/.minecraft"
+alias minecraft="mesa_glthread=true ~/Apps/minecraft-launcher/minecraft-launcher --workDir /media/files/Games/.minecraft"
 
 # Fetch system information befofre loading oh-my-zsh.
 rxfetch
