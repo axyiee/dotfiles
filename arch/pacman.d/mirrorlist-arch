@@ -44,14 +44,14 @@
 #Server = http://archlinux.mirror.ba/$repo/os/$arch
 
 ## Brazil
-#Server = http://br.mirror.archlinux-br.org/$repo/os/$arch
+Server = http://br.mirror.archlinux-br.org/$repo/os/$arch
 Server = http://archlinux.c3sl.ufpr.br/$repo/os/$arch
 Server = http://www.caco.ic.unicamp.br/archlinux/$repo/os/$arch
-#Server = https://www.caco.ic.unicamp.br/archlinux/$repo/os/$arch
-#Server = http://linorg.usp.br/archlinux/$repo/os/$arch
-#Server = http://archlinux.pop-es.rnp.br/$repo/os/$arch
-#Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
-#Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
+Server = https://www.caco.ic.unicamp.br/archlinux/$repo/os/$arch
+Server = http://linorg.usp.br/archlinux/$repo/os/$arch
+Server = http://archlinux.pop-es.rnp.br/$repo/os/$arch
+Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
+Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
 
 ## Bulgaria
 #Server = http://mirror.host.ag/archlinux/$repo/os/$arch

@@ -132,6 +132,6 @@ eval "$(zoxide init zsh)"
 # jk, finally loading omz
 source $ZSH/oh-my-zsh.sh
 
-# fnm
-export PATH=/home/exst/.fnm:$PATH
-eval "`fnm env`"
+## fnm
+#export PATH=/home/exst/.fnm:$PATH
+#eval "`fnm env`"

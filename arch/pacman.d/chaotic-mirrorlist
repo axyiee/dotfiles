@@ -5,20 +5,18 @@ Server = https://geo-mirror.chaotic.cx/$repo/$arch
 # By: Fosshost
 Server = https://cdn-mirror.chaotic.cx/$repo/$arch
 
-# USA
-# * Utah, By: ash <t.me/the_ashh>
+# USA, Utah
+# * By: ash <t.me/the_ashh>
 Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
-# * Los Angeles - CA, By: IRC-Nerds <t.me/@sorcerer420>
-Server = https://us-ca-mirror.chaotic.cx/$repo/$arch
 
 # Spain
 # * By: JKANetwork
 Server = https://es-mirror.chaotic.cx/$repo/$arch
-# * By: Ícar
+# * By: Ícar <t.me/IcarNS>
 Server = https://es-2-mirror.chaotic.cx/$repo/$arch
 
 # Germany
-# * By: Nico
+# * By: Nico <dr460nf1r3.org>
 Server = https://de-mirror.chaotic.cx/$repo/$arch
 # * By: ParanoidBangL
 Server = https://de-2-mirror.chaotic.cx/$repo/$arch
@@ -47,8 +45,16 @@ Server = https://bg-mirror.chaotic.cx/$repo/$arch
 # * By freebird54
 Server = https://ca-mirror.chaotic.cx/$repo/$arch
 
-# Mumbai, India
-# * By viruz4274
+# India
+# * By Naman (Kaithal)
 Server = https://in-mirror.chaotic.cx/$repo/$arch
-# * By WebWerks
+# * By Albony <t.me/shrirangkahale>
 Server = https://in-2-mirror.chaotic.cx/$repo/$arch
+
+# Singapore
+# * By: freediff.org
+Server = https://sg-mirror.chaotic.cx/$repo/$arch
+
+# IPFS mirror - for instructions on how to use it consult the projects repo (https://github.com/RubenKelevra/pacman.store)
+# * By: RubenKelevra / pacman.store
+# Server = http://chaotic-aur.pkg.pacman.store.ipns.localhost:8080/$arch

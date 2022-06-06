@@ -32,3 +32,5 @@
 	x = commit -S
 [gpg]
 	program = gpg
+[safe]
+	directory = /media/files/.dots
