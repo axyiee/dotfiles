@@ -106,7 +106,7 @@ super + {Left,Down,Up,Right}
 
 #Rofi Fullscreen
 alt + p
-	rofi -show drun -show run -show window
+	LANG="C" rofi -show drun -show run -show window
 
 alt + F2
 	dmenu_run
@@ -118,6 +118,7 @@ super + v
 # Terminal emulator
 super + Return
     kitty
+    #st -e /bin/zsh
 
 #File-Manager
 super + shift + Return

@@ -1,7 +1,7 @@
 #!/bin/bash
 if pgrep -x "picom" > /dev/null
 then
-	killall picom
+	pkill picom
 else
 	picom --experimental-backends --config ~/.config/picom/picom.conf
 fi

@@ -121,4 +121,6 @@ config.set('colors.tabs.selected.even.fg', '#F5E0DC')
 config.set('colors.tabs.selected.odd.bg', '#161320')
 config.set('colors.tabs.selected.odd.fg', '#F5E0DC')
 
+#config.set('content.unknown_url_scheme_policy', 'allow-all')
+
 config.load_autoconfig()

@@ -101,6 +101,9 @@ return require('packer').startup(function()
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
   use { 'michaelb/sniprun', config = function() require'sniprun'.setup {} end }
+
+  -- Syntax highlighting 
+  use 'jamespeapen/swayconfig.vim'
 end)
 
 

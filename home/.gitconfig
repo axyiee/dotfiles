@@ -14,9 +14,9 @@
 [diff]
     colorMoved = default
 [user]
-	name = eexsty
+	name = Pedro Henrique
 	email = hello@exst.fun
-	signingkey = 400C0D7302F57481
+	signingkey = 1E1AAD98C3A2B658
 [init]
 	defaultBranch = main
 [credential "https://github.com"]
@@ -34,3 +34,4 @@
 	program = gpg
 [safe]
 	directory = /media/files/.dots
+	directory = /tmp/rofi

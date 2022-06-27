@@ -1,38 +1,68 @@
-#!/bin/sh
+#!/bin/bash
 
-KERNEL="linux-tkg-bmq-generic_v3-headers linux-tkg-bmq-generic_v3"
-FONTS="inter-font noto-fonts-emoji"
-XORG="xorg-server xorg-xinit xorg-xrandr xclip feh"
-WM="sxhkd-git bspwm-git polybar picom-animations-git gnome-keyring rofi qt5ct qt5-styleplugins"
-AUDIO="pipewire pipewire-pulse pipewire-alsa pipewire-media-session lib32-pipewire pavucontrol"
-SHELL="zsh kitty zsh-autosuggestions zsh-syntax-highlighting"
-PKG_MANAGER="yay"
-VIDEO_DRIVERS="mesa-tkg-git"
-TOOLS="git fzf wget lxappearance usbutils usb_modeswitch exa autoconf automake opendoas unzip neovim nvim-packer-git neofetch tree maim ffmpeg zoxide pamixer tmux"
-LANGUAGES="nodejs-lts-gallium npm yarn jdk-temurin rustup"
-INTERNET="dhcpcd iwd dhcpcd-openrc iwd-openrc rtl8821cu-morrownr-dkms-git ell qutebrowser"
+if ! pacman -Qs yay > /dev/null; then
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    chgrp nobody /tmp/yay
+    chmod g+w /tmp/yay
+    (cd /tmp/yay && sudo -u nobody makepkg -si) || {
+        echo "Failed to install 'yay'."
+        exit -1
+    }
+fi
 
-$PKG_MANAGER -Sy --needed $INTERNET $TOOLS $KERNEL $FONTS $XORG $WM $AUDIO $SHELL $VIDEO_DRIVERS $LANGUAGES $INTERNET
+BASE="linux-zen linux-zen-headers grub efibootmgr"
+FONTS="gnu-free-fonts noto-fonts-emoji noto-fonts-cjk"
+XORG="xorg-server xorg-xinit xorg-xrandr"
+WAYLAND="zig wayland wayland-protocols wlroots libxkbcommon libevdev pixman pkg-config xorg-xwayland qt5-wayland"
+WM="gnome-keyring rofi-lbonn-wayland qt5ct qt5-styleplugins river-git foot waybar"
+AUDIO="pipewire pipewire-pulse pipewire-alsa wireplumber lib32-pipewire pavucontrol gstreamer gst-plugins-bad"
+GRAPHICS="mesa-tkg-git vulkan-icd-loader vulkan-headers vulkan-validation-layers vulkan-tools ffmpeg"
+TOOLS="zsh git fzf wget lxappearance exa opendoas unzip neovim nvim-packer-git neofetch maim zoxide pamixer tmux dbus dbus-runit"
+BLUETOOTH="bluez bluez-utils"
+LANGUAGES="nodejs-lts-gallium npm yarn jdk-temurin rustup dbus-python clang mold"
+INTERNET="dhcpcd dhcpcd-runit qutebrowser"
+TO_REMOVE="sudo"
 
-sudo rc-update add dhcpcd
-sudo rc-update add iwd 
+yay -Sy --needed $INTERNET $TOOLS $BASE $FONTS $WAYLAND $XORG $WM $AUDIO $SHELL $GRAPHICS $LANGUAGES $INTERNET $BLUETOOTH
+pacman -R sudo
 
-#useradd -m $CUSER -G wheel,video,users,audio,network,power,scanner
+# > opendoas
+echo "permit persist :wheel" > /etc/doas.conf
+ln -s /usr/bin/doas /usr/bin/sudo
 
-# Installing fonts 
-sudo mkdir -p /usr/share/fonts/ttf
-sudo wget https://yudit.org/download/fonts/UBraille/UBraille.ttf -P /usr/share/fonts/ttf
-sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip -P /usr/share/fonts/ttf
-sudo wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20for%20Powerline.ttf -P /usr/share/fonts/ttf 
-sudo wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Italic%20for%20Powerline.ttf -P /usr/share/fonts/ttf
-sudo wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20for%20Powerline.ttf -P /usr/share/fonts/ttf
-sudo wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20Italic%20for%20Powerline.ttf -P /usr/share/fonts/ttf
-sudo wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf -P /usr/share/fonts/ttf
-sudo wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete%20Mono.ttf -P /usr/share/fonts/ttf
-(cd /usr/share/fonts/ttf && sudo unzip JetBrainsMono.zip && sudo rm -f JetBrainsMono.zip)
+# > runit services
+ln -s /etc/runit/sv/dhcpcd /run/runit/service/dhcpcd
+ln -s /etc/runit/sv/dbus   /run/runit/service/dbus
+
+# > system
+USERNAME="exst"
+
+if [ "$1" == "system" ]; then
+    echo "artix" > /etc/hostname
+    if ! id "$USERNAME"; then
+        echo "> Adding '$USERNAME' user..."
+        usermod -m -s /bin/zsh -U -G wheel,users,audio,video,input,kvm,network,plugdev,bluetooth $USERNAME
+    fi
+    grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+    grub-mkconfig -o /boot/grub/grub.cfg
+fi 
+
+# > fonts
+mkdir -p /usr/share/fonts/ttf
+wget https://yudit.org/download/fonts/UBraille/UBraille.ttf -P /usr/share/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip -P /usr/share/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20for%20Powerline.ttf -P /usr/share/fonts/ttf 
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Italic%20for%20Powerline.ttf -P /usr/share/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20for%20Powerline.ttf -P /usr/share/fonts/ttf
+wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20Italic%20for%20Powerline.ttf -P /usr/share/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf -P /usr/share/fonts/ttf
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete%20Mono.ttf -P /usr/share/fonts/ttf
+(cd /usr/share/fonts/ttf && unzip JetBrainsMono.zip && rm -f JetBrainsMono.zip)
 fc-cache -fv
 
-# Installing oh-my-zsh and some plugins
+# > oh-my-zsh
+HOME="/home/$USERNAME"
+
 (git init --quiet $HOME/.oh-my-zsh \
     && cd $HOME/.oh-my-zsh \
     && git config core.eol lf \

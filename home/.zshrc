@@ -1,7 +1,12 @@
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+
 setopt GLOB_DOTS
 #share commands between terminal instances or not
 unsetopt SHARE_HISTORY
 #setopt SHARE_HISTORY
+
 if test -z "${XDG_RUNTIME_DIR}"; then
     export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
     if ! test -d "${XDG_RUNTIME_DIR}"; then
@@ -25,15 +30,24 @@ SAVEHIST=1000
 setopt appendhistory
 export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 
+# Wine
+export STAGING_SHARED_MEMORY=1
+export STAGING_WRITECOPY=1
+#export WINEESYNC=1 
+export WINEFSYNC=1
+export WINEFSYNC_FUTEX2=1
+export DXVK_ASYNC=1 
+export vblank_mode=0
+
 alias addping="doas tc qdisc add dev wlan0 root netem delay"
 alias delping="doas tc qdisc del dev wlan0 root"
 
 # Add shortcut for toggling Alacritty padding setting
-switchallacrityconfig() {
-	~/.config/alacritty/toggle-padding.sh
-}
-zle -N switchallacrityconfig
-bindkey "^[x" switchallacrityconfig
+#switchallacrittyconfig() {
+#	~/.config/alacritty/toggle-padding.sh
+#}
+#zle -N switchallacrittyconfig
+#bindkey "^[x" switchallacrittyconfig
 
 # Useful aliases
 alias btop="btop --utf-force"
@@ -44,6 +58,8 @@ alias ll='ls -la'
 alias grep='grep --color=auto'
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
+alias genshin='cd "/media/files2/Games/GenshinImpact/game/drive_c/Program Files/Genshin Impact" && env WINEPREFIX="/media/files2/Games/GenshinImpact/game" gamemoderun wine64 launcher.bat'
+#alias startx="/usr/bin/startx && dbus-run-session river"
 
 if [ -d "$HOME/.bin" ];
   then PATH="$HOME/.bin:$PATH"
@@ -99,6 +115,10 @@ function toh265 {
  ffmpeg -i $1 -c:v libx265 -vtag hvc1 -c:a copy $2
 }
 
+function dtarxz {
+    
+}
+
 alias gupdate="doas emerge --ask --verbose --update --deep --newuse @world"
 #alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
 
@@ -114,7 +134,6 @@ rxfetch
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions fzf-tab)
-source ~/.config/lf/zsh
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
