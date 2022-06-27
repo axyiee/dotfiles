@@ -2,8 +2,7 @@
 
 Two simple rices for `/(Arch|Void|Gentoo)/g` starring:
 
-| Window Manager | [bspwm](https://github.com/baskerville/bspwm) ~ [river][https://github.com/riverwm/river]   |
-|----------------|---------------------------------------------------------------------------------------------|
+| Window Manager | [bspwm](https://github.com/baskerville/bspwm) ~ [river](https://github.com/riverwm/river)   |
 | GTK/QT Theme   | [Catppuccin](https://github.com/catppuccin/catppuccin)                                      |
 | Icon Theme     | [Kora](https://github.com/bikass/kora)                                                      |
 | Audio          | [PipeWire](https://github.com/PipeWire/pipewire)                                            |
