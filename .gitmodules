@@ -1,0 +1,3 @@
+[submodule "home/.icons"]
+	path = home/.icons
+	url = https://github.com/bikass/kora

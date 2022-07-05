@@ -128,8 +128,13 @@ get_de_wm() {
 	echo ${wm:-unknown}
 }
 
+HOSTNAME=`hostname &>/dev/null`
+if [ ! -z "$HOSTNAME" ]; then
+    USER="$USER${c2}@${c0}$HOSTNAME"
+fi
+
 echo -e "  ┏━━━━━━━━━━━━━━━━━━━━━━┓"
-echo -e "  ┃ ${c1}git.exst.fun ${c5}${c0}  ${c6}${c0}  ${c2}${c0} ┃  $USER${c2}@${c0}$(hostname)"
+echo -e "  ┃ ${c1}git.exst.fun ${c5}${c0}  ${c6}${c0}  ${c2}${c0} ┃  $USER"
 echo -e "  ┠━━━━━━━━━━━━━━━━━━━━━━┫"
 echo -e "  ┃                      ┃  ${c4}  ${c0}$(get_distro_name)"
 echo -e "  ┃          ${c3}•${c8}_${c3}•${c0}         ┃  ${c4}  ${c0}$(get_package_info)"

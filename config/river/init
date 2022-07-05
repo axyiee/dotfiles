@@ -10,12 +10,11 @@
 
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
-#/usr/bin/pipewire & 
-#/usr/bin/wireplumber &
+/usr/bin/pipewire & 
+/usr/bin/wireplumber &
 
 #polybar -r -c ~/.config/polybar/polybar.conf main &
 swaybg -m stretch -i ~/wallpapers/Forgotten-Land-day.png &
-wlr-randr --output HDMI-A-1 --mode 1920x1080@60
 
 # Set the mouse acceleration profile to flat 
 riverctl list-inputs | grep pointer- | xargs -I {} riverctl input {} accel-profile flat 
@@ -45,6 +44,9 @@ riverctl map normal Super+Shift Comma send-to-output previous
 
 # Super+Q to bump the focused view to the top of the layout stack
 riverctl map normal Super Q zoom
+
+# Super+Shift+S to take a screenshot and save to ~/Pictures
+riverctl map normal Super+Shift S spawn ~/.config/river/scripts/screenshot.sh
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
 riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
@@ -76,7 +78,7 @@ riverctl map normal Super+Alt+Shift L resize horizontal 100
 riverctl map normal Alt P spawn 'rofi -show drun -show run'
 
 # Super+Return to open kitty terminal
-riverctl map normal Super Return spawn 'kitty'
+riverctl map normal Super Return spawn 'foot'
 
 # Super+V to open pavucontrol
 riverctl map normal Super V spawn 'pavucontrol' 
@@ -103,7 +105,7 @@ do
     # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
     riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
 done
-
+ 
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
 all_tags=$(((1 << 32) - 1))
@@ -157,8 +159,8 @@ done
 
 # Set background and border color
 riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl border-color-focused 0x6E6C7E
+riverctl border-color-unfocused 0x575268
 
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
@@ -168,5 +170,7 @@ riverctl float-filter-add app-id rofi
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
+wlr-randr --output HDMI-A-1 --mode 1920x1080@60
 riverctl default-layout rivertile
 exec rivertile -view-padding 16 -outer-padding 16
+

@@ -1,11 +1,7 @@
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-  exec startx
-fi
-
 setopt GLOB_DOTS
 #share commands between terminal instances or not
-unsetopt SHARE_HISTORY
-#setopt SHARE_HISTORY
+#unsetopt SHARE_HISTORY
+setopt SHARE_HISTORY
 
 if test -z "${XDG_RUNTIME_DIR}"; then
     export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
@@ -13,6 +9,11 @@ if test -z "${XDG_RUNTIME_DIR}"; then
         mkdir "${XDG_RUNTIME_DIR}"
         chmod 0700 "${XDG_RUNTIME_DIR}"
     fi
+fi
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+    exec startx
+    #exec river
 fi
 
 # If not running interactively, don't do anything
@@ -37,10 +38,6 @@ export STAGING_WRITECOPY=1
 export WINEFSYNC=1
 export WINEFSYNC_FUTEX2=1
 export DXVK_ASYNC=1 
-export vblank_mode=0
-
-alias addping="doas tc qdisc add dev wlan0 root netem delay"
-alias delping="doas tc qdisc del dev wlan0 root"
 
 # Add shortcut for toggling Alacritty padding setting
 #switchallacrittyconfig() {
@@ -58,8 +55,6 @@ alias ll='ls -la'
 alias grep='grep --color=auto'
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
-alias genshin='cd "/media/files2/Games/GenshinImpact/game/drive_c/Program Files/Genshin Impact" && env WINEPREFIX="/media/files2/Games/GenshinImpact/game" gamemoderun wine64 launcher.bat'
-#alias startx="/usr/bin/startx && dbus-run-session river"
 
 if [ -d "$HOME/.bin" ];
   then PATH="$HOME/.bin:$PATH"
@@ -119,11 +114,10 @@ function dtarxz {
     
 }
 
-alias gupdate="doas emerge --ask --verbose --update --deep --newuse @world"
-#alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
+# gentoo
+#alias gupdate="doas emerge --ask --verbose --update --deep --newuse @world"
 
-# Apps 
-alias minecraft="mesa_glthread=true ~/Apps/minecraft-launcher/minecraft-launcher --workDir /media/files/Games/.minecraft"
+#alias startx="startx -- vt$(tty | sed -e 's|/dev/tty||')"
 
 # Fetch system information befofre loading oh-my-zsh.
 rxfetch

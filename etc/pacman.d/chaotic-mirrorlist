@@ -3,31 +3,31 @@ Server = https://geo-mirror.chaotic.cx/$repo/$arch
 
 # CDN (delayed syncing)
 # By: Fosshost
-Server = https://cdn-mirror.chaotic.cx/$repo/$arch
+#Server = https://cdn-mirror.chaotic.cx/$repo/$arch
 
 # USA, Utah
 # * By: ash <t.me/the_ashh>
-Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
+#Server = https://us-ut-mirror.chaotic.cx/$repo/$arch
 
 # Spain
 # * By: JKANetwork
-Server = https://es-mirror.chaotic.cx/$repo/$arch
+#Server = https://es-mirror.chaotic.cx/$repo/$arch
 # * By: Ícar <t.me/IcarNS>
-Server = https://es-2-mirror.chaotic.cx/$repo/$arch
+#Server = https://es-2-mirror.chaotic.cx/$repo/$arch
 
 # Germany
 # * By: Nico <dr460nf1r3.org>
-Server = https://de-mirror.chaotic.cx/$repo/$arch
+#Server = https://de-mirror.chaotic.cx/$repo/$arch
 # * By: ParanoidBangL
-Server = https://de-2-mirror.chaotic.cx/$repo/$arch
+#Server = https://de-2-mirror.chaotic.cx/$repo/$arch
 # * By: itsTyrion
-Server = https://de-3-mirror.chaotic.cx/$repo/$arch
+#Server = https://de-3-mirror.chaotic.cx/$repo/$arch
 # * By: redgloboli
-Server = https://de-4-mirror.chaotic.cx/$repo/$arch
+#Server = https://de-4-mirror.chaotic.cx/$repo/$arch
 
 # France
 # * By: IRC-Nerds <t.me/@sorcerer420>
-Server = https://fr-mirror.chaotic.cx/$repo/$arch
+#Server = https://fr-mirror.chaotic.cx/$repo/$arch
 
 # São Carlos, Brazil
 # * By: Universidade Federal de São Carlos

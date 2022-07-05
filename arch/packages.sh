@@ -1,29 +1,26 @@
 #!/bin/bash
 
-if ! pacman -Qs yay > /dev/null; then
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    chgrp nobody /tmp/yay
-    chmod g+w /tmp/yay
-    (cd /tmp/yay && sudo -u nobody makepkg -si) || {
-        echo "Failed to install 'yay'."
-        exit -1
-    }
+if ! pacman -Qs chaotic-keyring > /dev/null; then 
+	pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+	pacman-key --lsign-key FBA220DFC880C036
+	pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 fi
 
 BASE="linux-zen linux-zen-headers grub efibootmgr"
 FONTS="gnu-free-fonts noto-fonts-emoji noto-fonts-cjk"
-XORG="xorg-server xorg-xinit xorg-xrandr"
-WAYLAND="zig wayland wayland-protocols wlroots libxkbcommon libevdev pixman pkg-config xorg-xwayland qt5-wayland"
-WM="gnome-keyring rofi-lbonn-wayland qt5ct qt5-styleplugins river-git foot waybar"
+XORG="xorg-server xorg-xinit xorg-xrandr lib32-libxcomposite"
+WAYLAND="zig wayland wayland-protocols wlroots libxkbcommon libevdev pixman pkg-config xorg-xwayland qt5-wayland wl-clipboard grim slurp"
+WM="gnome-keyring rofi-lbonn-wayland qt5ct qt5-styleplugins river-git foot waybar xlr-wandr swaybg"
+WM_XORG="bspwm sxhkd kitty feh"
 AUDIO="pipewire pipewire-pulse pipewire-alsa wireplumber lib32-pipewire pavucontrol gstreamer gst-plugins-bad"
-GRAPHICS="mesa-tkg-git vulkan-icd-loader vulkan-headers vulkan-validation-layers vulkan-tools ffmpeg"
-TOOLS="zsh git fzf wget lxappearance exa opendoas unzip neovim nvim-packer-git neofetch maim zoxide pamixer tmux dbus dbus-runit"
+GRAPHICS="mesa-tkg-git vulkan-icd-loader vulkan-headers vulkan-validation-layers vulkan-tools amf-amdgpu-pro ffmpeg"
+TOOLS="zsh git fzf wget lxappearance exa opendoas unzip neovim nvim-packer-git neofetch maim xclip zoxide pamixer tmux dbus dbus-runit"
 BLUETOOTH="bluez bluez-utils"
 LANGUAGES="nodejs-lts-gallium npm yarn jdk-temurin rustup dbus-python clang mold"
 INTERNET="dhcpcd dhcpcd-runit qutebrowser"
 TO_REMOVE="sudo"
 
-yay -Sy --needed $INTERNET $TOOLS $BASE $FONTS $WAYLAND $XORG $WM $AUDIO $SHELL $GRAPHICS $LANGUAGES $INTERNET $BLUETOOTH
+yay -Sy --needed $INTERNET $TOOLS $BASE $FONTS $WAYLAND $XORG $WM $WM_XORG $AUDIO $SHELL $GRAPHICS $LANGUAGES $INTERNET $BLUETOOTH
 pacman -R sudo
 
 # > opendoas
@@ -41,7 +38,7 @@ if [ "$1" == "system" ]; then
     echo "artix" > /etc/hostname
     if ! id "$USERNAME"; then
         echo "> Adding '$USERNAME' user..."
-        usermod -m -s /bin/zsh -U -G wheel,users,audio,video,input,kvm,network,plugdev,bluetooth $USERNAME
+        useradd -m -s /bin/zsh -U -G wheel,users,audio,video,input,kvm,network $USERNAME
     fi
     grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
     grub-mkconfig -o /boot/grub/grub.cfg
@@ -56,7 +53,7 @@ wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Ital
 wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20for%20Powerline.ttf -P /usr/share/fonts/ttf
 wget https://github.com/powerline/fonts/raw/master/SpaceMono/Space%20Mono%20Bold%20Italic%20for%20Powerline.ttf -P /usr/share/fonts/ttf
 wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete.ttf -P /usr/share/fonts/ttf
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete%20Mono.ttf -P /usr/share/fonts/ttf
+get https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SpaceMono/Regular/complete/Space%20Mono%20Nerd%20Font%20Complete%20Mono.ttf -P /usr/share/fonts/ttf
 (cd /usr/share/fonts/ttf && unzip JetBrainsMono.zip && rm -f JetBrainsMono.zip)
 fc-cache -fv
 
