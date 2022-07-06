@@ -3,8 +3,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  -- core
+  -- themes
   use 'ellisonleao/gruvbox.nvim'
+  use 'catppuccin/nvim'
+
+  -- core
   use 'kyazdani42/nvim-web-devicons'
   use { 'goolord/alpha-nvim', config = function() require 'plugin.alpha' end }
   use { 'rcarriga/nvim-notify', config = function() require 'plugin.notify' end }
