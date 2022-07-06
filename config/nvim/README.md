@@ -16,7 +16,7 @@
 * [telescope.nvim] as fuzzy finder
 * [nvim-cmp] as completion plugin
 * [nvim-notify] as notification plugin
-* [gruvbox.nvim] and [night-owl.vim] as theme
+* [gruvbox.nvim] as theme
 
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [nvim-tree.lua]: https://github.com/kyazdani42/nvim-tree.lua

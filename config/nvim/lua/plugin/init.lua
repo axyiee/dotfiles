@@ -5,7 +5,6 @@ return require('packer').startup(function()
 
   -- core
   use 'ellisonleao/gruvbox.nvim'
-  use 'haishanh/night-owl.vim'
   use 'kyazdani42/nvim-web-devicons'
   use { 'goolord/alpha-nvim', config = function() require 'plugin.alpha' end }
   use { 'rcarriga/nvim-notify', config = function() require 'plugin.notify' end }
