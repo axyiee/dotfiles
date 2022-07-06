@@ -37,8 +37,10 @@ vim.o.incsearch = true -- Incremental search support.
 vim.o.visualbell = false  -- Remove some annoying sounds when typing.
 vim.o.autoread = true  -- Automatically update files when they are changed on disk.
 vim.o.autochdir = true -- Set directory to the current file's directory automatically.
-vim.wo.fillchars = 'eob: ' -- Remove tilde character from the start of the line.
+vim.wo.fcs = 'eob: ' -- Remove tilde character from the start of the line.
 
 vim.o.termguicolors = true -- Enable term gui colors in order to enable theme support.
 vim.o.background = "dark"
-vim.cmd[[colorscheme gruvbox]]
+vim.cmd[[colorscheme night-owl]]
+
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]] -- Format on save.

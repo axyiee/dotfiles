@@ -16,7 +16,7 @@
 * [telescope.nvim] as fuzzy finder
 * [nvim-cmp] as completion plugin
 * [nvim-notify] as notification plugin
-* [gruvbox.nvim] as theme
+* [gruvbox.nvim] and [night-owl.vim] as theme
 
 [packer.nvim]: https://github.com/wbthomason/packer.nvim
 [nvim-tree.lua]: https://github.com/kyazdani42/nvim-tree.lua
@@ -28,6 +28,7 @@
 [dressing.nvim]: https://github.com/stevearc/dressing.nvim
 [wilder.nvim]: https://github.com/gelguy/wilder.nvim
 [telescope.nvim]: https://github.com/nvim-telescope/telescope.nvim
-[nvim-cmp] https://github.com/hrsh7th/nvim-cmp
+[nvim-cmp]: https://github.com/hrsh7th/nvim-cmp
 [nvim-notify]: https://github.com/rcarriga/nvim-notify
 [gruvbox.nvim]: https://github.com/ellisonleao/gruvbox.nvim
+[night-owl.vim]: https://github.com/haishanh/night-owl.vim

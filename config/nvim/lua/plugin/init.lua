@@ -5,10 +5,11 @@ return require('packer').startup(function()
 
   -- core
   use 'ellisonleao/gruvbox.nvim'
+  use 'haishanh/night-owl.vim'
   use 'kyazdani42/nvim-web-devicons'
   use { 'goolord/alpha-nvim', config = function() require 'plugin.alpha' end }
   use { 'rcarriga/nvim-notify', config = function() require 'plugin.notify' end }
-  use { 'kyazdani42/nvim-tree.lua', config = function() require 'nvim-tree'.setup() end, tag = 'nightly' }
+  use { 'kyazdani42/nvim-tree.lua', config = function() require'plugin.tree' end, tag = 'nightly' }
   use { 'romgrk/barbar.nvim', config = function() require 'plugin.barbar' end }
   use { 'nvim-lualine/lualine.nvim', config = function() require 'plugin.lualine' end }
   use { 'norcalli/nvim-colorizer.lua', config = function() require 'colorizer'.setup() end }
@@ -24,7 +25,6 @@ return require('packer').startup(function()
   use 'nvim-lua/lsp-status.nvim'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
-  use { 'folke/trouble.nvim', config = function() require 'trouble'.setup {} end }
   use { 'j-hui/fidget.nvim', config = function() require 'fidget'.setup {} end }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -36,8 +36,7 @@ return require('packer').startup(function()
   use 'hrsh7th/vim-vsnip-integ'
   use 'hrsh7th/cmp-emoji'
   use { 'nvim-treesitter/nvim-treesitter', config = function() require 'plugin.treesitter' end, run = ':TSUpdate' }
-  use { 'lukas-reineke/lsp-format.nvim', config = function() require 'lsp-format'.setup {} end }
-
+  
   -- util
   use 'nathom/filetype.nvim'
   use 'github/copilot.vim'
