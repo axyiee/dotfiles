@@ -4,10 +4,11 @@
 --  /____/\_,_/_//_/\_, /\_,_/\_,_/\_, /\__/ /___/\__/_/  |___/\__/_/ /___/
 --                 /___/          /___/
 
-local nvim_lsp = require'lspconfig'
-
 -- Setup nvim-cmp.
-local cmp = require "cmp"
+local ok, cmp = pcall(require, "cmp")
+if not ok then return end
+
+local nvim_lsp = require'lspconfig'
 
 cmp.setup(
     {
@@ -66,32 +67,7 @@ cmp.setup.filetype(
     }
 )
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(
---    "/",
---     {
---         sources = {
---             {name = "buffer"}
---         }
---     }
--- )
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(
---     ":",
---     {
---         sources = cmp.config.sources(
---             {
---                 {name = "path"}
---             },
---             {
---                 {name = "cmdline"}
---             }
---         )
---     }
--- )
-
--- Setup autopairs
+-- Setup autopairs 
 
 -- Setup lspkind.
 local lspkind = require'lspkind'

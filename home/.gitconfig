@@ -16,7 +16,7 @@
 [user]
 	name = Pedro Henrique
 	email = hello@exst.fun
-	signingkey = 1E1AAD98C3A2B658
+	signingkey = DF937D0AD49B8FF9
 [init]
 	defaultBranch = main
 [credential "https://github.com"]

@@ -110,8 +110,10 @@ function toh265 {
  ffmpeg -i $1 -c:v libx265 -vtag hvc1 -c:a copy $2
 }
 
-function dtarxz {
-    
+function nvim {
+	kitty @ set-spacing padding=0
+	/usr/bin/nvim $*
+	kitty @ set-spacing padding=default
 }
 
 # gentoo
