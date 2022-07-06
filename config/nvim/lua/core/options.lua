@@ -27,7 +27,7 @@ vim.cmd[[filetype plugin indent on]]
 
 vim.o.mouse = "a" -- Enable mouse support.
 vim.o.number = true -- Show numbers in line.
-vim.wo.colorcolumn = "120" -- Show a column after 120-width characters.
+--vim.wo.colorcolumn = "120" -- Show a column after 120-width characters.
 
 vim.cmd[[ set undofile ]] -- Keep the undo/redo history between sessions.
 vim.o.lazyredraw = true -- Don't redraw while executing macros for better performance.
