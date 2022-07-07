@@ -10,12 +10,6 @@ if test -z "${XDG_RUNTIME_DIR}"; then
     fi
 fi
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    echo ""
-    #exec startx
-    #exec river
-fi
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -43,4 +37,5 @@ nvim() {
 }
 
 eval "$(zoxide init bash)"
-
+free -h
+. "$HOME/.cargo/env"

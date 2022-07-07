@@ -15,7 +15,17 @@ vim.g.mapleader = ',' -- Set the global leader key.
 map.set("n", "<C-s>", map.cmd "w!") -- Save the current file by using the Ctrl+S.
 map.set("v", "<C-s>", map.cmd "w!")
 map.set("i", "<C-s>", map.cmd "w!")
-map.set("n", "<C-x>", map.cmd "q!") -- Quit the current file by using the Ctrl+X.
+-- Barbar
+----------------------------------------------------------------------------------
+-- Keybindings related to the tabline plugin.
+
+map.set("n", "<A-,>", map.cmd "BufferPrevious") -- Switch to the previous tab.
+map.set("n", "<A-.>", map.cmd "BufferNext") -- Switch to the next tab.
+for tab = 1, 9 do
+    map.set("n", "<A-"..tab..">", map.cmd("BufferGoto "..tab)) -- Switch to the tab at index n.
+end
+map.set("n", "<A-0>", map.cmd "BufferLast") -- Switch to the last tab.
+map.set("n", "<C-x>", map.cmd "BufferClose") -- Quit the current file by using the Ctrl+X.
 
 -- Telescope
 ----------------------------------------------------------------------------------
@@ -30,6 +40,7 @@ map.set("n", "<leader>fb", map.cmd "Telescope buffers") -- Open a buffers window
 -- Keybindings related to the file tree.
 
 map.set("n", "<leader>t", map.cmd "NvimTreeToggle") -- Toggle the file tree.
+map.set("n", "<leader>f", map.cmd "wincmd p") -- Change the focus to the file tree.
 
 -- LSP
 ----------------------------------------------------------------------------------
@@ -40,6 +51,7 @@ vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+map.set('n', '<space>f', map.cmd "FormatWrite")
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -65,9 +77,9 @@ on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>ff', vim.lsp.buf.formatting, bufopts)
 end
 
 return {
-    on_attach
+    on_attach = on_attach
 }

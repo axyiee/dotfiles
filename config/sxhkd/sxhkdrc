@@ -118,6 +118,8 @@ super + v
 # Terminal emulator
 super + Return
     kitty
+    #/usr/local/bin/st
+    #kitty
     #st -e /bin/zsh
 
 #File-Manager

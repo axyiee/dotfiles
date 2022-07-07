@@ -1,3 +1,2 @@
-require"core.completion"
-require"core.keybind" 
+require"core.lsp"
 require"core.options" 

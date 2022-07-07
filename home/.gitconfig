@@ -14,9 +14,9 @@
 [diff]
     colorMoved = default
 [user]
-	name = Pedro Henrique
+	name = Pedro
 	email = hello@exst.fun
-	signingkey = DF937D0AD49B8FF9
+	signingkey = 26552D5456A8DFE3
 [init]
 	defaultBranch = main
 [credential "https://github.com"]

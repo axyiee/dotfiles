@@ -14,23 +14,20 @@ read -n 1 -r -s -p $'> If you read everything and want to procceed, press enter 
 BASE="base-minimal grub-x86_64-efi linux linux5.18 linux5.18-headers e2fsprogs f2fs-tools pciutils libpcap ethtool acpid libcap-progs libnetfilter_conntrack file libmagic dnssec-anchors libldns kbd libmnl"
 GRAPHICS_BASE='mesa-dri xf86-video-amdgpu mesa-vaapi mesa-vdpau ffmpeg'
 GRAPHICS_VULKAN="vulkan-loader mesa-vulkan-radeon Vulkan-ValidationLayers"
-XORG='xorg-minimal xrandr xinit seatd xf86-input-evdev xf86-video-fbdev xclip feh'
+XORG='xorg-minimal xrandr xinit seatd xf86-input-evdev xf86-video-fbdev xclip feh xrdb'
 WAYLAND="qt5-wayland kwayland xorg-server-xwayland wayland-protocols"
 AUDIO='pipewire alsa-pipewire wireplumber alsa-utils pamixer pavucontrol rtkit'
-WM_XORG='bspwm sxhkd polybar kitty python3-dbus'
+WM_XORG='bspwm sxhkd polybar kitty python3-dbus rofi'
 WM_WAYLAND="river wlroots swaybg wlr-randr foot"
 STYLE='lxappearance freefont-ttf noto-fonts-cjk noto-fonts-emoji qt5-styleplugins qt5ct'
-TOOLS='git make bat delta neofetch neovim opendoas bash qutebrowser wget unzip gnome-keyring libgnome-keyring libsecret fzy zoxide tmux maim dbus dbus-libs xdg-user-dirs btop'
+TOOLS='git make bat delta neofetch neovim opendoas bash qutebrowser wget unzip gnome-keyring libgnome-keyring libsecret fzf fzy zoxide tmux maim dbus dbus-libs xdg-user-dirs btop'
 NETWORK='dhcpcd iproute2'
 PROGRAMMING='rustup openjdk17 clang'
 REPOSITORIES="void-repo-multilib void-repo-multilib-nonfree void-repo-nonfree"
 I386="libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit alsa-plugins-pulseaudio alsa-plugins-pulseaudio-32bit fontconfig-32bit vulkan-loader-32bit mesa-vulkan-radeon-32bit"
 
-ARCH=x86_64
-MIRROR="https://mirror.clarkson.edu/voidlinux/current"
-
-XBPS_ARCH=$ARCH xbps-install -S -R "$MIRROR" $(echo $REPOSITORIES)
-XBPS_ARCH=$ARCH xbps-install -S -R "$MIRROR" $(echo $BASE $TOOLS $XORG $GRAPHICS_BASE $GRAPHICS_VULKAN $AUDIO $WM_XORG $WM_WAYLAND $WAYLAND $NETWORK $PROGRAMMING $GAMES $STYLE $I386)
+xbps-install -S $(echo $REPOSITORIES)
+xbps-install -S $(echo $BASE $TOOLS $XORG $GRAPHICS_BASE $GRAPHICS_VULKAN $AUDIO $WM_XORG $WM_WAYLAND $WAYLAND $NETWORK $PROGRAMMING $GAMES $STYLE $I386)
 xbps-remove pulseaudio-utils
 
 # > system
@@ -56,10 +53,9 @@ ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
  
 # > runit services
 ln -s /etc/sv/dhcpcd /var/service/
-ln -s /etc/sv/rtkit /var/service/
-ln -s /etc/sv/seatd /var/service/
 
-(cd "$PWD"/.. && ./scripts/symlink.sh)
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+(cd "$SCRIPTPATH"/.. && ./scripts/symlink.sh)
 
 # > neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
@@ -67,8 +63,30 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share
 # > theme
 (mkdir -p $HOME/.themes && cd $HOME/.themes && wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-yellow.zip && unzip Catppuccin-yellow.zip && rm -f Catpuccin-yellow.zip)
 
-# > rofi 
-(cd /tmp && git clone https://github.com/lbonn/rofi && cd rofi && meson setup build && ninja -C build install)
+# > oh-my-zsh
+(git init --quiet $HOME/.oh-my-zsh \
+    && cd $HOME/.oh-my-zsh \
+    && git config core.eol lf \
+    && git config core.autocrlf false \
+    && git config fsck.zeroPaddedFilemode ignore \
+    && git config fetch.fsck.zeroPaddedFilemode ignore \
+    && git config receive.fsck.zeroPaddedFilemode ignore \
+    && git config oh-my-zsh.remote origin \
+    && git config oh-my-zsh.branch master \
+    && git remote add origin https://github.com/ohmyzsh/ohmyzsh.git \
+    && git fetch --depth=1 origin \
+    && git checkout -b master origin/master \
+    || {
+        [ ! -d $HOME/.oh-my-zsh ] || {
+            cd -
+            rm -rf $HOME/.oh-my-zsh 2>/dev/null
+        }
+        echo git clone of oh-my-zsh repo failed
+        exit 1
+    })
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/Aloxaf/fzf-tab.git $HOME/.oh-my-zsh/custom/plugins/fzf-tab
 
 chown -R $USER:$USER $HOME
 

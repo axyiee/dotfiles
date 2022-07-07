@@ -40,6 +40,9 @@ Xft.rgba: none
 Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
+! urxvt
+URxvt.font: SpaceMono Nerd Font:pixelsize=14:antialias=true
+
 ! st
 st.font: SpaceMono Nerd Font:pixelsize=14
 st.borderpx: 20

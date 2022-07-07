@@ -1,14 +1,14 @@
---     __                                       ____
---    / /  ___ ____  ___ ___ _____ ____ ____   / __/__ _____  _____ _______
---   / /__/ _ `/ _ \/ _ `/ // / _ `/ _ `/ -_) _\ \/ -_) __/ |/ / -_) __(_-<
---  /____/\_,_/_//_/\_, /\_,_/\_,_/\_, /\__/ /___/\__/_/  |___/\__/_/ /___/
---                 /___/          /___/
+--   _____                __    __  _         
+--  / ___/__  __ _  ___  / /__ / /_(_)__  ___ 
+-- / /__/ _ \/  ' \/ _ \/ / -_) __/ / _ \/ _ \
+-- \___/\___/_/_/_/ .__/_/\__/\__/_/\___/_//_/
+--               /_/               
 
--- Setup nvim-cmp.
 local ok, cmp = pcall(require, "cmp")
 if not ok then return end
 
-local nvim_lsp = require 'lspconfig'
+local ok, nvim_lsp = pcall(require, 'lspconfig')
+if not ok then return end
 
 cmp.setup(
     {
@@ -83,38 +83,3 @@ cmp.setup {
     },
 }
 
-local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local on_attach = require 'core.keybind'.on_attach;
-
-nvim_lsp.rust_analyzer.setup {
-    on_attach = on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGracnularity = "module",
-                importPrefix = "by_self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    },
-    capabilities = capabilities,
-}
-
-nvim_lsp.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = true })
