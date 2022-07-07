@@ -13,7 +13,8 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 [polybar]: https://github.com/polybar/polybar 
 [eww]: https://github.com/elkowar/eww 
 [kitty]: https://github.com/kovidgoyal/kitty
-[foot]: https://codeberg.org/dnkl/foot  
+[foot]: https://codeberg.org/dnkl/foot
+[pipewire]: https://gitlab.freedesktop.org/pipewire/pipewire/
 
 ## installation process
 
