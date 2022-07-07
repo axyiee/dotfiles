@@ -32,6 +32,7 @@ For now, Gentoo and Arch/Artix scripts are outdated, since I don't have those on
 steps for that specific reason.
 
 **Supported:** Void Linux
+
 **EOL:**: Gentoo, Artix Linux (it is a really easy thing to update these scripts as long you now 
 what you are doing, you just need to look at the void linux script and replicate it with your distro of choice)
 
