@@ -41,6 +41,5 @@ vim.wo.fcs = 'eob: ' -- Remove tilde character from the start of the line.
 
 vim.o.termguicolors = true -- Enable term gui colors in order to enable theme support.
 vim.o.background = "dark"
--- vim.cmd[[colorscheme catppuccin]]
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]] -- Format on save.

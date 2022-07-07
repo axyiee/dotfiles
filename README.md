@@ -6,7 +6,7 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 * 🎨 [ok] is being used as color scheme in almost everything possible
 * 📊 ~~[polybar] is being used as status bar~~ it will be replaced with [eww] soon
 * 🖥️ ~~[kitty]~~ is being used as terminal on **x** and [foot] on **wayland**
-* 📜 ~~[neovim]~~ is being used as text editor
+* 📜 [neovim] is being used as text editor
 
 [bspwm]: https://github.com/baskerville/bspwm
 [river]: https://github.com/riverwm/river
