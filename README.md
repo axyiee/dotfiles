@@ -15,6 +15,7 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 [kitty]: https://github.com/kovidgoyal/kitty
 [foot]: https://codeberg.org/dnkl/foot
 [pipewire]: https://gitlab.freedesktop.org/pipewire/pipewire/
+[neovim]: https://github.com/neovim/neovim
 
 ## installation process
 
