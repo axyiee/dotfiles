@@ -28,14 +28,9 @@ You can adapt those scripts to your own needs by removing the packages you don't
 the user you want automatically, and this script automatically creates an user if desired. For running this script 
 in system mode (install bootloader, create users, etc) just pass `system` as first argument.
 
-**tl;dr:** `sudo env USER=myuser ./<distro>/installation.sh [system]`
-For now, Gentoo and Arch/Artix scripts are outdated, since I don't have those on my machine and can't follow those
-steps for that specific reason.
+**tl;dr:** `sudo env USER=myuser ./void/installation.sh [system]`
 
-**Supported:** Void Linux
-
-**EOL:**: Gentoo, Artix Linux (it is a really easy thing to update these scripts as long you now 
-what you are doing, you just need to look at the void linux script and replicate it with your distro of choice)
+This installation script is only available for Void Linux for now, but it can be easily adapted to other distros.
 
 ## gallery
 
