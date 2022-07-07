@@ -16,6 +16,7 @@ return require('packer').startup(function()
   -- themes
   use 'ellisonleao/gruvbox.nvim'
   use 'catppuccin/nvim'
+  use { "itsook/ok.nvim", as = "ok", config = function() require'ok'.setup { nvim_tree = { contrast = true } } end }
 
   -- core
   use 'kyazdani42/nvim-web-devicons'

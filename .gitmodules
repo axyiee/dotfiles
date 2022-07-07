@@ -1,3 +1,6 @@
 [submodule "home/.icons"]
 	path = home/.icons
 	url = https://github.com/bikass/kora
+[submodule "gtk3-theme"]
+	path = gtk3-theme
+	url = https://github.com/itsook/gtk3

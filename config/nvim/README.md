@@ -10,7 +10,7 @@ my personal neovim dotfiles optimized for a productive web and game development 
 [which-key.nvim], [Comment.nvim], [lsp-colors.nvim], [lsp-status.nvim], [lspkind-nvim],
 [dressing.nvim], [wilder.nvim]
 
-**🎨 themes.** catppuccin, gruvbox
+**🎨 themes.** catppuccin, gruvbox, ok
 
 <img src="./showcase/gruvbox.png" />
 

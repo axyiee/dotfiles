@@ -1,5 +1,3 @@
-local config = 
-
 function setup (lsp, capabilities, on_attach)
     -- todo
 end

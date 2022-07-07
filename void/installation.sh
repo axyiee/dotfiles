@@ -22,7 +22,7 @@ WM_WAYLAND="river wlroots swaybg wlr-randr foot"
 STYLE='lxappearance freefont-ttf noto-fonts-cjk noto-fonts-emoji qt5-styleplugins qt5ct'
 TOOLS='git make bat delta neofetch neovim opendoas bash qutebrowser wget unzip gnome-keyring libgnome-keyring libsecret fzf fzy zoxide tmux maim dbus dbus-libs xdg-user-dirs btop'
 NETWORK='dhcpcd iproute2'
-PROGRAMMING='rustup openjdk17 clang'
+PROGRAMMING='rustup openjdk17 clang nodejs'
 REPOSITORIES="void-repo-multilib void-repo-multilib-nonfree void-repo-nonfree"
 I386="libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit alsa-plugins-pulseaudio alsa-plugins-pulseaudio-32bit fontconfig-32bit vulkan-loader-32bit mesa-vulkan-radeon-32bit"
 
@@ -56,12 +56,10 @@ ln -s /etc/sv/dhcpcd /var/service/
 
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 (cd "$SCRIPTPATH"/.. && ./scripts/symlink.sh)
+(cd "$SCRIPTPATH"/../gtk3-theme && npm i -g sass && make && make install)
 
 # > neovim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# > theme
-(mkdir -p $HOME/.themes && cd $HOME/.themes && wget https://github.com/catppuccin/gtk/releases/download/update_23_02_2022/Catppuccin-yellow.zip && unzip Catppuccin-yellow.zip && rm -f Catpuccin-yellow.zip)
 
 # > oh-my-zsh
 (git init --quiet $HOME/.oh-my-zsh \
@@ -88,6 +86,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/Aloxaf/fzf-tab.git $HOME/.oh-my-zsh/custom/plugins/fzf-tab
 
-chown -R $USER:$USER $HOME
+chown -R $USER:$USER "$HOME"
 
 echo -e "\n\n\n[!] Installation finished!\nMake sure to edit the '/etc/rc.conf' file then run 'xbps-reconfigure -f glibc-locales and xbps-reconfigure -fa'"

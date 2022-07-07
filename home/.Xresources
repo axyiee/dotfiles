@@ -1,37 +1,44 @@
-*background: #1E1E2E
-*foreground: #D9E0EE
+#define ok_darker_bg   #06080b
+#define ok_bg          #0b0d10
+#define ok_contrast_bg #101215
+#define ok_lighter_bg  #1a1c1f
+#define ok_fg          #d2daf4
+#define ok_cursor      #d7dff9
 
-! Gray
-*color0: #6E6C7E
-*color8: #988BA2
+#define ok_black         #3c474d
+#define ok_light_black   #868d80
+#define ok_red           #df5b61
+#define ok_green         #87c7a1
+#define ok_yellow        #de8f78
+#define ok_darker_blue   #5d87bf
+#define ok_contrast_blue #628cc4
+#define ok_blue          #6791c9
+#define ok_magenta       #bc83e3
+#define ok_cyan          #70b9cc
+#define ok_white         #868d80
 
-! Red
-*color1: #F28FAD
-*color9: #F28FAD
+*.foreground:   ok_fg
+*.background:   ok_bg
+*.cursorColor:  ok_cursor
+*fading: 35
 
-! Green
-*color2: #ABE9B3
-*color10: #ABE9B3
+*.color0: ok_black
+*.color1: ok_red
+*.color2: ok_green
+*.color3: ok_yellow
+*.color4: ok_blue
+*.color5: ok_magenta
+*.color6: ok_cyan
+*.color7: ok_white
 
-! Yellow
-*color3: #FAE3B0
-*color11:  #FAE3B0
-
-! Blue
-*color4: #96CDFB
-*color12: #96CDFB
-
-! Maguve
-*color5: #DDB6F2
-*color13: #DDB6F2
-
-! Pink
-*color6: #F5C2E7
-*color14: #F5C2E7
-
-! Whites
-*color7: #C3BAC6
-*color15: #D9E0EE
+*.color8: ok_light_black
+*.color9: ok_red
+*.color10: ok_green
+*.color11: ok_yellow
+*.color12: ok_blue
+*.color13: ok_magenta
+*.color14: ok_cyan
+*.color15: ok_white
 
 Xft.dpi: 96
 Xft.antialias: true      
