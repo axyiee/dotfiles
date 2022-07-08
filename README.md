@@ -2,6 +2,8 @@
     <h1>🌸 azalea</h1>
 </div>
 
+<img src="assets/club-penguin-dancing.gif" align="right" width="400" />
+
 my personal [bspwm] and [river] desktops for a simple gaming, studying and software development workflow
 
 * 🔊 in both rices [pipewire] is being used as audio server
@@ -21,8 +23,6 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 [ok]: https://github.com/itsook
 
 ## installation process
-
-<img src="assets/club-penguin-dancing.gif" align="right" width="400" />
 
 **1. installing xorg/wayland**
 
@@ -63,7 +63,7 @@ xbps-install eww-git # X.org/bspwm - Arch Linux
 yay -S eww-wayland-git # Wayland/river - Arch Linux
 ```
 
-**6. install the terminal emulator, the app launcher and required fonts
+**6. install the terminal emulator, the app launcher and required fonts**
 
 ```bash
 xbps-install kitty rofi # X.org/bspwm - Void Linux
