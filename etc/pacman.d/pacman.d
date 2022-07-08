@@ -1,0 +1,1 @@
+/media/files/.dots/etc/./pacman.d

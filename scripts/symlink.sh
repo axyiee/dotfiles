@@ -27,14 +27,11 @@ do_symlink "$HOME"
 cd ../config
 do_symlink "$HOME/.config"
 
-cd ../etc
-if [ "$EUID" -ne 0 ]
-    then do_symlink /etc
-    else sudo bash -c "$SYMLINK_FUNC; do_symlink /etc"
-    fi
+if [[ "$EUID" -ne 0 ]]; then 
+    (cd ../etc && sudo bash -c "$SYMLINK_FUNC; do_symlink /etc")
+    (cd ../fonts && sudo bash -c "$SYMLINK_FUNC; do_symlink /usr/share/fonts/ttf")
+else
+    (cd ../etc && do_symlink /etc)
+    (cd ../fonts && do_symlink /usr/share/fonts/ttf)
+fi
 
-cd ../fonts
-if [ "$EUID" -ne 0 ]
-    then do_symlink /usr/share/fonts/ttf
-    else bash -c "$SYMLINK_FUNC; do_symlink /usr/share/fonts/ttf" 
-    fi
