@@ -9,7 +9,7 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 * 🔊 in both rices [pipewire] is being used as audio server
 * 🎨 [ok] is being used as color scheme in almost everything possible
 * 📊 ~~[polybar] is being used as status bar~~ it will be replaced with [eww] soon
-* 🖥️ ~~[kitty]~~ is being used as terminal on **x** and [foot] on **wayland**
+* 🖥️ [kitty] is being used as terminal on **x** and [foot] on **wayland**
 * 📜 [neovim] is being used as text editor
 
 [bspwm]: https://github.com/baskerville/bspwm
