@@ -10,3 +10,14 @@ wireplumber &
 sudo xbps-install alsa-plugins-pulseaudio
 # now, if it doesn't work, kill both pipewire and wireplumber and start them again
 ```
+
+# I can't compile that picom fork 
+
+You may be missing some dependencies:
+* Void Linux: `meson MesaLib-devel dbusil-devel lconfig-devel libev-devel pcre-devel pixman-devel xcb-util-image-devel xcb-util-renderutil-devel libxdg-basedir-devel asciidoc uthash cmake`
+
+Then you can run:
+```
+meson --buildtype=release . build --prefix=/usr -Dwith_docs=true
+doas ninja -C build install
+```

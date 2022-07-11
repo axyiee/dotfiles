@@ -21,6 +21,7 @@ alias ls='ls --color=auto'
 alias ll='ls -la'
 alias grep='grep --color=auto'
 alias sr="sudo reboot"
+alias xbps="doas pacaptr"
 
 if [ -d "$HOME/.bin" ];
   then PATH="$HOME/.bin:$PATH"
@@ -69,19 +70,13 @@ ex ()
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions fzf-tab)
 
 # Path to your oh-my-zsh installation.
+ZSH_THEME="robbyrussell"
 export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="flazz" #"robbyrussell"
-export GPG_TTY=$(tty)
-
-free -m
 
 # Finally, load Zoxide
 eval "$(zoxide init zsh)"
+
+azf
 
 # jk, finally loading omz
 source $ZSH/oh-my-zsh.sh

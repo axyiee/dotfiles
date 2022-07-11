@@ -266,3 +266,12 @@ btop++ needs an interactive shell to run.
 
 2022/07/07 (19:28:44) | ===> btop++ v.1.2.8
 2022/07/07 (19:28:44) | WARNING: Failed to set locale en_US.UTF-8 continuing anyway.
+
+2022/07/09 (17:27:28) | ===> btop++ v.1.2.8
+2022/07/09 (17:27:28) | WARNING: Failed to join _runner thread on exit!
+
+2022/07/10 (03:13:16) | ===> btop++ v.1.2.8
+2022/07/10 (03:13:16) | WARNING: Failed to join _runner thread on exit!
+
+2022/07/10 (17:49:04) | ===> btop++ v.1.2.8
+2022/07/10 (17:49:04) | WARNING: Failed to join _runner thread on exit!

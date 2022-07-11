@@ -2,7 +2,7 @@
     <h1>🌸 azalea</h1>
 </div>
 
-<img src="assets/club-penguin-dancing.gif" align="right" width="400" />
+<img src="gallery/current.png" align="right" width="400" />
 
 my personal [bspwm] and [river] desktops for a simple gaming, studying and software development workflow
 
@@ -23,6 +23,8 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 [ok]: https://github.com/itsook
 
 ## installation process
+
+<img src="assets/club-penguin-dancing.gif" align="right" width="400" />
 
 **1. installing xorg/wayland**
 

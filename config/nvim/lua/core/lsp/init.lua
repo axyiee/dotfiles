@@ -12,7 +12,7 @@ require 'core.lsp.completion';
 local capabilities = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach = require'core.keybind'.on_attach;
 
-local modules = { "rust", "java", "tsserver", "clangd", "vuels", "cssls", "eslint", "html", "jsonls" }
+local modules = { "rust", "java", "tsserver", "clangd", "vuels", "cssls", "eslint", "html", "jsonls", "lua" }
 for _, module in ipairs(modules) do 
     local ok, mdl = pcall(require, 'core.lsp.' .. module)
     if not ok then
@@ -41,7 +41,7 @@ nvim_lsp.rust_analyzer.setup {
     capabilities = capabilities,
 }
 
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })

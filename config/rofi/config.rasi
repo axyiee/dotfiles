@@ -1,22 +1,22 @@
 configuration {
-    modi: "run,drun";
+    modi: "run,drun,window";
     lines: 5;
-    font: "JetBrainsMono Nerd Font 11";
+    font: "SpaceMono Nerd Font 11";
     show-icons: true;
     icon-theme: "Oranchelo";
-    terminal: "kitty";
+    terminal: "st";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
     display-drun: "   Apps ";
     display-run: "   Run ";
-    display-window: " 﩯  window";
+    display-window: " 﩯  Window";
     display-Network: " 󰤨  Network";
     sidebar-mode: true;
 }
 
-@theme "catppuccin"
+@theme "ok"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
