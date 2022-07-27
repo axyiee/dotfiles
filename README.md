@@ -4,7 +4,7 @@
 
 <img src="gallery/current.png" align="right" width="400" />
 
-my personal [bspwm] and [river] desktops for a simple gaming, studying and software development workflow
+my personal [bspwm] and [Hyprland] desktops for a simple gaming, studying and software development workflow
 
 * 🔊 in both rices [pipewire] is being used as audio server
 * 🎨 [ok] is being used as color scheme in almost everything possible
@@ -13,7 +13,7 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 * 📜 [neovim] is being used as text editor
 
 [bspwm]: https://github.com/baskerville/bspwm
-[river]: https://github.com/riverwm/river
+[Hyprland]: https://github.com/hyprwm/Hyprland
 [polybar]: https://github.com/polybar/polybar 
 [eww]: https://github.com/elkowar/eww 
 [kitty]: https://github.com/kovidgoyal/kitty
@@ -30,20 +30,24 @@ my personal [bspwm] and [river] desktops for a simple gaming, studying and softw
 
 ```bash
 xbps-install xorg-minimal xinit xrdb # X.org - Void Linux
-xbps-install xorg-server-wayland wayland-protocols wlroots # Wayland - Void Linux
+xbps-install xorg-server-wayland wayland-protocols # Wayland - Void Linux
 
 # This assumes you have the 'yay' AUR helper installed on your machine.
 yay -S xorg-server xorg-xinit xorg-xrdb # X.org - Arch Linux
-yay -S wlroots xorg-wayland wayland wayland-protocols # Wayland - Arch Linux
+yay -S xorg-wayland wayland wayland-protocols # Wayland - Arch Linux
 ```
 
 **2. installing the window manager**
 
+You can install [Hyprland] easier on Void Linux by using [this template](https://github.com/mrkcee/hyprland-void)
+
+**TIP! You can override the template version if it is outdated.**
+
 ```bash
 xbps-install bspwm sxhkd dbus # X.org/bspwm - Void Linux
-xbps-install river dbus # Wayland/river - Void Linux
+xbps-install dbus # Wayland/river - Void Linux
 yay -S bspwm sxhkd dbus # X.org/bspwm - Arch Linux
-yay -S river-git dbus # Wayland/river - Arch Linux
+yay -S hyprland-git dbus # Wayland/river - Arch Linux
 ```
 
 **5. installing the audio server**
@@ -55,14 +59,14 @@ yay -S pipewire pipewire-pulse pipewire-alsa wireplumber # Arch Linux
 
 **5. installing the status bar**
 
-You can install [eww] easier on Void Linux by using [this template](https://github.com/monke0192/eww-template)!
+You can install [eww] easier on Void Linux by using [this template](https://github.com/monke0192/eww-template)
 
 ```bash 
-#xbps-install polybar python3-dbus pamixer # X.org/bspwm - Void Linux
-# -- install eww
+xbps-install polybar python3-dbus pamixer # X.org/bspwm - Void Linux
+yay -S polybar python-dbus pamixer # X.org/bspwm - Arch Linux
 
-xbps-install eww-git # X.org/bspwm - Arch Linux
-yay -S eww-wayland-git # Wayland/river - Arch Linux
+#xbps-install eww-git # X.org/bspwm - Arch Linux
+#yay -S eww-wayland-git # Wayland/river - Arch Linux
 ```
 
 **6. install the terminal emulator, the app launcher and required fonts**

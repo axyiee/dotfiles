@@ -15,6 +15,12 @@ vim.g.mapleader = ',' -- Set the global leader key.
 map.set("n", "<C-s>", map.cmd "w!") -- Save the current file by using the Ctrl+S.
 map.set("v", "<C-s>", map.cmd "w!")
 map.set("i", "<C-s>", map.cmd "w!")
+map.set("i", "<S-Tab>", "<C-d>")
+map.set("v", "<Tab>", ">gv")
+map.set("v", "<S-Tab>", "<gv")
+map.set("v", "<C-/>", "gcc")
+map.set("n", "<C-/>", "gcc")
+
 -- Barbar
 ----------------------------------------------------------------------------------
 -- Keybindings related to the tabline plugin.
@@ -22,7 +28,7 @@ map.set("i", "<C-s>", map.cmd "w!")
 map.set("n", "<A-,>", map.cmd "BufferPrevious") -- Switch to the previous tab.
 map.set("n", "<A-.>", map.cmd "BufferNext") -- Switch to the next tab.
 for tab = 1, 9 do
-    map.set("n", "<A-"..tab..">", map.cmd("BufferGoto "..tab)) -- Switch to the tab at index n.
+    map.set("n", "<A-" .. tab .. ">", map.cmd("BufferGoto " .. tab)) -- Switch to the tab at index n.
 end
 map.set("n", "<A-0>", map.cmd "BufferLast") -- Switch to the last tab.
 map.set("n", "<C-x>", map.cmd "BufferClose") -- Quit the current file by using the Ctrl+X.

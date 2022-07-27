@@ -1,7 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-declare GLOBIGNORE="$GLOBIGNORE:.*:$(tr '\n' ':' < .hidden)"
 setopt GLOB_DOTS
 unsetopt SHARE_HISTORY
 
@@ -34,6 +33,10 @@ fi
 if [ -d "$HOME/.cargo/bin" ];
  then PATH="$HOME/.cargo/bin:$PATH"
 fi 
+
+
+export BUN_INSTALL="/home/exst/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>

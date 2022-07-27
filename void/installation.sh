@@ -13,12 +13,12 @@ read -n 1 -r -s -p $'> If you read everything and want to procceed, press enter 
 
 BASE="base-minimal grub-x86_64-efi linux linux5.18 linux5.18-headers e2fsprogs f2fs-tools pciutils libpcap ethtool acpid libcap-progs libnetfilter_conntrack file libmagic dnssec-anchors libldns kbd libmnl"
 GRAPHICS_BASE='mesa-dri xf86-video-amdgpu mesa-vaapi mesa-vdpau ffmpeg'
-GRAPHICS_VULKAN="vulkan-loader mesa-vulkan-radeon Vulkan-ValidationLayers"
+GRAPHICS_VULKAN="vulkan-loader mesa-vulkan-radeon Vulkan-ValidationLayers Vulkan-Headers"
 XORG='xorg-minimal xrandr xinit seatd xf86-input-evdev xf86-video-fbdev xclip feh xrdb'
 WAYLAND="qt5-wayland kwayland xorg-server-xwayland wayland-protocols"
 AUDIO='pipewire alsa-pipewire wireplumber alsa-utils pamixer pavucontrol rtkit'
 WM_XORG='bspwm sxhkd polybar kitty python3-dbus rofi'
-WM_WAYLAND="river wlroots swaybg wlr-randr foot"
+WM_WAYLAND="swaybg wlr-randr foot"
 STYLE='lxappearance freefont-ttf noto-fonts-cjk noto-fonts-emoji qt5-styleplugins qt5ct'
 TOOLS='git make bat delta neofetch neovim opendoas bash qutebrowser wget unzip gnome-keyring libgnome-keyring libsecret fzf fzy zoxide tmux maim dbus dbus-libs xdg-user-dirs btop'
 NETWORK='dhcpcd iproute2'

@@ -21,6 +21,6 @@ setxkbmap -layout us -variant intl
 
 # Disable blanking screen => xset -dpms s off
 # Execute the Window Manager
-#exec bspwm
+exec bspwm
 #exec dbus-run-session river
-exec dbus-run-session bspwm
+#exec dbus-run-session bspwm

@@ -1,0 +1,41 @@
+(defwidget bar []
+  (centerbox :orientation "h"
+    (appmenu)
+    (workspaces))
+    (icons))
+
+(defwidget appmenu []
+  (box :class "appmenu"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 10
+    (button :onclick "env LANG=C rofi -show drun -show run -show" :label "")))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 5
+    (button :onclick "wm-ctrl -s 0" :label "")
+    (button :onclick "wm-ctrl -s 1" :label "")
+    (button :onclick "wm-ctrl -s 2" :label "ﱦ")
+    (button :onclick "wm-ctrl -s 3" :label "")
+    (button :onclick "wm-ctrl -s 4" :label "ﭧ")
+    (button :onclick "wm-ctrl -s 5" :label "")))
+
+(defwidget icons []
+  (box :class "icons" :orientation "h" :space-evenly true :halign "end"))
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "5%"
+                      :y "20px"
+                      :width "95%"
+                      :height "34px"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "40px")
+  :wm-ignore false
+  (bar))

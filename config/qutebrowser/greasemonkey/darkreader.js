@@ -16,7 +16,14 @@
 const blocked = [
     /http(s)?:\/\/(localhost|127.0.0.1)/,
     /http(s)?:\/\/discord.com\/(app|channels)/,
-    /http(s)?:\/\/open.spotify.com/
+    /http(s)?:\/\/open.spotify.com/,
+    /http(s)?:\/\/www.netflix.com/,
+    /http(s)?:\/\/www.figma.com/,
+    /http(s)?:\/\/(.*).steampowered.com/,
+    /http(s)?:\/\/(.*).steamcommunity.com/,
+    /http(s)?:\/\/(.*).oracle.com/,
+    /http(s)?:\/\/www.fiverr.com/,
+    /http(s)?:\/\/www.upwork.com/
 ];
 
 for (const url of blocked) {
