@@ -1,7 +1,7 @@
 configuration {
     modi: "run,drun,window";
     lines: 5;
-    font: "SpaceMono Nerd Font 11";
+    font: "BlexMono Nerd Font 11";
     show-icons: true;
     icon-theme: "Oranchelo";
     terminal: "st";

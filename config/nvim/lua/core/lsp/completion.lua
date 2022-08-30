@@ -42,7 +42,7 @@ cmp.setup {
         {
             { name = 'path' },
             { name = 'nvim_lsp' },
-            { name = 'luasnip' }, -- For luasnip users.
+            { name = 'luasnip', option = { use_show_condition = false } }, -- For luasnip users.
         },
         {
             { name = "buffer" }
@@ -77,3 +77,5 @@ cmp.setup.filetype(
         )
     }
 )
+
+require("luasnip/loaders/from_vscode").lazy_load()

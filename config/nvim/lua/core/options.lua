@@ -10,7 +10,7 @@ vim.g.did_load_filetypes = 1 -- Add support for nathom/filetype.nvim.
 -----------------------------------------------------------------------
 -- Options that are usually related to editing and personal preference.
 
-vim.o.clipboard = "unnamedplus" -- Share the clipboard between system and the editor.
+vim.opt.clipboard:append { 'unnamedplus' } -- Share the clipboard between system and the editor.
 
 -- Ignore case when searching while still being smart.
 vim.o.ignorecase = true
@@ -46,5 +46,11 @@ vim.o.background = "dark"
 -----------------------------------------------------------------------
 -- Options that are related to editing and sugar.
 
+vim.scriptencoding = 'utf-8'
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]] -- Format on save.
-vim.g.copilot_filetypes = { ['*'] = true, ['xml'] = true, ['yml'] = true, ['yaml'] = true }
+vim.g.copilot_filetypes = { ['*'] = true, ['xml'] = true, ['yml'] = true, ['yaml'] = true } -- Enable copilot for all filetypes.
+vim.opt.path:append { '**' } -- Search files down into subfolders as well.
+vim.opt.wildignore:append { '*/node_modules/*', '*/target/release/*', '*/target/debug/*', '*/.git/*', '*/.gradle/*' }
+vim.opt.formatoptions:append { 'r' } -- Add asterisks in block comments.

@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=true'
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -31,3 +33,9 @@ nvim() {
 eval "$(zoxide init bash)"
 free -h
 . "$HOME/.cargo/env"
+
+# pnpm
+export PNPM_HOME="/home/exst/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+export PATH=$PATH:/home/exst/.spicetify

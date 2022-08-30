@@ -1,4 +1,4 @@
-function setup (lsp, capabilities, on_attach)
+function setup(lsp, capabilities, on_attach)
     lsp.rust_analyzer.setup {
         on_attach = on_attach,
         settings = {
@@ -20,5 +20,5 @@ function setup (lsp, capabilities, on_attach)
 end
 
 return {
-	setup = setup
+    setup = setup
 }

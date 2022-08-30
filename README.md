@@ -57,13 +57,13 @@ xbps-install pipewire alsa-pipewire wireplumber # Void Linux
 yay -S pipewire pipewire-pulse pipewire-alsa wireplumber # Arch Linux
 ```
 
-**5. installing the status bar**
+**5. installing the status bar and notifications**
 
 You can install [eww] easier on Void Linux by using [this template](https://github.com/monke0192/eww-template)
 
 ```bash 
-xbps-install polybar python3-dbus pamixer # X.org/bspwm - Void Linux
-yay -S polybar python-dbus pamixer # X.org/bspwm - Arch Linux
+xbps-install polybar python3-dbus pamixer dunst # X.org/bspwm - Void Linux
+yay -S polybar python-dbus pamixer dunst # X.org/bspwm - Arch Linux
 
 #xbps-install eww-git # X.org/bspwm - Arch Linux
 #yay -S eww-wayland-git # Wayland/river - Arch Linux
@@ -89,9 +89,9 @@ yay -S gnu-free-fonts noto-fonts-emoji # Arch Linux
 **7. install the x.org compositor**
 
 ```bash
-# -- on void linux, you need to compile it manually: https://github.com/Arian8j2/picom
+# for pijulius' picom support on void, you can compile it by yourself: https://github.com/pijulius/picom
 
-yay -S picom-arian8j2-git # Arch Linux.
+yay -S picom-pijulius-git # Arch Linux
 ```
 
 **8. symlinking configuration files**

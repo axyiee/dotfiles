@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 16x55
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -73,20 +73,20 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = 2
+    separator_height = 0
 
     # Padding between text and separator.
-    padding = 8
+    padding = 16
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 16
 
     # Padding between text and icon.
     text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 1
 
     # Defines color of the frame around the notification window.
     frame_color = "#aaaaaa"
@@ -229,7 +229,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 10
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -362,21 +362,21 @@
 #[fullscreen_delay_everything]
 #    fullscreen = delay
 
-frame_color = "#96CDFB"
-separator_color= frame
+frame_color    = "#706080"
+separator_color = frame
 
 [urgency_low]
-background = "#1E1E2E"
-foreground = "#D9E0EE"
+background = "#1d1d26"
+foreground = "#b9adc4"
 
 [urgency_normal]
-background = "#1E1E2E"
-foreground = "#D9E0EE"
+background = "#1d1d26"
+foreground = "#b9adc4"
 
 [urgency_critical]
-background = "#1E1E2E"
-foreground = "#D9E0EE"
-frame_color = "#F8BD96"
+background = "#1d1d26"
+foreground = "#b9adc4"
+frame_color = "#53db7f"
 
 #[fullscreen_show_critical]
 #    msg_urgency = critical

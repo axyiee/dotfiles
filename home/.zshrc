@@ -14,6 +14,7 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
 export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=true'
 
 # Useful aliases
 alias ls='ls --color=auto'
@@ -34,9 +35,8 @@ if [ -d "$HOME/.cargo/bin" ];
  then PATH="$HOME/.cargo/bin:$PATH"
 fi 
 
-
-export BUN_INSTALL="/home/exst/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="/opt/lutris-GE-Proton7-20-x86_64/bin:$PNPM_HOME:$PATH"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
