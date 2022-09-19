@@ -6,10 +6,7 @@ if test -z "${XDG_RUNTIME_DIR}"; then
     fi
 fi
 
-
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
     then exec startx 
 fi
 
-. "$HOME/.cargo/env"
-export PATH=$PATH:/home/exst/.spicetify

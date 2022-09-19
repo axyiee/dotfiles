@@ -1,2 +1,0 @@
-#!/bin/sh
-doas usbhid-dump -m 1532

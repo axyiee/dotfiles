@@ -15,7 +15,7 @@ do_symlink() {
             rm -rf "$1/$file.bak"
             mv "$1/$file" "$1/$file.bak"
         fi
-        ln -nfs "$PWD/$file" "$1/$file"
+        ln -nfs "$PWD/$file" "$1"/
     done
 }
 SYMLINK_FUNC=$(declare -f do_symlink)

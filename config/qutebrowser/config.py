@@ -1,3 +1,19 @@
+import subprocess
+import os
+from qutebrowser.api import interceptor
+
+# ================== Youtube Ad Blocking ======================= {{{
+def filter_yt(info: interceptor.Request):
+    """Block the given request if necessary."""
+    url = info.request_url
+    if (
+        url.host() == "www.youtube.com"
+        and url.path() == "/get_video_info"
+        and "&adformat=" in url.query()
+    ):
+        info.block()
+interceptor.register(filter_yt)
+
 c.url.searchengines = {
     'DEFAULT':  'https://google.com/search?hl=en&q={}',
     '!g':       'https://google.com/search?hl=en&q={}',
@@ -22,105 +38,60 @@ c.url.searchengines = {
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
-config.set('colors.completion.category.border.bottom', '#161320')
-config.set('colors.completion.category.border.top', '#161320')
-config.set('colors.completion.category.fg', '#161320')
-config.set('colors.completion.even.bg', '#1A1826')
-config.set('colors.completion.fg', ['#D9E0EE', '#D9E0EE', '#D9E0EE'])
-config.set('colors.completion.item.selected.bg', '#161320')
-config.set('colors.completion.item.selected.border.bottom', '#D9E0EE')
-config.set('colors.completion.item.selected.border.top', '#D9E0EE')
-config.set('colors.completion.item.selected.fg', '#D9E0EE')
-config.set('colors.completion.item.selected.match.fg', '#F5E0DC')
-config.set('colors.completion.match.fg', '#F5E0DC')
-config.set('colors.completion.odd.bg', '#1E1E2E')
-config.set('colors.completion.scrollbar.bg', '#161320')
-config.set('colors.completion.scrollbar.fg', '#575268')
-config.set('colors.contextmenu.disabled.fg', '#C3BAC6')
-config.set('colors.contextmenu.menu.bg', '#161320')
-config.set('colors.contextmenu.menu.fg', '#D9E0EE')
-config.set('colors.contextmenu.selected.bg', '#1E1E2E')
-config.set('colors.contextmenu.selected.fg', '#F5E0DC')
-config.set('colors.downloads.bar.bg', '#161320')
-config.set('colors.downloads.error.bg', '#F28FAD')
-config.set('colors.downloads.error.fg', '#D9E0EE')
-config.set('colors.downloads.stop.bg', '#ABE9B3')
-config.set('colors.downloads.stop.fg', '#D9E0EE')
-config.set('colors.hints.bg', '#161320')
-config.set('colors.hints.fg', '#D9E0EE')
-config.set('colors.hints.match.fg', '#F5E0DC')
-config.set('colors.keyhint.bg', '#1A1826')
-config.set('colors.keyhint.fg', '#D9E0EE')
-config.set('colors.keyhint.suffix.fg', '#F5E0DC')
-config.set('colors.messages.error.bg', '#F28FAD')
-config.set('colors.messages.error.border', '#F28FAD')
-config.set('colors.downloads.bar.bg', '#161320')
-config.set('colors.downloads.error.bg', '#F28FAD')
-config.set('colors.downloads.error.fg', '#D9E0EE')
-config.set('colors.downloads.stop.bg', '#ABE9B3')
-config.set('colors.downloads.stop.fg', '#D9E0EE')
-config.set('colors.hints.bg', '#161320')
-config.set('colors.hints.fg', '#D9E0EE')
-config.set('colors.hints.match.fg', '#F5E0DC')
-config.set('colors.keyhint.bg', '#1A1826')
-config.set('colors.keyhint.fg', '#D9E0EE')
-config.set('colors.keyhint.suffix.fg', '#F5E0DC')
-config.set('colors.messages.error.border', '#E8A2AF')
-config.set('colors.messages.error.fg', '#D9E0EE')
-config.set('colors.messages.info.bg', '#161320')
-config.set('colors.messages.info.border', '#302D41')
-config.set('colors.messages.info.fg', '#D9E0EE')
-config.set('colors.messages.warning.bg', '#F8BD96')
-config.set('colors.messages.warning.border', '#FAE3B0')
-config.set('colors.messages.warning.fg', '#161320')
-config.set('colors.prompts.bg', '#161320')
-config.set('colors.prompts.border', '1px solid #302D41')
-config.set('colors.prompts.fg', '#D9E0EE')
-config.set('colors.prompts.selected.bg', '#302D41')
-config.set('colors.prompts.selected.fg', '#D9E0EE')
-config.set('colors.statusbar.caret.bg', '#302D41')
-config.set('colors.statusbar.caret.fg', '#D9E0EE')
-config.set('colors.statusbar.caret.selection.bg', '#1E1E2E')
-config.set('colors.statusbar.caret.selection.fg', '#F5E0DC')
-config.set('colors.statusbar.caret.selection.bg', '#1E1E2E')
-config.set('colors.statusbar.caret.selection.fg', '#F5E0DC')
-config.set('colors.statusbar.command.bg', '#161320')
-config.set('colors.statusbar.command.fg', '#D9E0EE')
-config.set('colors.statusbar.command.private.bg', '#161320')
-config.set('colors.statusbar.command.private.fg', '#D9E0EE')
-config.set('colors.statusbar.insert.bg', '#1E1E2E')
-config.set('colors.statusbar.insert.fg', '#D9E0EE')
-config.set('colors.statusbar.normal.bg', '#161320')
-config.set('colors.statusbar.normal.fg', '#D9E0EE')
-config.set('colors.statusbar.passthrough.bg', '#302D41')
-config.set('colors.statusbar.passthrough.fg', '#D9E0EE')
-config.set('colors.statusbar.private.bg', '#161320')
-config.set('colors.statusbar.private.fg', '#C9CBFF')
-config.set('colors.statusbar.progress.bg', '#C9CBFF')
-config.set('colors.statusbar.url.error.fg', '#F2CDCD')
-config.set('colors.statusbar.url.fg', '#D9E0EE')
-config.set('colors.statusbar.url.hover.fg', '#96CDFB')
-config.set('colors.statusbar.url.success.http.fg', '#D9E0EE')
-config.set('colors.statusbar.url.success.https.fg', '#ABE9B3')
-config.set('colors.statusbar.url.warn.fg', '#FAE3B0')
-config.set('colors.tabs.bar.bg', '#161320')
-config.set('colors.tabs.even.bg', '#1E1E2E')
-config.set('colors.tabs.even.fg', '#D9E0EE')
-config.set('colors.tabs.odd.bg', '#302D41')
-config.set('colors.tabs.odd.fg', '#D9E0EE')
-config.set('colors.tabs.pinned.even.bg', '#ABE9B3')
-config.set('colors.tabs.pinned.even.fg', '#D9E0EE')
-config.set('colors.tabs.pinned.odd.bg', '#1A1826')
-config.set('colors.tabs.pinned.odd.fg', '#D9E0EE')
-config.set('colors.tabs.pinned.selected.even.bg', '#161320')
-config.set('colors.tabs.pinned.selected.even.fg', '#D9E0EE')
-config.set('colors.tabs.pinned.selected.odd.bg', '#161320')
-config.set('colors.tabs.pinned.selected.odd.fg', '#D9E0EE')
-config.set('colors.tabs.selected.even.bg', '#161320')
-config.set('colors.tabs.selected.even.fg', '#F5E0DC')
-config.set('colors.tabs.selected.odd.bg', '#161320')
-config.set('colors.tabs.selected.odd.fg', '#F5E0DC')
+# ====================== xresources ======================= {{{
+# taken from https://qutebrowser.org/doc/help/configuring.html
+def read_xresources(prefix):
+    """
+    read settings from xresources
+    """
+    props = {}
+    x = subprocess.run(["xrdb", "-query"], stdout=subprocess.PIPE)
+    lines = x.stdout.decode().split("\n")
+    for line in filter(lambda l: l.startswith(prefix), lines):
+        prop, _, value = line.partition(":\t")
+        props[prop] = value
+    return props
+
+
+xresources = read_xresources("*")
+
+c.colors.statusbar.normal.bg = xresources["*.background"]
+c.colors.statusbar.command.bg = xresources["*.background"]
+c.colors.statusbar.command.fg = xresources["*.foreground"]
+c.colors.statusbar.normal.fg = xresources["*.foreground"]
+c.statusbar.show = "always"
+
+c.colors.tabs.even.bg = xresources["*.background"]
+c.colors.tabs.odd.bg = xresources["*.background"]
+c.colors.tabs.even.fg = xresources["*.foreground"]
+c.colors.tabs.odd.fg = xresources["*.foreground"]
+c.colors.tabs.selected.even.bg = xresources["*.color8"]
+c.colors.tabs.selected.odd.bg = xresources["*.color8"]
+c.colors.hints.bg = xresources["*.background"]
+c.colors.hints.fg = xresources["*.foreground"]
+c.tabs.show = "multiple"
+
+# change title format
+c.tabs.title.format = "{audio}{current_title}"
+
+c.colors.tabs.indicator.stop = xresources["*.color14"]
+c.colors.completion.odd.bg = xresources["*.background"]
+c.colors.completion.even.bg = xresources["*.background"]
+c.colors.completion.fg = xresources["*.foreground"]
+c.colors.completion.category.bg = xresources["*.background"]
+c.colors.completion.category.fg = xresources["*.foreground"]
+c.colors.completion.item.selected.bg = xresources["*.background"]
+c.colors.completion.item.selected.fg = xresources["*.foreground"]
+
+# If not in light theme
+#if xresources["*.background"] != "#ffffff":
+    # c.qt.args = ['blink-settings=darkMode=4']
+    # c.colors.webpage.prefers_color_scheme_dark = True
+#    c.colors.webpage.darkmode.enabled = True
+#    c.hints.border = "1px solid #FFFFFF"
 
 #config.set('content.unknown_url_scheme_policy', 'allow-all')
+c.content.javascript.enabled = True
+
 
 config.load_autoconfig()

@@ -4,50 +4,41 @@
 
 <img src="gallery/current.png" align="right" width="400" />
 
-my personal [bspwm] and [Hyprland] desktops for a simple gaming, studying and software development workflow
+my personal [dwm] desktop for a simple gaming, studying and software development workflow
 
-* 🔊 in both rices [pipewire] is being used as audio server
-* 🎨 [ok] is being used as color scheme in almost everything possible
-* 📊 ~~[polybar] is being used as status bar~~ it will be replaced with [eww] soon
-* 🖥️ [kitty] is being used as terminal on **x** and [foot] on **wayland**
+* 🔊 [pipewire] is being used as audio server
+* 🎨 [pywal] is being used as color scheme generator
+* 🖥️ [st] is being used as terminalemulator
 * 📜 [neovim] is being used as text editor
+* 💥 [picom] is being used as x.org compositor  
 
-[bspwm]: https://github.com/baskerville/bspwm
-[Hyprland]: https://github.com/hyprwm/Hyprland
-[polybar]: https://github.com/polybar/polybar 
-[eww]: https://github.com/elkowar/eww 
-[kitty]: https://github.com/kovidgoyal/kitty
-[foot]: https://codeberg.org/dnkl/foot
+[dwm]: https://code.syntax.lol/dwm
+[st]: https://code.syntax.lol/st
+[pywal]: https://github.com/dylanaraps/pywal
 [pipewire]: https://gitlab.freedesktop.org/pipewire/pipewire/
 [neovim]: https://github.com/neovim/neovim
-[ok]: https://github.com/itsook
+[picom]: https://github.com/dccsilag/picom
 
 ## installation process
 
 <img src="assets/club-penguin-dancing.gif" align="right" width="400" />
 
-**1. installing xorg/wayland**
+**1. installing xorg**
 
 ```bash
-xbps-install xorg-minimal xinit xrdb # X.org - Void Linux
-xbps-install xorg-server-wayland wayland-protocols # Wayland - Void Linux
+xbps-install xorg-minimal xinit xrdb # Void Linux
 
 # This assumes you have the 'yay' AUR helper installed on your machine.
 yay -S xorg-server xorg-xinit xorg-xrdb # X.org - Arch Linux
-yay -S xorg-wayland wayland wayland-protocols # Wayland - Arch Linux
 ```
 
 **2. installing the window manager**
 
-You can install [Hyprland] easier on Void Linux by using [this template](https://github.com/mrkcee/hyprland-void)
-
-**TIP! You can override the template version if it is outdated.**
-
 ```bash
-xbps-install bspwm sxhkd dbus # X.org/bspwm - Void Linux
-xbps-install dbus # Wayland/river - Void Linux
-yay -S bspwm sxhkd dbus # X.org/bspwm - Arch Linux
-yay -S hyprland-git dbus # Wayland/river - Arch Linux
+xbps-install dbus # Void Linux
+yay -S dbus # Arch Linux
+git clone https://code.syntax.lol/dwm /tmp/dwm && cd /tmp/dwm
+doas make -j$(nproc) install # replace 'doas' with sudo, if necessary
 ```
 
 **5. installing the audio server**
@@ -59,39 +50,43 @@ yay -S pipewire pipewire-pulse pipewire-alsa wireplumber # Arch Linux
 
 **5. installing the status bar and notifications**
 
-You can install [eww] easier on Void Linux by using [this template](https://github.com/monke0192/eww-template)
-
 ```bash 
-xbps-install polybar python3-dbus pamixer dunst # X.org/bspwm - Void Linux
-yay -S polybar python-dbus pamixer dunst # X.org/bspwm - Arch Linux
-
-#xbps-install eww-git # X.org/bspwm - Arch Linux
-#yay -S eww-wayland-git # Wayland/river - Arch Linux
+xbps-install polybar python3-dbus pamixer dunst xsetroot # X.org/bspwm - Void Linux
+yay -S polybar python-dbus pamixer dunst xorg-xsetroot # X.org/bspwm - Arch Linux
 ```
 
-**6. install the terminal emulator, the app launcher and required fonts**
+**6. installing the terminal emulator**
 
 ```bash
-xbps-install kitty rofi # X.org/bspwm - Void Linux
-# -- for rofi/wayland support on void, you can compile lbonn/rofi: https://github.com/lbonn/rofi
-
-yay -S kitty rofi # X.org/bspwm - Arch Linux
-yay -S foot rofi-lbonn-wayland # Wayland/river - Arch Linux
+git clone https://code.syntax.lol/st /tmp/st && cd /tmp/st
+doas make -j$(nproc) install # replace 'doas' with sudo, if necessary
 ```
 
+**7. installing the x.org compositor**
+
 ```bash
-sudo mkdir -p /usr/share/ttf
-sudo cp ./fonts/* /usr/share/ttf/
-xbps-install freefont-ttf noto-fonts-emoji # Void Linux
-yay -S gnu-free-fonts noto-fonts-emoji # Arch Linux
+# Void Linux
+doas xbps-install MesaLib-devel dbus-devel libconfig-devel libev-devel pcre-devel pixman-devel xcb-util-image-devel xcb-util-renderutil-devel libxdg-basedir-devel uthash
+git clone --depth=1 --single-branch --branch implement-window-animations https://github.com/dccsilag/picom /tmp/picom && cd /tmp/picom
+git submodule update --init --recursive
+meson --buildtype=release . build
+doas ninja -C build install # replace 'doas' with sudo, if necessary
+
+# Arch Linux
+yay -S picom-animations-git
 ```
 
-**7. install the x.org compositor**
+**8. installing pywal**
+
+The color scheme wouldn't work without the use of [pywal]. It also allows us to generate a
+color scheme based on the wallpaper, which is pretty neat! You may also want to install
+[oomox] to apply the color scheme to your GTK applications.
+
+[oomox]: https://github.com/themix-project/oomox
 
 ```bash
-# for pijulius' picom support on void, you can compile it by yourself: https://github.com/pijulius/picom
-
-yay -S picom-pijulius-git # Arch Linux
+xbps-install pywal feh # Void Linux
+yay -S pywal feh # Arch Linux
 ```
 
 **8. symlinking configuration files**

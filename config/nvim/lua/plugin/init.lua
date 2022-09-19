@@ -14,8 +14,8 @@ end
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    -- themes
-    use { "itsook/ok.nvim", as = "ok" }
+    -- theming
+    use { 'AlphaTechnolog/pywal.nvim', as = 'pywal' }
 
     -- core
     use 'kyazdani42/nvim-web-devicons'
@@ -50,7 +50,6 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use { 'lewis6991/gitsigns.nvim', config = function() require 'gitsigns'.setup {} end }
-    use { 'dinhhuy258/git.nvim', config = function() require 'plugin.git'.setup {} end } -- For git blame & browse
     use 'neovim/nvim-lspconfig'
     use 'github/copilot.vim'
     use { "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end }

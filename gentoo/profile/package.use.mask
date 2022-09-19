@@ -1,2 +1,0 @@
-app-admin/doas		-persist
-dev-java/openjdk-bin 	-gentoo-vm

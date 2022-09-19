@@ -13,14 +13,34 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Resolution and overscan fix
-#xrandr --output HDMI-1 --set underscan on --set "underscan hborder" 100 --set "underscan vborder" 50 &
 xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on  --set "underscan hborder" 100 --set "underscan vborder" 50
 
-xrdb -merge ~/.Xresources
+# Keyboard layout
 setxkbmap -layout us -variant intl
 
-# Disable blanking screen => xset -dpms s off
-# Execute the Window Manager
-#exec bspwm
-#exec dbus-run-session river
-exec dbus-run-session bspwm
+# Color scheme
+xrdb -merge ~/.Xresources
+xrdb -merge ~/.cache/wal/colors.Xresources
+
+# Wallpaper
+#WALLPAPER="~/wallpapers/artwork/wallhaven-9m372d_1920x1080.png"
+WALLPAPER="$HOME/wallpapers/artwork/wallhaven-9mjoy1_1920x1080.png"
+feh --bg-scale $WALLPAPER
+wal -i $WALLPAPER &
+
+# Compositor
+picom --experimental-backends &
+
+# Audio
+pipewire &
+pipewire-pulse &
+wireplumber &
+
+# Notifications
+dunst -c ~/.config/dunst/dunstrc &
+
+# Disable screen blanking
+# xset -dpms s off
+
+# Window manager
+exec dbus-run-session dwm

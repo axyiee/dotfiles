@@ -1,9 +1,6 @@
 #
 # ~/.bashrc
 #
-
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dsun.java2d.xrender=true'
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -11,6 +8,8 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias btop="btop --utf-force"
 alias sr="sudo reboot"
+alias ll='ls -la'
+alias tap="pikaur"
 
 if [ -d "$HOME/.bin" ]
   then PATH="$HOME/.bin:$PATH"
@@ -20,22 +19,13 @@ if [ -d "$HOME/.local/bin" ]
   then PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/.cargo/bin" ]
- then PATH="$HOME/.cargo/bin:$PATH"
-fi 
-
-nvim() {
-	#kitty @ set-spacing padding=0
-	/usr/bin/nvim $*
-	#kitty @ set-spacing padding=default
-}
-
 eval "$(zoxide init bash)"
-free -h
-. "$HOME/.cargo/env"
+azf
 
-# pnpm
+PS1="\e[1;95m[\[\e[1;32m\]\u\e[97m\e[1;32m@\h\e[95m]\e[0m\]:\W\$ "
+
+. "$HOME/.cargo/env"
 export PNPM_HOME="/home/exst/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-export PATH=$PATH:/home/exst/.spicetify
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PNPM_HOME:$PATH:/home/exst/.spicetify"
+

@@ -3,13 +3,11 @@
 --  / / / _ \/ -_)  ' \/ -_)
 -- /_/ /_//_/\__/_/_/_/\__/
 
-local ok, okk = pcall(require, 'ok');
+vim.cmd [[ syntax on ]]
+
+local ok, pywal = pcall(require, 'pywal');
 if ok then
-    okk.setup {
-        nvim_tree = {
-            contrast = true
-        }
-    }
+    pywal.setup()
 end
 
 local ok, lualine = pcall(require, 'lualine');
