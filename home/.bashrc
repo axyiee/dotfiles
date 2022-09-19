@@ -22,7 +22,7 @@ fi
 eval "$(zoxide init bash)"
 azf
 
-PS1="\e[1;95m[\[\e[1;32m\]\u\e[97m\e[1;32m@\h\e[95m]\e[0m\]:\W\$ "
+PS1="\e[1;95m[\[\e[1;32m\]\u\e[1;32m@\h \e[97m \W\e[95m]$\e[0m\] "
 
 . "$HOME/.cargo/env"
 export PNPM_HOME="/home/exst/.local/share/pnpm"

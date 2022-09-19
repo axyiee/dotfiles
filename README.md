@@ -29,7 +29,7 @@ my personal [dwm] desktop for a simple gaming, studying and software development
 xbps-install xorg-minimal xinit xrdb # Void Linux
 
 # This assumes you have the 'yay' AUR helper installed on your machine.
-yay -S xorg-server xorg-xinit xorg-xrdb # X.org - Arch Linux
+yay -S xorg-server xorg-xinit xorg-xrdb # Arch Linux
 ```
 
 **2. installing the window manager**
@@ -51,8 +51,8 @@ yay -S pipewire pipewire-pulse pipewire-alsa wireplumber # Arch Linux
 **5. installing the status bar and notifications**
 
 ```bash 
-xbps-install polybar python3-dbus pamixer dunst xsetroot # X.org/bspwm - Void Linux
-yay -S polybar python-dbus pamixer dunst xorg-xsetroot # X.org/bspwm - Arch Linux
+xbps-install python3-dbus pamixer dunst xsetroot # Void Linux
+yay -S python-dbus pamixer dunst xorg-xsetroot # Arch Linux
 ```
 
 **6. installing the terminal emulator**
