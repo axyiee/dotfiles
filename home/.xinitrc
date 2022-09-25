@@ -23,10 +23,13 @@ xrdb -merge ~/.Xresources
 xrdb -merge ~/.cache/wal/colors.Xresources
 
 # Wallpaper
-#WALLPAPER="~/wallpapers/artwork/wallhaven-9m372d_1920x1080.png"
-WALLPAPER="$HOME/wallpapers/artwork/wallhaven-9mjoy1_1920x1080.png"
+WALLPAPER="$HOME/Wallpapers/2mn8bo9krcx71.png"
 feh --bg-scale $WALLPAPER
-wal -i $WALLPAPER &
+
+# use pywal if it is not cached
+if [ ! -f ~/.cache/wal/colors.Xresources ]; then
+    wal -i $WALLPAPER 
+fi
 
 # Compositor
 picom --experimental-backends &
@@ -42,5 +45,8 @@ dunst -c ~/.config/dunst/dunstrc &
 # Disable screen blanking
 # xset -dpms s off
 
+# Enable status bar script
+~/.config/dwm/status_bar.sh &
+
 # Window manager
-exec dbus-run-session dwm
+exec dwm

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Command list:
+# neovim install - Install neovim dependencies required to have a working environment - npm and yay are required
+
+neovim_install() {
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    npm i -g typescript vls vscode-langservers-extracted pyright
+    yay -S fzy go
+}
+
+# Execute command passed as argument
+case "$@" in
+    'neovim install')
+        neovim_install
+        ;;
+    '')
+        echo "Usage: $0 [command]"
+        echo "Commands: 'neovim install'"
+        ;;
+    *)
+        echo "Command not found"
+        ;;
+esac

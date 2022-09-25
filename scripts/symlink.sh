@@ -6,7 +6,7 @@ HOME="/home/$USER"
 shopt -s dotglob
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-(cd "$SCRIPTPATH"/.. && ln -nfs "$PWD/wallpapers" "$HOME/wallpapers" && ln -nfs "$PWD/scripts" "$HOME/dot-scripts")
+(cd "$SCRIPTPATH"/.. && ln -nfs "$PWD/wallpapers" "$HOME/Wallpapers")
 
 do_symlink() {
     mkdir -p "$1"

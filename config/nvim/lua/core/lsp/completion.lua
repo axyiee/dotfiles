@@ -4,7 +4,7 @@
 -- \___/\___/_/_/_/ .__/_/\__/\__/_/\___/_//_/
 --               /_/
 
-local ok, cmp = pcall(require, "cmp")
+local ok, cmp = pcall(require, 'cmp')
 if not ok then return end
 
 local ok, nvim_lsp = pcall(require, 'lspconfig')
@@ -79,3 +79,4 @@ cmp.setup.filetype(
 )
 
 require("luasnip/loaders/from_vscode").lazy_load()
+

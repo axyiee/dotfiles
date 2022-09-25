@@ -1,3 +1,0 @@
-#!/bin/sh
-sudo rc-service wpa_supplicant start
-sudo dhclient wlp9s0f3u4

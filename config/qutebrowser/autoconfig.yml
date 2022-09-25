@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  colors.webpage.preferred_color_scheme:
+    global: dark
   content.geolocation:
     https://www.google.com: false
   content.media.audio_capture:
@@ -14,6 +16,17 @@ settings:
   content.notifications.enabled:
     https://www.fastshop.com.br: false
     https://www.netflix.com: false
+    https://www.youtube.com: false
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: true
     https://mail.proton.me#mailto=%25s: true
+  fonts.default_family:
+    global: []
+  fonts.default_size:
+    global: 13pt
+  fonts.web.size.default_fixed:
+    global: 13
+  statusbar.show:
+    global: in-mode
+  tabs.show:
+    global: multiple

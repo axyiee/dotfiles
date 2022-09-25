@@ -1,0 +1,1 @@
+/home/syntax/.cache/wal/darkreader.qutebrowser.js

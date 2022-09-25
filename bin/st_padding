@@ -1,0 +1,30 @@
+#!/bin/bash
+
+update() {
+    pidof st | xargs kill -s USR1
+}
+
+on() {
+    xrdb -merge "$HOME/.Xresources"
+    xrdb -merge "$HOME/.cache/wal/colors.Xresources"
+    update
+}
+
+off() {
+    xrdb -merge "$HOME/.config/nvim/base.Xresources"
+    update
+}
+
+toggle() {
+    if grep -q "$BASE_PROP$TOGGLED_ON_VALUE" "$FILENAME"; then
+        off
+    else
+        on
+    fi
+}
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 [on|off|toggle]"
+fi
+
+$1
