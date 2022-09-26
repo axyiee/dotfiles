@@ -4,19 +4,36 @@
 --  /____/\_,_/_//_/\_, /\_,_/\_,_/\_, /\__/ /___/\__/_/  |___/\__/_/ /___/
 --                 /___/          /___/
 
-local ok, nvim_lsp = pcall(require, 'lspconfig')
-if not ok then return end
+local ok, nvim_lsp = pcall(require, "lspconfig")
+if not ok then
+    return
+end
 
-require 'core.lsp.completion';
+require("core.lsp.completion")
+require("core.lsp.formatter")
 
-local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local on_attach = require 'core.keybind'.on_attach;
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+local on_attach = require("core.keybind").on_attach
 
-local modules = { "rust", "java", "tsserver", "vuels", "cssls", "eslint", "html", "jsonls", "lua", "pyright" }
+local modules = {
+    "rust",
+    "java",
+    "tsserver",
+    "vuels",
+    "cssls",
+    "cssmodules_ls",
+    "eslint",
+    "html",
+    "jsonls",
+    "lua",
+    "pyright",
+    "elixir",
+}
 for _, module in ipairs(modules) do
-    local ok, mdl = pcall(require, 'core.lsp.' .. module)
+    local ok, mdl = pcall(require, "core.lsp." .. module)
     if not ok then
-        nvim_lsp[module].setup { on_attach = on_attach, capabilities = capabilities }
+        nvim_lsp[module].setup({ on_attach = on_attach, capabilities = capabilities })
     else
         mdl.setup(nvim_lsp, capabilities, on_attach)
     end
@@ -28,5 +45,5 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = true })
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = true })

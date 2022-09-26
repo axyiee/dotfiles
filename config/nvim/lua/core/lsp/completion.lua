@@ -46,9 +46,6 @@ cmp.setup {
         },
         {
             { name = "buffer" }
-        },
-        {
-            { name = "emoji", insert = true }
         }
     ),
     formatting = {
@@ -79,4 +76,3 @@ cmp.setup.filetype(
 )
 
 require("luasnip/loaders/from_vscode").lazy_load()
-

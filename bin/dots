@@ -5,8 +5,8 @@
 
 neovim_install() {
     git clone --depth 1 https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
-    npm i -g typescript vls vscode-langservers-extracted pyright
-    yay -S fzy go
+    npm i -g typescript vls vscode-langservers-extracted pyright cssmodules-language-server @fsouza/prettierd eslint_d
+    yay -S fzy go elixir-ls stylua
 }
 
 # Execute command passed as argument

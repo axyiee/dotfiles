@@ -15,7 +15,7 @@
 
 const blocked = [
     /http(s)?:\/\/(localhost|127.0.0.1)/,
-    /http(s)?:\/\/(.*\.)discord.com\/(app|channels)/,
+    /http(s)?:\/\/discord.com\/(app|channels)/,
     /http(s)?:\/\/open.spotify.com/,
     /http(s)?:\/\/www.netflix.com/,
     /http(s)?:\/\/www.figma.com/,
@@ -24,14 +24,19 @@ const blocked = [
     /http(s)?:\/\/(.*).oracle.com/,
     /http(s)?:\/\/www.fiverr.com/,
     /http(s)?:\/\/www.upwork.com/,
-    /http(s)?:\/\/(.*).minecraft.net/
+    /http(s)?:\/\/(.*).minecraft.net/,
+    /http(s)?:\/\/www.google.com(.br)?/
 ];
 
-for (const url of blocked) {{
-    if (location.href.match(url)) {{
-        return;
-    }}
-}}
+for (const url of blocked) {
+    {
+        if (location.href.match(url)) {
+            {
+                return;
+            }
+        }
+    }
+}
 
 DarkReader.enable({{
     brightness: 100,

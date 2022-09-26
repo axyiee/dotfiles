@@ -6,11 +6,11 @@
 
 my personal [dwm] desktop for a simple gaming, studying and software development workflow
 
-* 🔊 [pipewire] is being used as audio server
-* 🎨 [pywal] is being used as color scheme generator
-* 🖥️ [st] is being used as terminalemulator
-* 📜 [neovim] is being used as text editor
-* 💥 [picom] is being used as x.org compositor  
+- 🔊 [pipewire] is being used as audio server
+- 🎨 [pywal] is being used as color scheme generator
+- 🖥️ [st] is being used as terminalemulator
+- 📜 [neovim] is being used as text editor
+- 💥 [picom] is being used as x.org compositor
 
 [dwm]: https://code.syntax.lol/dwm
 [st]: https://code.syntax.lol/st
@@ -26,53 +26,43 @@ my personal [dwm] desktop for a simple gaming, studying and software development
 **1. installing xorg**
 
 ```bash
-xbps-install xorg-minimal xinit xrdb # Void Linux
-
 # This assumes you have the 'yay' AUR helper installed on your machine.
-yay -S xorg-server xorg-xinit xorg-xrdb # Arch Linux
+yay -S xorg-server xorg-xinit xorg-xrdb
 ```
 
 **2. installing the window manager**
 
 ```bash
-xbps-install dbus # Void Linux
-yay -S dbus # Arch Linux
-git clone https://code.syntax.lol/dwm /tmp/dwm && cd /tmp/dwm
-doas make -j$(nproc) install # replace 'doas' with sudo, if necessary
+mkdir /tmp/dwm-pkgbuild &&
+    cd /tmp/dwm-pkgbuild &&
+    wget https://raw.githubusercontent.com/FromSyntax/dwm/main/PKGBUILD &&
+    makepkg -si
 ```
 
 **5. installing the audio server**
 
 ```bash
-xbps-install pipewire alsa-pipewire wireplumber # Void Linux
-yay -S pipewire pipewire-pulse pipewire-alsa wireplumber # Arch Linux
+yay -S pipewire pipewire-pulse pipewire-alsa wireplumber
 ```
 
 **5. installing the status bar and notifications**
 
-```bash 
-xbps-install python3-dbus pamixer dunst xsetroot # Void Linux
-yay -S python-dbus pamixer dunst xorg-xsetroot # Arch Linux
+```bash
+yay -S python-dbus pamixer dunst xorg-xsetroot
 ```
 
 **6. installing the terminal emulator**
 
 ```bash
-git clone https://code.syntax.lol/st /tmp/st && cd /tmp/st
-doas make -j$(nproc) install # replace 'doas' with sudo, if necessary
+mkdir /tmp/st-pkgbuild &&
+    cd /tmp/st-pkgbuild &&
+    wget https://raw.githubusercontent.com/FromSyntax/st/main/PKGBUILD &&
+    makepkg -si
 ```
 
 **7. installing the x.org compositor**
 
 ```bash
-# Void Linux
-doas xbps-install MesaLib-devel dbus-devel libconfig-devel libev-devel pcre-devel pixman-devel xcb-util-image-devel xcb-util-renderutil-devel libxdg-basedir-devel uthash
-git clone --depth=1 --single-branch --branch implement-window-animations https://github.com/dccsilag/picom /tmp/picom && cd /tmp/picom
-git submodule update --init --recursive
-meson --buildtype=release . build
-doas ninja -C build install # replace 'doas' with sudo, if necessary
-
-# Arch Linux
 yay -S picom-animations-git
 ```
 
@@ -85,8 +75,7 @@ color scheme based on the wallpaper, which is pretty neat! You may also want to 
 [oomox]: https://github.com/themix-project/oomox
 
 ```bash
-xbps-install pywal feh # Void Linux
-yay -S pywal feh # Arch Linux
+yay -S pywal feh
 ```
 
 **8. symlinking configuration files**
@@ -96,8 +85,15 @@ running this.
 
 ```bash
 ./scripts/symlink.sh
+./scripts/bin.sh
+```
+
+**9. installing neovim**
+
+```bash
+yay -S neovim
+dots neovim install # if you used bin.sh, it will be available as /usr/bin/dots
 ```
 
 And that's it! You can now enjoy azalea just by using the `startx` command on TTY or using any display
 manager.
-

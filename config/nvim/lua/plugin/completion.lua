@@ -4,7 +4,7 @@
 -- \___/\___/_/_/_/ .__/_/\__/\__/_/\___/_//_/
 --               /_/
 
-local ok, cmp = pcall(require, "cmp")
+local ok, cmp = pcall(require, 'cmp')
 if not ok then return end
 
 local ok, nvim_lsp = pcall(require, 'lspconfig')
@@ -41,14 +41,15 @@ cmp.setup {
     sources = cmp.config.sources(
         {
             { name = 'path' },
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' }, -- For luasnip users.
+        },
+        {
+            { name = 'nvim_lsp' }
+        },
+        {
+            { name = 'luasnip', option = { use_show_condition = false } }, -- For luasnip users.
         },
         {
             { name = "buffer" }
-        },
-        {
-            { name = "emoji", insert = true }
         }
     ),
     formatting = {
