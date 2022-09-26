@@ -1,5 +1,5 @@
-function setup(lsp, capabilities, on_attach)
-    lsp.rust_analyzer.setup {
+local function setup(lsp, capabilities, on_attach)
+    lsp.rust_analyzer.setup({
         on_attach = on_attach,
         settings = {
             ["rust-analyzer"] = {
@@ -8,17 +8,17 @@ function setup(lsp, capabilities, on_attach)
                     importPrefix = "by_self",
                 },
                 cargo = {
-                    loadOutDirsFromCheck = true
+                    loadOutDirsFromCheck = true,
                 },
                 procMacro = {
-                    enable = true
+                    enable = true,
                 },
-            }
+            },
         },
         capabilities = capabilities,
-    }
+    })
 end
 
 return {
-    setup = setup
+    setup = setup,
 }

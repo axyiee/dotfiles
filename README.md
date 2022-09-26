@@ -48,7 +48,7 @@ yay -S pipewire pipewire-pulse pipewire-alsa wireplumber
 **5. installing the status bar and notifications**
 
 ```bash
-yay -S python-dbus pamixer dunst xorg-xsetroot
+yay -S alsa-utils dunst xorg-xsetroot
 ```
 
 **6. installing the terminal emulator**

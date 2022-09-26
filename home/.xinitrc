@@ -46,7 +46,7 @@ dunst -c ~/.config/dunst/dunstrc &
 # xset -dpms s off
 
 # Enable status bar script
-~/.config/dwm/status_bar.sh &
+bash ~/.config/dwm/status_bar.sh &
 
 # Window manager
-exec dwm
+.exec dwm

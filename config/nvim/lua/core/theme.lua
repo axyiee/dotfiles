@@ -9,19 +9,20 @@ vim.o.background = "dark"
 local ok, poimandres = pcall(require, "poimandres")
 if ok then
     poimandres.setup()
-    vim.cmd [[ colorscheme poimandres ]]
+    vim.cmd([[ colorscheme poimandres ]])
 end
 
-local ok, lualine = pcall(require, 'lualine')
+local ok, lualine = pcall(require, "lualine")
 if ok then
-    lualine.setup {
+    lualine.setup({
         options = {
-            theme = 'poimandres',
-            section_separators = '', component_separators = '',
+            theme = "poimandres",
+            section_separators = "",
+            component_separators = "",
             always_divide_middle = true,
-            disabled_filetypes = { 'NvimTree', 'packer' }
-        }
-    }
+            disabled_filetypes = { "NvimTree", "packer" },
+        },
+    })
 end
 
-vim.cmd [[ hi! EndOfBuffer ctermbg=0 ctermfg=0 guibg=0 guifg=0 ]]
+vim.cmd([[ hi! EndOfBuffer ctermbg=0 ctermfg=0 guibg=0 guifg=0 ]])
