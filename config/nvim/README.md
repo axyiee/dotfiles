@@ -94,7 +94,7 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <tr><code>&lt;S-Tab&gt;</code></tr>
+        <td><code>&lt;S-Tab&gt;</code></td>
         <td>Insert unindentation space</td>
         <td>Insert</td>
         <td>Editor</td>
