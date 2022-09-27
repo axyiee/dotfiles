@@ -13,7 +13,7 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Combination</td>
         <td>Function</td>
         <td>Modes</td>
-        <tr>Where</tr>
+        <td>Where</td>
     </tr>
     <tr>
         <td><code>,</code></td>
@@ -22,43 +22,43 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td></td>
     </tr>
     <tr>
-        <td><code><C-S-i></code></td>
+        <td><code>&lt;C-S-i&gt;</code></td>
         <td>LSP: Reformat code</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-S-b></code></td>
+        <td><code>&lt;C-S-b&gt;</code></td>
         <td>LSP: Go to definition</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-S-b></code></td>
+        <td><code>&lt;C-S-b&gt;</code></td>
         <td>LSP: Go to implementation</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-S-f></code></td>
+        <td><code>&lt;C-S-f&gt;</code></td>
         <td>LSP: Find references</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><F12></code></td>
+        <td><code>&lt;F12&gt;</code></td>
         <td>LSP: Rename</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code><space>D</code></td>
+        <td><code>&lt;space&gt;D</code></td>
         <td>LSP: Go to type definition</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><space>ca</code></td>
+        <td><code>&lt;space&gt;ca</code></td>
         <td>LSP: Code action</td>
         <td>Normal</td>
         <td>Editor</td>
@@ -70,73 +70,73 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-s></code></td>
+        <td><code>&lt;C-s&gt;</code></td>
         <td>Save file</td>
         <td>*</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-x></code></td>
+        <td><code>&lt;C-x&gt;</code></td>
         <td>Close buffer</td>
         <td>*</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><S-Tab></code></td>
+        <td><code>&lt;S-Tab&gt;</code></td>
         <td>Switch buffer focus</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code><Tab></code></td>
+        <td><code>&lt;Tab&gt;</code></td>
         <td>Insert indentation space</td>
         <td>Insert</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <tr><code><S-Tab></code></tr>
+        <tr><code>&lt;S-Tab&gt;</code></tr>
         <td>Insert unindentation space</td>
         <td>Insert</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-/></code></td>
+        <td><code>&lt;C-/&gt;</code></td>
         <td>Toggle comment</td>
         <td>*</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><A-(0-9)></code></td>
+        <td><code>&lt;A-(0-9)&gt;</code></td>
         <td>Switch to buffer at <i>n</i></td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><A-0></code></td>
+        <td><code>&lt;A-0&gt;</code></td>
         <td>Switch to last buffer</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code><C-p></code></td>
+        <td><code>&lt;C-p&gt;</code></td>
         <td>Telescope: open file finding view</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code><space>fg</code></td>
+        <td><code>&lt;space&gt;fg</code></td>
         <td>Telescope: open live grep view</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code><C-S-p></code></td>
+        <td><code>&lt;C-S-p&gt;</code></td>
         <td>Telescope: open buffers view</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code><leader>t</code></td>
+        <td><code>&lt;leader&gt;t</code></td>
         <td>nvim-tree: toggle file tree</td>
         <td>Normal</td>
         <td>*</td>
