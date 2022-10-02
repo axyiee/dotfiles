@@ -72,18 +72,23 @@ battery() {
 }
 
 volume() {
-    local volume=`pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,'`
+    local volume=`pamixer --get-volume-human | sed 's/\%//'`
     local icon=""
     if [ -z "$volume" ]; then
         echo ""
         return
     fi
-    if [ "$volume" -gt 75 ]; then
-        icon=""
-    elif [ "$volume" -gt 25 ]; then
-        icon=""
+    if [ "$volume" = "muted" ]; then
+        volume="Muted"
+    else
+        if [ "$volume" -gt 75 ]; then
+            icon=""
+        elif [ "$volume" -gt 25 ]; then
+            icon=""
+        fi
+        volume="$volume%%"
     fi
-    print_with_icon "$color4" "$background" "$darker_color4" "$background" "$icon" "$volume%%"
+    print_with_icon "$color4" "$background" "$darker_color4" "$background" "$icon" "$volume"
     printf " "
 }
 

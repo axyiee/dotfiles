@@ -13,17 +13,14 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Resolution and overscan fix
-xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on  --set "underscan hborder" 100 --set "underscan vborder" 50
+xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on --set "underscan hborder" 100 --set "underscan vborder" 50
 
 # Keyboard layout
 setxkbmap -layout us -variant intl
 
-# Color scheme
-xrdb -merge ~/.Xresources
-xrdb -merge ~/.cache/wal/colors.Xresources
-
 # Wallpaper
-WALLPAPER="$HOME/Wallpapers/2mn8bo9krcx71.png"
+#WALLPAPER="$HOME/Wallpapers/artwork/wallhaven-yx7ezk_1920x1080.png"
+WALLPAPER="$HOME/Wallpapers/artwork/wallhaven-q2elyl.jpg"
 feh --bg-scale $WALLPAPER
 
 # use pywal if it is not cached
@@ -31,13 +28,15 @@ if [ ! -f ~/.cache/wal/colors.Xresources ]; then
     wal -i $WALLPAPER 
 fi
 
+# Color scheme
+xrdb -merge ~/.Xresources
+xrdb -merge ~/.cache/wal/colors.Xresources
+
 # Compositor
 picom --experimental-backends &
 
 # Audio
-pipewire &
-pipewire-pulse &
-wireplumber &
+bash "$HOME"/.config/dwm/scripts/pipewire-server &
 
 # Notifications
 dunst -c ~/.config/dunst/dunstrc &
@@ -45,8 +44,9 @@ dunst -c ~/.config/dunst/dunstrc &
 # Disable screen blanking
 # xset -dpms s off
 
-# Enable status bar script
-bash ~/.config/dwm/status_bar.sh &
+# Scriptable status bar
+~/.config/dwm/status_bar.sh &
 
 # Window manager
-.exec dwm
+exec dwm
+

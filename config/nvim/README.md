@@ -155,6 +155,7 @@ everything here is optional except by fzy (unless you don't want telescope stuff
 - [`doas npm i -g pyright`][`npm`] - python language server
 - [`doas npm i -g cssmodules-language-server`][`npm`] - css modules language server
 - [`doas npm i -g @fsouza/prettierd eslint_d`][`npm`] - javascript, css, html and markdown formatting and linting
+- [`opam install ocaml-lsp-server`][`opam`] - ocaml language server
 - [`sumneko/lua-language-server`] - lua language server
 - [`rust-analyzer`] - rust language server
 - [`elixir-ls`] - elixir language server
@@ -168,3 +169,4 @@ You can install everything on Arch Linux using `bin/dots neovim install`, assumi
 [`sumneko/lua-language-server`]: https://github.com/sumneko/lua-language-server
 [`elixir-ls`]: https://github.com/elixir-lsp/elixir-ls
 [`stylua`]: https://github.com/JohnnyMorganz/StyLua
+[`opam`]: https://opam.ocaml.org

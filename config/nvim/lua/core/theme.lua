@@ -5,18 +5,13 @@
 
 vim.o.termguicolors = true -- Enable term gui colors in order to enable theme support.
 vim.o.background = "dark"
-
-local ok, poimandres = pcall(require, "poimandres")
-if ok then
-    poimandres.setup()
-    vim.cmd([[ colorscheme poimandres ]])
-end
+vim.cmd([[ colorscheme embark ]])
 
 local ok, lualine = pcall(require, "lualine")
 if ok then
     lualine.setup({
         options = {
-            theme = "poimandres",
+            theme = "auto",
             section_separators = "",
             component_separators = "",
             always_divide_middle = true,

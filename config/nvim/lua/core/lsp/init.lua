@@ -18,7 +18,7 @@ local on_attach = require("core.keybind").on_attach
 
 local modules = {
     "rust",
-    "java",
+    --"java",
     "tsserver",
     "vuels",
     "cssls",
@@ -29,6 +29,8 @@ local modules = {
     "lua",
     "pyright",
     "elixir",
+    "ocamllsp",
+    "rescript",
 }
 for _, module in ipairs(modules) do
     local ok, mdl = pcall(require, "core.lsp." .. module)

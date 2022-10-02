@@ -9,11 +9,6 @@ if not ok then
     return
 end
 
-local ok, nvim_lsp = pcall(require, "lspconfig")
-if not ok then
-    return
-end
-
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
     return
@@ -45,16 +40,44 @@ cmp.setup({
         ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })),
     },
     sources = cmp.config.sources({
-        { name = "path" },
-        { name = "buffer" },
-        { name = "nvim_lsp" },
-        { name = "luasnip", option = { use_show_condition = false } }, -- For luasnip users.
+        { name = "nvim_lsp", priority = 8 },
+        { name = "luasnip", option = { use_show_condition = false }, priority = 7 }, -- For luasnip users.
+        { name = "nvim_lua", priority = 6 },
+        { name = "path", priority = 5 },
+        { name = "buffer", priority = 4 },
+        { name = "calc", priority = 3 },
     }),
+    sorting = {
+        priority_weight = 1.0,
+        comparators = {
+            cmp.config.compare.locality,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
+            cmp.config.compare.offset,
+            cmp.config.compare.order,
+        },
+    },
     formatting = {
         format = lspkind.cmp_format({
-            mode = "symbol_text",
+            mode = "symbol",
             with_text = true,
-            maxwidth = 50,
+            maxwidth = 60,
+            before = function(entry, vim_item)
+                local source = ({
+                    nvim_lsp = "",
+                    nvim_lua = "",
+                    treesitter = "",
+                    path = "ﱮ",
+                    buffer = "﬘",
+                    zsh = "",
+                    luasnip = "",
+                    spell = "暈",
+                })[entry.source.name]
+                if source then
+                    vim_item.menu = " " .. source
+                end
+                return vim_item
+            end,
         }),
     },
     completion = {

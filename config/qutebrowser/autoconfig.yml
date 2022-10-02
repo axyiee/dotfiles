@@ -6,6 +6,15 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      normal:
+        ',m': spawn ~/.config/mpv/umpv {url}
+        ;M: hint --rapid links spawn ~/.config/mpv/umpv {hint-url}
+        cf: set content.headers.user_agent "cloudflare 503 workaround"
+        cn: config-unset content.headers.user_agent
+        xx: config-cycle tabs.show multiple never;; config-cycle statusbar.show in-mode
+          never
   colors.webpage.preferred_color_scheme:
     global: dark
   content.geolocation:

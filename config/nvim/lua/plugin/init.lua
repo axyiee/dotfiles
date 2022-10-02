@@ -15,7 +15,8 @@ return require("packer").startup(function(use)
     use("wbthomason/packer.nvim")
 
     -- theming
-    use("olivercederborg/poimandres.nvim")
+    -- use("olivercederborg/poimandres.nvim")
+    use({ "embark-theme/vim", as = "embark" })
 
     -- api's
     use("kyazdani42/nvim-web-devicons")
@@ -97,14 +98,11 @@ return require("packer").startup(function(use)
     use("nvim-telescope/telescope-ui-select.nvim")
     use("nvim-telescope/telescope-media-files.nvim")
     use("nvim-telescope/telescope-file-browser.nvim")
-    use("gbrlsnchs/telescope-lsp-handlers.nvim")
-    use("nvim-telescope/telescope-fzy-native.nvim")
 
     -- lsp
     use("hrsh7th/cmp-nvim-lsp")
     use("hrsh7th/cmp-buffer")
     use("hrsh7th/cmp-path")
-    use("hrsh7th/cmp-cmdline")
     use("hrsh7th/nvim-cmp")
     use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/LuaSnip")
@@ -154,6 +152,12 @@ return require("packer").startup(function(use)
         requires = { "MunifTanjim/nui.nvim" },
     })
     use("windwp/nvim-ts-autotag")
+    use({
+        "RRethy/vim-illuminate",
+        config = function()
+            require("plugin.illuminate")
+        end,
+    })
 
     -- util
     use("github/copilot.vim")
@@ -169,17 +173,14 @@ return require("packer").startup(function(use)
         "saecki/crates.nvim",
         event = { "BufRead Cargo.toml" },
         config = function()
-            require("crates").setup {
+            require("crates").setup({
                 null_ls = {
                     enabled = true,
                     name = "crates.nvim",
-                }
-            }
+                },
+            })
         end,
     })
-
-    -- lisp
-    use("elkowar/yuck.vim")
 
     if packer_bootstrap then
         require("packer").sync()

@@ -25,18 +25,16 @@ const blocked = [
     /http(s)?:\/\/www.fiverr.com/,
     /http(s)?:\/\/www.upwork.com/,
     /http(s)?:\/\/(.*).minecraft.net/,
-    /http(s)?:\/\/www.google.com(.br)?/
+    /http(s)?:\/\/www.google.com(.br)?/,
+    /http(s)?:\/\/coolors.co/,
+    /http(s)?:\/\/wallhaven.cc/
 ];
 
-for (const url of blocked) {
-    {
-        if (location.href.match(url)) {
-            {
-                return;
-            }
-        }
-    }
-}
+for (const url of blocked) {{
+    if (location.href.match(url)) {{
+        return;
+    }}
+}}
 
 DarkReader.enable({{
     brightness: 100,

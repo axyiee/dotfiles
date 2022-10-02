@@ -38,6 +38,7 @@ map.set("n", "<C-x>", map.cmd("BufferClose")) -- Quit the current file by using 
 ----------------------------------------------------------------------------------
 -- Keybindings related to the telescope plugin.
 
+map.set("n", "<C-o>", map.cmd("Telescope file_browser")) -- Open a file browser window.
 map.set("n", "<C-p>", map.cmd("Telescope find_files")) -- Open a file finding window.
 map.set("n", "<leader>fg", map.cmd("Telescope live_grep")) -- Open a live grep window.
 map.set("n", "<C-S-p>", map.cmd("Telescope buffers")) -- Open a buffers window.
@@ -70,18 +71,18 @@ local on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "<C-b>", vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, bufopts)
+    vim.keymap.set("n", "<leader><leader>", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "<C-S-b>", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set("n", "<space>wl", function()
+    vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set("n", "<leader>wl", function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "<C-S-f>", vim.lsp.buf.references, bufopts)
     vim.keymap.set("n", "<C-S-i>", vim.lsp.buf.formatting, bufopts)
 end
