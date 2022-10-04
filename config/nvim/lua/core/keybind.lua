@@ -12,9 +12,9 @@ local map = require("util.map")
 
 vim.g.mapleader = "," -- Set the global leader key.
 
-map.set("n", "<C-s>", map.cmd("w!")) -- Save the current file by using the Ctrl+S.
-map.set("v", "<C-s>", map.cmd("w!"))
-map.set("i", "<C-s>", map.cmd("w!"))
+map.set("n", "<C-s>", map.cmd("update!")) -- Save the current file by using the Ctrl+S.
+map.set("v", "<C-s>", map.cmd("update!"))
+map.set("i", "<C-s>", map.cmd("update!"))
 map.set("i", "<S-Tab>", "<C-d>")
 map.set("v", "<Tab>", ">gv")
 map.set("v", "<S-Tab>", "<gv")

@@ -1,11 +1,13 @@
-local ok, tree = pcall(require, 'nvim-tree')
-if not ok then return end
+local ok, tree = pcall(require, "nvim-tree")
+if not ok then
+    return
+end
 
-tree.setup {
+tree.setup({
     view = {
-        side = 'left'
+        side = "left",
     },
     filters = {
-        custom = { "^.git$" }
-    }
-}
+        custom = { "^.git$" },
+    },
+})

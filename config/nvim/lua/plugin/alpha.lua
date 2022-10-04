@@ -1,11 +1,13 @@
 local ok, alpha = pcall(require, "alpha")
-if not ok then return end
+if not ok then
+    return
+end
 
-local dashboard = require 'alpha.themes.dashboard'
+local dashboard = require("alpha.themes.dashboard")
 
 dashboard.section.header.val = {
-    '⢀⣀ ⣀⣀ ⢀⣀ ⡇ ⢀⡀ ⢀⣀',
-    '⠣⠼ ⠴⠥ ⠣⠼ ⠣ ⠣⠭ ⠣⠼',
+    "⢀⣀ ⣀⣀ ⢀⣀ ⡇ ⢀⡀ ⢀⣀",
+    "⠣⠼ ⠴⠥ ⠣⠼ ⠣ ⠣⠭ ⠣⠼",
 }
 
 dashboard.config.layout = {

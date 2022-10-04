@@ -43,12 +43,7 @@ return require("packer").startup(function(use)
             require("plugin.alpha")
         end,
     })
-    use({
-        "kyazdani42/nvim-tree.lua",
-        config = function()
-            require("plugin.tree")
-        end,
-    })
+    use("kyazdani42/nvim-tree.lua")
     use({
         "romgrk/barbar.nvim",
         config = function()
@@ -181,6 +176,9 @@ return require("packer").startup(function(use)
             })
         end,
     })
+
+    -- java
+    -- use("mfussenegger/nvim-jdtls")
 
     if packer_bootstrap then
         require("packer").sync()
