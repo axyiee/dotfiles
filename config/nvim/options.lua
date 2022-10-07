@@ -38,7 +38,7 @@ vim.o.incsearch = true -- Incremental search support.
 vim.o.visualbell = false -- Remove some annoying sounds when typing.
 vim.o.autoread = true -- Automatically update files when they are changed on disk.
 vim.o.autochdir = true -- Set directory to the current file's directory automatically.
-vim.cmd([[ set fillchars=fold:\ ,vert:\│,eob:\  ]]) -- Remove tilde character from the start of the line.
+vim.cmd([[ highlight EndOfBuffer ctermfg=black ctermbg=black ]]) -- Remove tilde character from the start of the line.
 
 -- Editing
 -----------------------------------------------------------------------

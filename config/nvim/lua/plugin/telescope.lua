@@ -12,7 +12,7 @@ telescope.setup({
     extensions = {
         file_browser = {
             theme = "dropdown",
-            hijack_netrw = true,
+            hijack_netrw = false,
         },
         fzy_native = {
             override_generic_sorter = false,

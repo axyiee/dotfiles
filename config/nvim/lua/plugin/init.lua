@@ -16,7 +16,8 @@ return require("packer").startup(function(use)
 
     -- theming
     -- use("olivercederborg/poimandres.nvim")
-    use({ "embark-theme/vim", as = "embark" })
+    -- use({ "embark-theme/vim", as = "embark" })
+    use({ "AlphaTechnolog/pywal.nvim", as = "pywal" })
 
     -- api's
     use("kyazdani42/nvim-web-devicons")
@@ -43,7 +44,12 @@ return require("packer").startup(function(use)
             require("plugin.alpha")
         end,
     })
-    use("kyazdani42/nvim-tree.lua")
+    use({
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("plugin.tree")
+        end,
+    })
     use({
         "romgrk/barbar.nvim",
         config = function()
