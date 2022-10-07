@@ -19,20 +19,26 @@ local M = {
     "ui.file_tree",
     "ui.lsp_progress",
     "ui.notify",
+    "ui.fuzzy_finder",
+    "ui.regex",
     "editor.lsp",
     "editor.completion",
     "editor.formatting",
-    "editor.snipetts",
+    "editor.snippets",
     "editor.autopairs",
     "editor.indent",
     "editor.comment",
     "editor.colorizer",
-    "editor.github_copilot",
+    "editor.move",
+    "editor.highlight",
+    "editor.illuminate",
     "shortcuts.space_leader",
     "shortcuts.save",
     "shortcuts.quit",
     "shortcuts.comment",
     "integration.git",
+    "integration.copilot",
+    "integration.discord",
 }
 
 local packer = require("module.internal.packer")
@@ -44,9 +50,7 @@ function M.load_all()
         for _, module in ipairs(M) do
             loader.load(use, module)
         end
-        if state then
-            loader.after()
-        end
+        loader.after()
     end)
 end
 

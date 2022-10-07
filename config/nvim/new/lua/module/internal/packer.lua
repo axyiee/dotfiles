@@ -15,6 +15,7 @@ end
 --   github = "treesitter/nvim-treesitter.lua",
 --   config = function() end,
 --   api = { { "", opt = true } },
+--   after = { "after-module" },
 -- }
 function M.use(use, module)
     if not module.as then
@@ -24,6 +25,7 @@ function M.use(use, module)
         module.github,
         config = module.config or function() end,
         requires = module.api or {},
+        after = module.after or {},
     })
 end
 

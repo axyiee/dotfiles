@@ -8,11 +8,12 @@
 --   depends = { "editor.lsp" },
 --   data = function()
 --      require 'nvim-treesitter'
---   end
+--   end,
+--   after = {},
 --   exec = function(treesitter, lsp)
 --      treesitter.setup {}
 --      lsp.do_something {}
---   end
+--   end,
 -- }
 
 local M = { prefix = "module." }
@@ -48,6 +49,7 @@ function M.load(use, name)
             local config = {
                 github = module.github,
                 api = module.api,
+                after = module.after,
             }
             if i == #settings.packer then
                 config.config = exec
