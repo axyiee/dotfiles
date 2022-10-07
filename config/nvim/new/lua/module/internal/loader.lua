@@ -1,5 +1,5 @@
 -- {
---   packer = {
+--  packer = {
 --      "nvim-treesitter/nvim-treesitter.lua",
 --   },
 --   api = {
@@ -15,22 +15,33 @@
 --   end
 -- }
 
-local module_prefix = "module."
-
-local M = {}
-local P = require(module_prefix .. "internal.packer")
+local M = { prefix = "module." }
+local P = require(M.prefix .. "internal.packer")
 
 local already_loaded = {}
 
-function M.load(use, name, settings)
+function M.load(use, name)
     if already_loaded[name] then
         return
     end
+    local ok, settings = pcall(require, M.prefix .. name)
+    if not ok then
+        vim.notify("Module '" .. name .. "' not found")
+        return
+    end
     local data = settings.data or function() end
+    local params = {}
     if settings.depends then
         for _, dep in ipairs(settings.depends) do
-            M.load(use, dep, require(module_prefix .. dep))
+            table.insert(params, M.load(use, dep))
         end
+    end
+    local exec = function()
+        local modules = {}
+        for _, dependency in ipairs(params) do
+            table.insert(modules, dependency.data())
+        end
+        settings.exec(data(), table.unpack(modules))
     end
     if settings.packer then
         for i, module in ipairs(settings.packer) do
@@ -39,17 +50,12 @@ function M.load(use, name, settings)
                 api = module.api,
             }
             if i == #settings.packer then
-                config.config = function()
-                    local root = pcall(require, module_prefix .. name)
-                    local modules = {}
-                    for _, dependency in ipairs(settings.depends or {}) do
-                        table.insert(modules, require(module_prefix .. dependency).data())
-                    end
-                    settings.exec(root, table.unpack(modules))
-                end
+                config.config = exec
             end
             P.use(use, config)
         end
+    else
+        exec()
     end
     return data
 end

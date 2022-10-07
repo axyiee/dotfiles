@@ -28,7 +28,10 @@ function M.use(use, module)
 end
 
 function M.startup(callback)
-    require("packer").startup(callback)
+    require("packer").startup(function(use)
+        use("wbthomason/packer.nvim")
+        callback(use)
+    end)
 end
 
 function M.sync()
