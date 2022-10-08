@@ -11,25 +11,43 @@ print_with_icon() {
     printf "^b$background2^^c$foreground2^ $text2 ^d^"
 }
 
-# get a hex color and return a darkened version of it
-darken() {
+color() {
     local hex="$1"
     local amount="$2"
+    local operation="$3"
     local r=$(echo "$hex" | cut -c 2-3)
     local g=$(echo "$hex" | cut -c 4-5)
     local b=$(echo "$hex" | cut -c 6-7)
-    r=$(printf "%x" "$((0x$r - $amount))")
-    g=$(printf "%x" "$((0x$g - $amount))")
-    b=$(printf "%x" "$((0x$b - $amount))")
+    r=$(printf "%x" "$((0x$r $operation $amount))")
+    g=$(printf "%x" "$((0x$g $operation $amount))")
+    b=$(printf "%x" "$((0x$b $operation $amount))")
     echo "#$r$g$b"
 }
 
-color1='#e0efda'
-color2='#efc7e5'
-color3='#b3c2f2'
-color4='#cc5a71'
-color5='#f2c078'
-color6='#83bcff'
+darken() {
+    color $1 $2 -
+}
+
+lighten() {
+    color $1 $2 +
+}
+
+. ~/.cache/wal/colors.sh
+#color1='#e0efda'
+#color2='#efc7e5'
+#color3='#b3c2f2'
+#color4='#cc5a71'
+#color5='#f2c078'
+#color6='#83bcff'
+color0="$color6"
+#format: darker lighter normal lighter darker
+# must be a really perceptive amount
+color3=$(lighten $color0 30)
+color4="$color3"
+color2=$(darken $color3 30)
+color1=$(darken $color2 30)
+color5="$color2"
+color6="$color1"
 darken_amount=20
 darker_color1=$(darken $color1 $darken_amount)
 darker_color2=$(darken $color2 $darken_amount)
@@ -40,12 +58,12 @@ darker_color6=$(darken $color6 $darken_amount)
 
 datetime() {
     local date=`date +"%a, %d %b"`
-    print_with_icon "$color1" "$background" "$darker_color1" "$background" "" "$date"
+    print_with_icon "$color5" "$background" "$darker_color5" "$background" "" "$date"
 }
 
 clock() {
     local date=`date +"%H:%M"`
-    print_with_icon "$color2" "$background" "$darker_color2" "$background" "" "$date"
+    print_with_icon "$color6" "$background" "$darker_color6" "$background" "" "$date"
 }
 
 battery() {
@@ -67,7 +85,7 @@ battery() {
     else
         icon=""
     fi
-    print_with_icon "$color3" "$background" "$darker_color3" "$background" "$icon" "$battery%%"
+    print_with_icon "$color4" "$background" "$darker_color4" "$background" "$icon" "$battery%%"
     printf " "
 }
 
@@ -88,13 +106,13 @@ volume() {
         fi
         volume="$volume%%"
     fi
-    print_with_icon "$color4" "$background" "$darker_color4" "$background" "$icon" "$volume"
+    print_with_icon "$color3" "$background" "$darker_color3" "$background" "$icon" "$volume"
     printf " "
 }
 
 ram() {
     local ram=`free -m | grep Mem: | awk '{print $3}'`
-    print_with_icon "$color5" "$background" "$darker_color5" "$background" "" "${ram}MiB"
+    print_with_icon "$color2" "$background" "$darker_color2" "$background" "" "${ram}MiB"
 }
 
 connection() {
@@ -104,7 +122,7 @@ connection() {
         icon="直"
         message="Connected"
     fi
-    print_with_icon "$color6" "$background" "$darker_color6" "$background" "$icon" "$message"
+    print_with_icon "$color1" "$background" "$darker_color1" "$background" "$icon" "$message"
 }
 
 while true; do
