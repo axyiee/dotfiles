@@ -1,2 +1,1 @@
-require"plugin"
-require"core"
+require("module").load_all()
