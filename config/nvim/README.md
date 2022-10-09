@@ -52,19 +52,25 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>*</td>
     </tr>
     <tr>
-        <td><code>&lt;space&gt;D</code></td>
+        <td><code>&lt;leader&gt;D</code></td>
         <td>LSP: Go to type definition</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;space&gt;ca</code></td>
+        <td><code>&lt;C-b&gt;</code></td>
+        <td>LSP: Go to type declaration</td>
+        <td>Normal</td>
+        <td>Editor</td>
+    </tr>
+    <tr>
+        <td><code>&lt;leader&gt;ca</code></td>
         <td>LSP: Code action</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>K</code></td>
+        <td><code>&lt;space&gt;&lt;space&gt;</code></td>
         <td>LSP: Hover</td>
         <td>Normal</td>
         <td>Editor</td>
@@ -100,13 +106,31 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;C-/&gt;</code></td>
+        <td><code>&lt;leader&gt;j</code></td>
+        <td>Move line down</td>
+        <td>Normal, Visual</td>
+        <td>Editor</td>
+    </tr>
+    <tr>
+        <td><code>&lt;space&gt;k</code></td>
+        <td>Move line up</td>
+        <td>Normal, Visual</td>
+        <td>Editor</td>
+    </tr>
+    <tr>
+        <td><code>&lt;leader&gt;c</code></td>
         <td>Toggle comment</td>
         <td>*</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;A-(0-9)&gt;</code></td>
+        <td><code>&lt;leader&gt;cc</code></td>
+        <td>Toggle block comment</td>
+        <td>*</td>
+        <td>Editor</td>
+    </tr>
+    <tr>
+        <td><code>&lt;A-(1-9)&gt;</code></td>
         <td>Switch to buffer at <i>n</i></td>
         <td>Normal</td>
         <td>Editor</td>
@@ -118,13 +142,13 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;C-p&gt;</code></td>
+        <td><code>&lt;C-o&gt;</code></td>
         <td>Telescope: open file finding view</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
-        <td><code>&lt;space&gt;fg</code></td>
+        <td><code>&ltC-p;&gt;</code></td>
         <td>Telescope: open live grep view</td>
         <td>Normal</td>
         <td>*</td>

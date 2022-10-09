@@ -7,7 +7,7 @@ return {
                 local options = { buffer = bufnr }
                 shortcut.map("n", "<C-b>", vim.lsp.buf.declaration, options)
                 shortcut.map("n", "<leader>d", vim.lsp.buf.definition, options)
-                shortcut.map("n", "<leader><leader>", vim.lsp.buf.hover, options)
+                shortcut.map("n", "<space><space>", vim.lsp.buf.hover, options)
                 shortcut.map("n", "<C-S-b>", vim.lsp.buf.implementation, options)
                 shortcut.map("n", "<C-k>", vim.lsp.buf.signature_help, options)
                 shortcut.map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, options)
