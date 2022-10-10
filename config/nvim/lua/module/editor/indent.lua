@@ -15,6 +15,6 @@ return {
         vim.o.autoindent = true
         vim.o.breakindent = true
         vim.cmd([[filetype plugin indent on]])
-        root.indent_blankline.setup()
+        root.indent_blankline.setup({ show_trailing_blankline_indent = false })
     end,
 }

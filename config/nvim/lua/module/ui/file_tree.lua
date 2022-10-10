@@ -19,10 +19,9 @@ return {
             "*/.git/*",
             "*/.gradle/*",
         })
-        vim.g.loaded = 1
-        vim.g.loaded_netrwPlugin = 1
         root.setup({
             view = {
+                adaptive_size = true,
                 side = "left",
             },
             filters = {

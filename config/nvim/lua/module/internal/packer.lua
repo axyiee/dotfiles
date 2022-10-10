@@ -26,7 +26,7 @@ function M.use(module)
         config.config = module.config
     end
     if module.as then
-	    config.as = module.as
+        config.as = module.as
     end
     if module.make then
         config.run = "make"
@@ -41,8 +41,12 @@ function M.init()
         display = {
             --non_interactive = true,
         },
-	ensure_dependencies = true,
-	compile_on_sync = true,
+        profile = {
+            enable = true,
+            threshold = 1,
+        },
+        ensure_dependencies = true,
+        compile_on_sync = true,
     })
     packer.use("wbthomason/packer.nvim")
     return packer

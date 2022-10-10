@@ -14,7 +14,7 @@ return {
                 theme = "pywal-nvim",
                 section_separators = "",
                 component_separators = "",
-                always_divide_middle = true,
+                always_divide_middle = false,
                 disabled_filetypes = { "NvimTree", "packer" },
             },
         })
