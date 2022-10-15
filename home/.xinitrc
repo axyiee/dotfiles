@@ -19,14 +19,9 @@ xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on --set "un
 setxkbmap -layout us -variant intl
 
 # Wallpaper
-#WALLPAPER="$HOME/Wallpapers/artwork/wallhaven-yx7ezk_1920x1080.png"
-WALLPAPER="$HOME/Wallpapers/artwork/wallhaven-q2elyl.jpg"
-feh --bg-scale $WALLPAPER
-
-# use pywal if it is not cached
-if [ ! -f ~/.cache/wal/colors.Xresources ]; then
-    wal -i $WALLPAPER 
-fi
+#WALLPAPER="$HOME/Wallpapers/artwork/wallhaven-q2elyl.jpg"
+WALLPAPER="$HOME/Wallpapers/artwork/YetAnotherSeaWallpaper.jpg"
+~/.config/dwm/scripts/solid_wallpaper.sh "$WALLPAPER"
 
 # Color scheme
 xrdb -merge ~/.Xresources
@@ -45,7 +40,8 @@ dunst -c ~/.config/dunst/dunstrc &
 # xset -dpms s off
 
 # Scriptable status bar
-~/.config/dwm/status_bar.sh &
+#bash "$HOME"/.config/dwm/scripts/status_bar.sh &
+bash "$HOME"/.config/polybar/launch.sh &
 
 # Window manager
 exec dwm

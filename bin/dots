@@ -9,6 +9,10 @@ neovim_install() {
     yay -S fzy go elixir-ls stylua clang rust-analyzer ocaml opam
     (mkdir -p "$HOME/.local/share/nvim/lsp-vsix/rescript" && cd "$HOME/.local/share/nvim/lsp-vsix/rescript" && wget https://github.com/rescript-lang/rescript-vscode/releases/download/latest-master/rescript-vscode-1.7.23.vsix && unzip rescript-vscode-1.7.23.vsix && rm -f rescript-vscode-1.7.23.vsix)
     opam install ocaml-lsp-server # run 'opam init' then this command again if it does not work
+} 
+
+jdtls_install() {
+    curl https://raw.githubusercontent.com/eruizc-dev/jdtls-launcher/master/install.sh | bash
 }
 
 # Execute command passed as argument
@@ -16,11 +20,11 @@ case "$@" in
     'neovim install')
         neovim_install
         ;;
-    '')
-        echo "Usage: $0 [command]"
-        echo "Commands: 'neovim install'"
+    'jdtls install')
+        jdtls_install
         ;;
     *)
-        echo "Command not found"
+        echo "Usage: $0 [command]"
+        echo "Commands: 'neovim install', 'jdtls install'"
         ;;
 esac

@@ -27,7 +27,9 @@ const blocked = [
     /http(s)?:\/\/(.*).minecraft.net/,
     /http(s)?:\/\/www.google.com(.br)?/,
     /http(s)?:\/\/coolors.co/,
-    /http(s)?:\/\/wallhaven.cc/
+    /http(s)?:\/\/wallhaven.cc/,
+    /http(s)?:\/\/imagecolorpicker.com/,
+    /http(s)?:\/\/www.reddit.com/,
 ];
 
 for (const url of blocked) {{

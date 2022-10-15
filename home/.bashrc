@@ -4,6 +4,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+    . "$HOME/.cache/wal/colors.sh"
+fi
+if [ -f "$HOME/.bin/fzf-bash-completion.sh" ]; then
+    . "$HOME/.bin/fzf-bash-completion.sh"
+    bind -x '"\t": fzf_bash_completion'
+fi
+
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias btop="btop --utf-force"
@@ -11,10 +19,12 @@ alias sr="sudo reboot"
 alias ll='ls -la'
 alias tap="yay"
 
+ST_PID="$(ps -C st -o pid= | tail -1)"
+
 nvim() {
-    st_padding off
+    st_padding off $ST_PID
     /usr/bin/nvim $@
-    st_padding on
+    st_padding on $ST_PID
 }
 
 amdgpu_mode() {
@@ -49,7 +59,7 @@ export PATH="$VOLTA_HOME/bin:$PNPM_HOME:$PATH"
 export GPG_TTY=$(tty)
 
 if [ "$(tput cols)" -gt 95 ]; then
-    st_padding on
+    st_padding on $ST_PID
     "$HOME/.dots/scripts/pacman_color_script.sh" 
 else
     "$HOME/.dots/scripts/crunch_color_script.sh"

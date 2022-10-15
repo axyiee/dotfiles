@@ -3,7 +3,7 @@
 _FZF_COMPLETION_SEP=$'\x01'
 
 # shell parsing stuff
-_fzf_bash_completion_egrep="$( { which rg || echo egrep; } 2>/dev/null)"
+_fzf_bash_completion_egrep="$( { which rg || echo grep -E; } 2>/dev/null)"
 _fzf_bash_completion_awk="$( { which gawk || echo awk; } 2>/dev/null)"
 _fzf_bash_completion_sed="$( { which gsed || echo sed; } 2>/dev/null)"
 
@@ -12,7 +12,7 @@ _fzf_bash_completion_awk_escape() {
 }
 
 _fzf_bash_completion_shell_split() {
-    "$_fzf_bash_completion_egrep" -o \
+    $_fzf_bash_completion_egrep -o \
         -e '[;(){}&\|:]' \
         -e '\|+|&+' \
         -e "(\\\\.|[^\"'[:space:];:(){}&\\|])+" \

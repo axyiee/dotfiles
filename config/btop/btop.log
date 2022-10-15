@@ -31,3 +31,9 @@
 
 2022/09/13 (03:14:09) | ===> btop++ v.1.2.9
 2022/09/13 (03:14:09) | WARNING: Failed to join _runner thread on exit!
+
+2022/10/12 (19:51:26) | ===> btop++ v.1.2.9
+2022/10/12 (19:51:26) | ERROR: Exception in runner thread -> Proc:: -> basic_string::replace: __pos (which is 18446744073709551608) > this->size() (which is 0)
+
+2022/10/12 (19:59:53) | ===> btop++ v.1.2.9
+2022/10/12 (19:59:53) | ERROR: Exception in runner thread -> Proc:: -> basic_string::replace: __pos (which is 18446744073709551608) > this->size() (which is 0)

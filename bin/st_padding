@@ -1,7 +1,9 @@
 #!/bin/bash
 
+PID="$2"
+
 update() {
-    kill -s USR1 `pidof st`
+    kill -s USR1 $PID
 }
 
 on() {
@@ -15,16 +17,8 @@ off() {
     update
 }
 
-toggle() {
-    if grep -q "$BASE_PROP$TOGGLED_ON_VALUE" "$FILENAME"; then
-        off
-    else
-        on
-    fi
-}
-
 if [ -z "$1" ]; then
-    echo "Usage: $0 [on|off|toggle]"
+    echo "Usage: $0 [on|off] <pid>"
 fi
 
 $1 
