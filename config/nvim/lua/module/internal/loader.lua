@@ -58,7 +58,7 @@ function M.load(name)
 	local modules = {}
 	if settings.packer then
 		for i, module in ipairs(settings.packer) do
-			local options = { github = module, make = false, api = settings.api }
+			local options = { github = module, make = false, api = settings.api, branch = settings.branch }
 			if i == 1 then
 				options.config = apply
 			end

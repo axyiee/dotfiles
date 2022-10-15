@@ -36,7 +36,7 @@ return {
                 root.cmp.mapping.select_next_item({ behavior = root.cmp.SelectBehavior.Select })
             ),
             ["<S-Tab>"] = root.cmp.mapping(
-                root.cmp.mapping.select_next_item({ behavior = root.cmp.SelectBehavior.Select })
+                root.cmp.mapping.select_prev_item({ behavior = root.cmp.SelectBehavior.Select })
             ),
             ["<C-f>"] = root.cmp.mapping.scroll_docs(-5),
             ["<C-u>"] = root.cmp.mapping.scroll_docs(5),
@@ -128,5 +128,6 @@ return {
         })
 
         root.luasnip.loaders.vscode.lazy_load()
+        vim.g.copilot_assume_mapped = true
     end,
 }
