@@ -42,6 +42,6 @@ DarkReader.enable({{
     brightness: 100,
     contrast: 100,
     sepia: 0,
-    darkSchemeBackgroundColor: "{background}",
-    darkSchemeTextColor: "{foreground}",
+    lightSchemeBackgroundColor: "{background}",
+    lightSchemeTextColor: "{foreground}",
 }});

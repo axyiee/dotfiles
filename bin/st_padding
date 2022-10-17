@@ -8,7 +8,6 @@ update() {
 
 on() {
     xrdb -merge "$HOME/.Xresources"
-    xrdb -merge "$HOME/.cache/wal/colors.Xresources"
     update
 }
 

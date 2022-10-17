@@ -12,7 +12,7 @@ local M = {
 	"performance.lazyredraw",
 	"performance.filetype",
 	"performance.impatient",
-	"theme.oxocarbon",
+	"theme.zenbones",
 	"ui.startup",
 	"ui.bufferline",
 	"ui.statusline",

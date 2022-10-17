@@ -18,6 +18,7 @@ settings:
   colors.webpage.preferred_color_scheme:
     global: dark
   content.geolocation:
+    https://g1.globo.com: false
     https://www.google.com: false
   content.media.audio_capture:
     https://discord.com: true

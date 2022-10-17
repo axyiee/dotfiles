@@ -1,5 +1,3 @@
-# https://raw.githubusercontent.com/Jvanrhijn/polybar-spotify/master/spotify_status.py 
-
 #!/usr/bin/env python
 
 import sys

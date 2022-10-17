@@ -83,6 +83,8 @@ c.colors.hints.bg = background
 c.colors.hints.fg = foreground
 c.colors.tabs.selected.even.bg = selected
 c.colors.tabs.selected.odd.bg = selected
+c.colors.tabs.selected.even.fg = foreground
+c.colors.tabs.selected.odd.fg = foreground
 
 # change title format
 c.tabs.title.format = "{audio}{current_title}"
@@ -95,14 +97,6 @@ c.colors.completion.category.bg = background
 c.colors.completion.category.fg = foreground
 c.colors.completion.item.selected.bg = background
 c.colors.completion.item.selected.fg = foreground
-
-# If not in light theme
-if xresources["*.background"] != "#ffffff":
-    c.colors.webpage.preferred_color_scheme = 'dark'
-    # c.qt.args = ['blink-settings=darkMode=4']
-#    c.colors.webpage.darkmode.enabled = True
-#    c.hints.border = "1px solid #FFFFFF"
-
 #c.content.unknown_url_scheme_policy = 'allow-all'
 c.fonts.default_size = "13pt"
 c.content.javascript.enabled = True
