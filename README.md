@@ -7,17 +7,19 @@
 my personal [dwm] desktop for a simple gaming, studying and software development workflow
 
 - 🔊 [pipewire] is being used as audio server
-- 🎨 [pywal] is being used as color scheme generator
+- 🎨 [zenbones] is being used as color scheme
 - 🖥️ [st] is being used as terminalemulator
 - 📜 [neovim] is being used as text editor
 - 💥 [picom] is being used as x.org compositor
+- 📊 [polybar-dwm-module] is being used as status bar
 
 [dwm]: https://code.syntax.lol/dwm
 [st]: https://code.syntax.lol/st
-[pywal]: https://github.com/dylanaraps/pywal
+[zenbones]: https://github.com/mcchrish/zenbones.nvim
 [pipewire]: https://gitlab.freedesktop.org/pipewire/pipewire/
 [neovim]: https://github.com/neovim/neovim
 [picom]: https://github.com/dccsilag/picom
+[polybar-dwm-module]: https://github.com/mihirlad55/polybar-dwm-module
 
 ## installation process
 
@@ -48,7 +50,7 @@ yay -S pipewire pipewire-pulse pipewire-alsa wireplumber
 **5. installing the status bar and notifications**
 
 ```bash
-yay -S pamixer playerctl dunst xorg-xsetroot
+yay -S pamixer playerctl dunst xorg-xsetroot python-dbus polybar-dwm-module
 ```
 
 **6. installing the terminal emulator**
@@ -64,18 +66,6 @@ mkdir /tmp/st-pkgbuild &&
 
 ```bash
 yay -S picom-animations-git
-```
-
-**8. installing pywal**
-
-The color scheme wouldn't work without the use of [pywal]. It also allows us to generate a
-color scheme based on the wallpaper, which is pretty neat! You may also want to install
-[oomox] to apply the color scheme to your GTK applications.
-
-[oomox]: https://github.com/themix-project/oomox
-
-```bash
-yay -S pywal feh
 ```
 
 **8. symlinking configuration files**
