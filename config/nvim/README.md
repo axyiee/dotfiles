@@ -29,13 +29,13 @@ my personal neovim dotfiles optimized for a productive web and game development 
     </tr>
     <tr>
         <td><code>&lt;C-S-b&gt;</code></td>
-        <td>LSP: Go to definition</td>
+        <td>LSP: Find implementations</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;C-S-b&gt;</code></td>
-        <td>LSP: Go to implementation</td>
+        <td><code>&lt;C-b&gt;</code></td>
+        <td>LSP: Go to definiton</td>
         <td>Normal</td>
         <td>Editor</td>
     </tr>
@@ -46,7 +46,7 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;F12&gt;</code></td>
+        <td><code>&lt;F2&gt;</code></td>
         <td>LSP: Rename</td>
         <td>Normal</td>
         <td>*</td>
@@ -58,13 +58,7 @@ my personal neovim dotfiles optimized for a productive web and game development 
         <td>Editor</td>
     </tr>
     <tr>
-        <td><code>&lt;C-b&gt;</code></td>
-        <td>LSP: Go to type declaration</td>
-        <td>Normal</td>
-        <td>Editor</td>
-    </tr>
-    <tr>
-        <td><code>&lt;leader&gt;ca</code></td>
+        <td><code>&lt;C-k&gt;</code></td>
         <td>LSP: Code action</td>
         <td>Normal</td>
         <td>Editor</td>
@@ -96,6 +90,18 @@ my personal neovim dotfiles optimized for a productive web and game development 
     <tr>
         <td><code>&lt;Tab&gt;</code></td>
         <td>Insert indentation space</td>
+        <td>Insert</td>
+        <td>Editor</td>
+    </tr>
+    <tr>
+        <td><code>&lt;S-Tab&gt;</code></td>
+        <td>Completion: Previous suggestion</td>
+        <td>Normal</td>
+        <td>*</td>
+    </tr>
+    <tr>
+        <td><code>&lt;Tab&gt;</code></td>
+        <td>Completion: Next suggestion</td>
         <td>Insert</td>
         <td>Editor</td>
     </tr>
@@ -143,12 +149,18 @@ my personal neovim dotfiles optimized for a productive web and game development 
     </tr>
     <tr>
         <td><code>&lt;C-o&gt;</code></td>
-        <td>Telescope: open file finding view</td>
+        <td>Telescope: open file browser view</td>
         <td>Normal</td>
         <td>*</td>
     </tr>
     <tr>
         <td><code>&ltC-p;&gt;</code></td>
+        <td>Telescope: open find files view</td>
+        <td>Normal</td>
+        <td>*</td>
+    </tr>
+    <tr>
+        <td><code>&lt;C-p&gt;</code></td>
         <td>Telescope: open live grep view</td>
         <td>Normal</td>
         <td>*</td>
@@ -169,20 +181,16 @@ my personal neovim dotfiles optimized for a productive web and game development 
 
 ## language server dependencies 文字
 
-everything here is optional except by fzy (unless you don't want telescope stuff to work)
-
-- [`fzy`] - faster alternative to fzf
+- [`fzf`]
 - [`npm`] (optional) - nodejs package manager; allows copilot to work
 - [`doas npm i -g typescript`][`npm`] - typescript and javascript language server
 - [`doas npm i -g vls`][`npm`] - vue.js language server
 - [`doas npm i -g vscode-langservers-extracted`][`npm`] - html, eslint, json, css language servers
 - [`doas npm i -g pyright`][`npm`] - python language server
 - [`doas npm i -g cssmodules-language-server`][`npm`] - css modules language server
-- [`doas npm i -g @fsouza/prettierd eslint_d`][`npm`] - javascript, css, html and markdown formatting and linting
-- [`opam install ocaml-lsp-server`][`opam`] - ocaml language server
+- [`doas npm i -g @fsouza/prettierd`][`npm`] - javascript, css, html and markdown formatting
 - [`sumneko/lua-language-server`] - lua language server
 - [`rust-analyzer`] - rust language server
-- [`elixir-ls`] - elixir language server
 - [`stylua`] - lua formatter
 
 You can install everything on Arch Linux using `bin/dots neovim install`, assuming you have `yay` installed.
@@ -191,6 +199,4 @@ You can install everything on Arch Linux using `bin/dots neovim install`, assumi
 [`npm`]: https://nodejs.org
 [`rust-analyzer`]: https://rust-analyzer.github.io/manual.html
 [`sumneko/lua-language-server`]: https://github.com/sumneko/lua-language-server
-[`elixir-ls`]: https://github.com/elixir-lsp/elixir-ls
 [`stylua`]: https://github.com/JohnnyMorganz/StyLua
-[`opam`]: https://opam.ocaml.org
