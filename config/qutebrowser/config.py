@@ -85,6 +85,9 @@ c.colors.tabs.selected.even.bg = selected
 c.colors.tabs.selected.odd.bg = selected
 c.colors.tabs.selected.even.fg = foreground
 c.colors.tabs.selected.odd.fg = foreground
+c.colors.webpage.preferred_color_scheme = "dark"
+
+
 
 # change title format
 c.tabs.title.format = "{audio}{current_title}"

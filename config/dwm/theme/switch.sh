@@ -1,6 +1,6 @@
 #!/bin/sh
 
-themes=("zenbones-light.Xresources" "zenbones-dark.Xresources")
+themes=("zenbones-light.Xresources" "zenbones-dark.Xresources" "oxocarbon-dark.Xresources" "oxocarbon-light.Xresources")
 theme=${themes[$(( $RANDOM % ${#themes[@]} ))]}
 echo "Selecting: $theme"
 base="$HOME/.config/dwm/theme"
