@@ -1,7 +1,6 @@
 return {
 	packer = {
 		"neovim/nvim-lspconfig",
-		"nvim-lua/lsp-status.nvim",
 		"folke/lsp-colors.nvim",
 		"ray-x/lsp_signature.nvim",
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

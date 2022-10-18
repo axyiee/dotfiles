@@ -21,12 +21,18 @@ return {
         })
         root.setup({
             view = {
-                adaptive_size = true,
+                adaptive_size = false,
+                width = 30,
                 side = "left",
+                hide_root_folder = true,
             },
             filters = {
                 custom = { "^.git$" },
             },
+            disable_netrw = true,
+            hijack_netrw = true,
+            hijack_cursor = true,
+            update_cwd = true,
         })
     end,
 }
