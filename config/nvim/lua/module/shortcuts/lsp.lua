@@ -26,7 +26,8 @@ return {
 		}
 	end,
 	exec = function()
-		shortcut.map("n", "<leader>e", vim.diagnostic.open_float)
+		shortcut.map("n", "<C-e>", vim.diagnostic.open_float)
+		shortcut.map("i", "<C-e>", vim.diagnostic.open_float)
 		shortcut.map("n", "[d", vim.diagnostic.goto_prev)
 		shortcut.map("n", "]d", vim.diagnostic.goto_next)
 		shortcut.map("n", "<leader>q", vim.diagnostic.setloclist)

@@ -153,18 +153,13 @@ Winbar = {
 vim.api.nvim_create_augroup("statusline", { clear = true })
 vim.api.nvim_create_augroup("winbar", { clear = true })
 
-vim.api.nvim_create_autocmd(
-	{ "BufEnter", "WinEnter", "BufFilePost", "BufWritePost", "CursorHold", "CursorHoldI", "FocusGained" },
-	{
-		group = "statusline",
-		pattern = { "*" },
-		callback = function()
-			if _LSP_SIG_CFG.bufnr == -1 or _LSP_SIG_CFG.bufnr ~= vim.api.nvim_get_current_buf() then
-				vim.api.nvim_command("setlocal statusline=%!v:lua.Statusline.active()") -- this runs faster for some reason
-			end
-		end,
-	}
-)
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+	group = "statusline",
+	pattern = { "*" },
+	callback = function()
+		vim.api.nvim_command("setlocal statusline=%!v:lua.Statusline.active()") -- this runs faster for some reason
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	group = "statusline",
@@ -172,26 +167,25 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	command = "setlocal statusline=%!v:lua.Statusline.inactive()",
 })
 
-vim.api.nvim_create_autocmd(
-	{ "BufEnter", "WinEnter", "BufFilePost", "BufWritePost", "CursorHold", "CursorHoldI", "FocusGained" },
-	{
-		group = "winbar",
-		pattern = { "*" },
-		callback = function()
-			if _LSP_SIG_CFG.bufnr == -1 or _LSP_SIG_CFG.bufnr ~= vim.api.nvim_get_current_buf() then
-				vim.opt_local.winbar = Winbar.active()
-			end
-		end,
-	}
-)
+local winbar_exclude = {
+	"help",
+	"NvimTree",
+	"alpha",
+	"TelescopePrompt",
+	"packer",
+}
 
-vim.api.nvim_create_autocmd(
-	{ "BufEnter", "WinEnter", "BufFilePost", "BufWritePost", "CursorHold", "CursorHoldI", "FocusGained", "FileType" },
-	{
-		group = "winbar",
-		pattern = { "NvimTree_1" },
-		command = "setlocal winbar=",
-	}
-)
+vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+	group = "winbar",
+	callback = function()
+		if vim.api.nvim_win_get_config(0).relative ~= "" then
+			return
+		end
+		if not vim.bo.buftype == "" or vim.tbl_contains(winbar_exclude, vim.bo.filetype) then
+			return
+		end
+		vim.opt_local.winbar = Winbar.active()
+	end,
+})
 
 return options

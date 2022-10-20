@@ -14,6 +14,7 @@ return {
 			animation = false,
 			closable = false,
 			icon_separator_inactive = "",
+			icon_separator_active = "",
 			insert_at_end = true,
 			minimum_padding = 1,
 			maximum_padding = 1,
