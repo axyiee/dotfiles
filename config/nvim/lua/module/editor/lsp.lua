@@ -15,6 +15,7 @@ return {
 		"shortcuts.lsp",
 		"language.rust",
 		"language.lua",
+		"language.scala",
 	},
 	exec = function(root, shortcuts, rust, lua, scala)
 		root.lsp_colors.setup({})
@@ -24,7 +25,6 @@ return {
 		local lsp = {
 			rust,
 			lua,
-			scala,
 			"tsserver",
 			"vuels",
 			"cssls",
@@ -58,6 +58,7 @@ return {
 				root.lspconfig[lang.lsp.name].setup(lsp)
 			end
 		end
+		scala.init(capabilities)
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
