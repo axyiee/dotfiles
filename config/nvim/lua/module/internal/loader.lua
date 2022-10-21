@@ -33,7 +33,7 @@ function M.load(name)
 	end
 	local ok, settings = pcall(require, M.prefix .. name)
 	if not ok then
-		vim.notify("Module '" .. name .. "' not found")
+		vim.notify("Module '" .. name .. "' not found: " .. settings)
 		return
 	end
 	M.already_loaded[name] = settings
