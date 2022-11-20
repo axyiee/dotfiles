@@ -30,6 +30,7 @@ const blocked = [
   /http(s)?:\/\/wallhaven.cc/,
   /http(s)?:\/\/imagecolorpicker.com/,
   /http(s)?:\/\/www.reddit.com/,
+  /http(s)?:\/\/(.*).numbeo.com/
 ];
 
 for (const url of blocked) {

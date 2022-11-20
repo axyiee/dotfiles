@@ -1,7 +1,11 @@
 #!/bin/sh
 
 # Wallpaper
-~/.config/dwm/scripts/solid_wallpaper.sh
+if [ -f ~/.fehbg ]; then
+    ~/.fehbg
+else
+    ~/.config/dwm/scripts/solid_wallpaper.sh
+fi
 
 # Compositor
 picom --experimental-backends &
@@ -16,5 +20,6 @@ dunst -c ~/.config/dunst/dunstrc &
 # xset -dpms s off
 
 # Scriptable status bar
-#bash "$HOME"/.config/dwm/scripts/status_bar.sh &
-bash "$HOME"/.config/polybar/launch.sh &
+bash "$HOME"/.config/dwm/scripts/status_bar.sh &
+
+# bash "$HOME"/.config/polybar/launch.sh &

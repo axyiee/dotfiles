@@ -13,7 +13,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # Resolution and overscan fix
-xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on --set "underscan hborder" 100 --set "underscan vborder" 50
+# xrandr --output HDMI-A-0 --mode 1920x1080 --rate 60 --set underscan on --set "underscan hborder" 100 --set "underscan vborder" 50
+# xrandr --output HDMI-A-0 --scale 1.5x1.5 --panning 1920x1080
 
 # Keyboard layout
 setxkbmap -layout us -variant intl

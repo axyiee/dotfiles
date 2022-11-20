@@ -15,6 +15,6 @@ case $1 in
         if [ -z "$spotify" ]; then
             echo "  $(pamixer --get-volume-human) "
         else
-            echo "  $spotify (  $(pamixer --get-volume-human)) "
+            echo "  $spotify " #(  $(pamixer --get-volume-human)) "
         fi
 esac

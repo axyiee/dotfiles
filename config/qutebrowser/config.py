@@ -17,24 +17,15 @@ interceptor.register(filter_yt)
 c.url.searchengines = {
     'DEFAULT':  'https://google.com/search?hl=en&q={}',
     '!g':       'https://google.com/search?hl=en&q={}',
-    '!a':       'https://www.amazon.com/s?k={}',
     '!d':       'https://duckduckgo.com/?ia=web&q={}',
     '!dd':      'https://thefreedictionary.com/{}',
-    '!e':       'https://www.ebay.com/sch/i.html?_nkw={}',
-    '!fb':      'https://www.facebook.com/s.php?q={}',
     '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
     '!gist':    'https://gist.github.com/search?q={}',
     '!gi':      'https://www.google.com/search?tbm=isch&q={}&tbs=imgo:1',
     '!gn':      'https://news.google.com/search?q={}',
-    '!ig':      'https://www.instagram.com/explore/tags/{}',
-    '!m':       'https://www.google.com/maps/search/{}',
-    '!p':       'https://pry.sh/{}',
-    '!r':       'https://www.reddit.com/search?q={}',
-    '!sd':      'https://slickdeals.net/newsearch.php?q={}&searcharea=deals&searchin=first',
-    '!t':       'https://www.thesaurus.com/browse/{}',
+    '!gm':       'https://www.google.com/maps/search/{}',
     '!tw':      'https://twitter.com/search?q={}',
     '!w':       'https://en.wikipedia.org/wiki/{}',
-    '!yelp':    'https://www.yelp.com/search?find_desc={}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
@@ -101,7 +92,8 @@ c.colors.completion.category.fg = foreground
 c.colors.completion.item.selected.bg = background
 c.colors.completion.item.selected.fg = foreground
 #c.content.unknown_url_scheme_policy = 'allow-all'
-c.fonts.default_size = "13pt"
+c.fonts.default_family = ["Iosevka"]
+c.fonts.default_size = "10pt"
 c.content.javascript.enabled = True
 c.statusbar.show = 'in-mode'
 c.tabs.show = "multiple"
@@ -120,5 +112,6 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
 ]
 c.content.blocking.enabled = True
+c.zoom.default = "75%"
 
 config.load_autoconfig()

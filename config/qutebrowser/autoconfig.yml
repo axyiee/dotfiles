@@ -31,9 +31,9 @@ settings:
     https://mail.google.com?extsrc=mailto&url=%25s: true
     https://mail.proton.me#mailto=%25s: true
   fonts.default_family:
-    global: []
+    global: Iosevka
   fonts.default_size:
-    global: 13pt
+    global: 10pt
   fonts.web.size.default_fixed:
     global: 13
   statusbar.show:

@@ -1,5 +1,3 @@
-. ~/.cache/wal/colors.sh
-
 print_with_icon() {
     local background1=$1
     local foreground1=$2 
@@ -11,59 +9,51 @@ print_with_icon() {
     printf "^b$background2^^c$foreground2^ $text2 ^d^"
 }
 
-color() {
-    local hex="$1"
-    local amount="$2"
-    local operation="$3"
-    local r=$(echo "$hex" | cut -c 2-3)
-    local g=$(echo "$hex" | cut -c 4-5)
-    local b=$(echo "$hex" | cut -c 6-7)
-    r=$(printf "%x" "$((0x$r $operation $amount))")
-    g=$(printf "%x" "$((0x$g $operation $amount))")
-    b=$(printf "%x" "$((0x$b $operation $amount))")
-    echo "#$r$g$b"
-}
-
 darken() {
-    color $1 $2 -
+    local python="
+def darken(hexadecimal, amount):
+    hex = hexadecimal.lstrip('#')
+    r = int(hex[0:2], 16)
+    g = int(hex[2:4], 16)
+    b = int(hex[4:6], 16)
+    r = max(0, r - amount)
+    g = max(0, g - amount)
+    b = max(0, b - amount)
+    return '#%02x%02x%02x' % (r, g, b)
+print(darken('$1', $2))"
+    python -c "$python"
 }
 
 lighten() {
-    color $1 $2 +
+    local python="
+def lighten(hexadecimal, amount):
+    hex = hexadecimal.lstrip('#')
+    r = int(hex[0:2], 16)
+    g = int(hex[2:4], 16)
+    b = int(hex[4:6], 16)
+    r = min(255, r + amount)
+    g = min(255, g + amount)
+    b = min(255, b + amount)
+    return '#%02x%02x%02x' % (r, g, b)
+print(lighten('$1', $2))"
+    python -c "$python"
 }
 
-. ~/.cache/wal/colors.sh
 #color1='#e0efda'
 #color2='#efc7e5'
 #color3='#b3c2f2'
 #color4='#cc5a71'
 #color5='#f2c078'
 #color6='#83bcff'
-color0="$color6"
-#format: darker lighter normal lighter darker
-# must be a really perceptive amount
-color3=$(lighten $color0 30)
-color4="$color3"
-color2=$(darken $color3 30)
-color1=$(darken $color2 30)
-color5="$color2"
-color6="$color1"
-darken_amount=20
-darker_color1=$(darken $color1 $darken_amount)
-darker_color2=$(darken $color2 $darken_amount)
-darker_color3=$(darken $color3 $darken_amount)
-darker_color4=$(darken $color4 $darken_amount)
-darker_color5=$(darken $color5 $darken_amount)
-darker_color6=$(darken $color6 $darken_amount)
-
+#color0="$color6"
 datetime() {
     local date=`date +"%a, %d %b"`
-    print_with_icon "$color5" "$background" "$darker_color5" "$background" "" "$date"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "" "$date"
 }
 
 clock() {
     local date=`date +"%H:%M"`
-    print_with_icon "$color6" "$background" "$darker_color6" "$background" "" "$date"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "" "$date"
 }
 
 battery() {
@@ -85,7 +75,7 @@ battery() {
     else
         icon=""
     fi
-    print_with_icon "$color4" "$background" "$darker_color4" "$background" "$icon" "$battery%%"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "$icon" "$battery%%"
     printf " "
 }
 
@@ -106,13 +96,13 @@ volume() {
         fi
         volume="$volume%%"
     fi
-    print_with_icon "$color3" "$background" "$darker_color3" "$background" "$icon" "$volume"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "$icon" "$volume"
     printf " "
 }
 
 ram() {
     local ram=`free -m | grep Mem: | awk '{print $3}'`
-    print_with_icon "$color2" "$background" "$darker_color2" "$background" "" "${ram}MiB"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "" "${ram}MiB"
 }
 
 connection() {
@@ -122,10 +112,15 @@ connection() {
         icon="直"
         message="Connected"
     fi
-    print_with_icon "$color1" "$background" "$darker_color1" "$background" "$icon" "$message"
+    print_with_icon "$color1" "$color0" "$color2" "$color0" "$icon" "$message"
 }
 
 while true; do
+    Xresources="$(cat ~/.config/dwm/theme/current.Xresources)"
+    bg="$(echo "$Xresources" | grep -oP '\*\.color0:\s*\K.*')"
+    color2=$(darken "$bg" 20)
+    color1=$(darken "$bg" 10)
+    color0=$(echo "$Xresources" | grep -oP '\*\.color14:\s*\K.*')
     xsetroot -name "$(connection) $(ram) $(volume)$(battery)$(datetime) $(clock)"
     sleep 3
 done
