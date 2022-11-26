@@ -27,8 +27,8 @@ cd ../config
 do_symlink "$HOME/.config"
 
 if [[ "$EUID" -ne 0 ]]; then 
-    (cd ../etc && sudo bash -c "$SYMLINK_FUNC; do_symlink /etc")
-    (cd ../fonts && sudo bash -c "$SYMLINK_FUNC; do_symlink /usr/share/fonts/ttf")
+    (cd ../etc && sudo bash -c "$SYMLINK_FUNC; do_symlink /usr/local/etc")
+    (cd ../fonts && sudo bash -c "$SYMLINK_FUNC; do_symlink /usr/local/share/fonts/TTF/")
 else
     (cd ../etc && do_symlink /etc)
     (cd ../fonts && do_symlink /usr/share/fonts/ttf)
