@@ -39,7 +39,7 @@ doas make clean install
 **3. installing the status bar and notifications**
 
 ```bash
-yay -S playerctl dunst
+doas pkg -S playerctl dunst
 ```
 
 **4. installing the terminal emulator**
