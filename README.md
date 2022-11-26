@@ -1,25 +1,23 @@
 <div align="center">
-    <h1>🌸 azalea</h1>
+    <h1>🌸 dotfiles</h1>
 </div>
 
 <img src="gallery/current.png" align="right" width="400" />
 
-my personal [dwm] desktop for a simple gaming, studying and software development workflow
+my personal [dwm] desktop for a simple gaming, studying and software development workflow on freebsd
 
-- 🔊 [pipewire] is being used as audio server
-- 🎨 [zenbones] is being used as color scheme
-- 🖥️ [st] is being used as terminalemulator
+- 🎨 [pywal] is being used as color scheme
+- 🖥️ [st] is being used as terminal emulator
 - 📜 [neovim] is being used as text editor
 - 💥 [picom] is being used as x.org compositor
-- 📊 [polybar-dwm-module] is being used as status bar
+- 🔔 [dunst] is being used as notification daemon
 
 [dwm]: https://code.syntax.lol/dwm
 [st]: https://code.syntax.lol/st
-[zenbones]: https://github.com/mcchrish/zenbones.nvim
-[pipewire]: https://gitlab.freedesktop.org/pipewire/pipewire/
+[pywal]: https://github.com/dylanaraps/pywal
 [neovim]: https://github.com/neovim/neovim
 [picom]: https://github.com/dccsilag/picom
-[polybar-dwm-module]: https://github.com/mihirlad55/polybar-dwm-module
+[dunst]: https://github.com/dunst-project/dunst
 
 ## installation process
 
@@ -28,49 +26,57 @@ my personal [dwm] desktop for a simple gaming, studying and software development
 **1. installing xorg**
 
 ```bash
-# This assumes you have the 'yay' AUR helper installed on your machine.
-yay -S xorg-server xorg-xinit xorg-xrdb
+doas pkg install xorg xrdb
 ```
 
 **2. installing the window manager**
 
 ```bash
-mkdir /tmp/dwm-pkgbuild &&
-    cd /tmp/dwm-pkgbuild &&
-    wget https://raw.githubusercontent.com/FromSyntax/dwm/main/PKGBUILD &&
-    makepkg -si
+git clone https://code.axyria.dev/dwm.git && cd dwm
+doas make clean install
 ```
 
-**5. installing the audio server**
+**3. installing the status bar and notifications**
 
 ```bash
-yay -S pipewire pipewire-pulse pipewire-alsa wireplumber
+yay -S playerctl dunst
 ```
 
-**5. installing the status bar and notifications**
+**4. installing the terminal emulator**
 
 ```bash
-yay -S pamixer playerctl dunst xorg-xsetroot python-dbus polybar-dwm-module
+doas pkg install xclip
+git clone https://code.axyria.dev/st.git && cd st
+doas make clean install
 ```
 
-**6. installing the terminal emulator**
+**5. installing the x.org compositor**
 
 ```bash
-mkdir /tmp/st-pkgbuild &&
-    cd /tmp/st-pkgbuild &&
-    wget https://raw.githubusercontent.com/FromSyntax/st/main/PKGBUILD &&
-    makepkg -si
+doas pkg install picom
 ```
 
-**7. installing the x.org compositor**
+**6. installing the color scheme generator**
 
 ```bash
-yay -S picom-animations-git
+doas pkg install py-pip imagemagick7 feh
+doas pip install pywal
+```
+
+**7. adding audio and video support**
+
+```bash
+doas pkg install drm-kmod xf86-video-amdgpu
+sysctl hw.snd.default_unit=6 # Replace 6 with the needed PCM number from `cat /dev/sndstat
+                             # To make it permanent you can add it to /etc/sysctl.conf
+# Add the following to your `rc.conf`. Those marked as `#(*)` are just a few system optional tweaks:
+# sendmail_enable="NONE" #(*)
+# kld_list="amdgpu"
 ```
 
 **8. symlinking configuration files**
 
-⚠️ make sure that you moved your azalea directory to a place you wouldn't delete by accident before
+⚠️  make sure that you moved your dotfiles directory to a place you wouldn't delete by accident before
 running this.
 
 ```bash
@@ -78,12 +84,5 @@ running this.
 ./scripts/bin.sh
 ```
 
-**9. installing neovim**
-
-```bash
-yay -S neovim
-dots neovim install # if you used bin.sh, it will be available as /usr/bin/dots
-```
-
-And that's it! You can now enjoy azalea just by using the `startx` command on TTY or using any display
+And that's it! You can now enjoy this just by using the `startx` command on TTY or using any display
 manager.

@@ -6,7 +6,8 @@ Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
 ! st
-st.font: SpaceMono Nerd Font:pixelsize=17
-st.borderpx: 0
+st.font: Iosevka Nerd Font:pixelsize=17
+st.borderpx: 5
+st.cwscale: 1.0
 st.chscale: 1.4
 *.alpha: 0.95
