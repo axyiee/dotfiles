@@ -33,6 +33,8 @@ doas pkg install xorg xrdb
 
 ```bash
 git clone https://code.axyria.dev/dwm.git && cd dwm
+doas pkg install libxft libx11 libxinerama fontconfig
+doas pkg install py39-matplotlib py39-numpy # bash status bar
 doas make clean install
 ```
 
