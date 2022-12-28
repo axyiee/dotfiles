@@ -2,11 +2,14 @@
 
 # Wallpaper
 if [ -f ~/.fehbg ]; then
-    ~/.fehbg
+    ~/.fehbg &
 fi
 
 # Compositor
 picom --config "$HOME/.config/picom/picom.conf" &
+
+# Swallowing daemon
+sw &
 
 # Notifications
 # dunst -c ~/.config/dunst/dunstrc &

@@ -4,3 +4,6 @@
 [submodule "gtk3-theme"]
 	path = gtk3-theme
 	url = https://github.com/itsook/gtk3
+[submodule "firefox/chrome"]
+	path = firefox/chrome
+	url = https://github.com/QNetITQ/WaveFox

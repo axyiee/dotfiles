@@ -6,11 +6,11 @@
 
 my personal [dwm] desktop for a simple gaming, studying and software development workflow on freebsd
 
-- 🎨 [pywal] is being used as color scheme
-- 🖥️ [st] is being used as terminal emulator
-- 📜 [neovim] is being used as text editor
-- 💥 [picom] is being used as x.org compositor
-- 🔔 [dunst] is being used as notification daemon
+-   🎨 [pywal] is being used as color scheme
+-   🖥️ [st] is being used as terminal emulator
+-   📜 [neovim] is being used as text editor
+-   💥 [picom] is being used as x.org compositor
+-   🔔 [dunst] is being used as notification daemon
 
 [dwm]: https://code.syntax.lol/dwm
 [st]: https://code.syntax.lol/st
@@ -66,7 +66,7 @@ doas pip install pywal
 **7. adding audio and video support**
 
 ```bash
-doas pkg install drm-kmod xf86-video-amdgpu
+doas pkg install drm-kmod xf86-video-amdgpu mesa-gallium-va mesa-gallium-vdpau libva-glx libva-utils mesa-dri libosmesa mesa-libs
 sysctl hw.snd.default_unit=6 # Replace 6 with the needed PCM number from `cat /dev/sndstat
                              # To make it permanent you can add it to /etc/sysctl.conf
 # Add the following to your `rc.conf`. Those marked as `#(*)` are just a few system optional tweaks:
@@ -76,7 +76,7 @@ sysctl hw.snd.default_unit=6 # Replace 6 with the needed PCM number from `cat /d
 
 **8. symlinking configuration files**
 
-⚠️  make sure that you moved your dotfiles directory to a place you wouldn't delete by accident before
+⚠️ make sure that you moved your dotfiles directory to a place you wouldn't delete by accident before
 running this.
 
 ```bash

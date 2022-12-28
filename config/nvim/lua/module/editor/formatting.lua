@@ -9,6 +9,7 @@ return {
         vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]]) -- Format on save.
         root.setup({
             sources = {
+                root.builtins.formatting.clang_format,
                 root.builtins.code_actions.gitsigns,
                 root.builtins.formatting.prettierd.with({
                     env = {
@@ -19,6 +20,7 @@ return {
                 root.builtins.completion.spell.with({
                     filetypes = { "markdown" },
                 }),
+                root.builtins.diagnostics.editorconfig_checker,
             },
         })
     end,

@@ -181,21 +181,25 @@ my personal neovim dotfiles optimized for a productive web and game development 
 
 ## language server dependencies 文字
 
-- [`fzf`]
-- [`npm`] (optional) - nodejs package manager; allows copilot to work
-- [`doas npm i -g typescript`][`npm`] - typescript and javascript language server
-- [`doas npm i -g vls`][`npm`] - vue.js language server
-- [`doas npm i -g vscode-langservers-extracted`][`npm`] - html, eslint, json, css language servers
-- [`doas npm i -g pyright`][`npm`] - python language server
-- [`doas npm i -g cssmodules-language-server`][`npm`] - css modules language server
-- [`doas npm i -g @fsouza/prettierd`][`npm`] - javascript, css, html and markdown formatting
-- [`sumneko/lua-language-server`] - lua language server
-- [`rust-analyzer`] - rust language server
-- [`stylua`] - lua formatter
+-   [`fzf`] - fuzzy finder
+-   [`npm`] (optional) - nodejs package manager; allows copilot to work
+-   [`doas npm i -g typescript`][`npm`] - typescript and javascript language server
+-   [`doas npm i -g vls`][`npm`] - vue.js language server
+-   [`doas npm i -g vscode-langservers-extracted`][`npm`] - html, eslint, json, css language servers
+-   [`doas npm i -g pyright`][`npm`] - python language server
+-   [`doas npm i -g cssmodules-language-server`][`npm`] - css modules language server
+-   [`doas npm i -g @fsouza/prettierd`][`npm`] - javascript, css, html and markdown formatting
+-   [`sumneko/lua-language-server`] - lua language server
+-   [`rust-analyzer`] - rust language server
+-   [`stylua`] - lua formatter
+-   [`go install github.com/editorconfig-checker/editorconfig-checker/cmd/editorconfig-checker@latest`][editorconfig-checker] - editorconfig support
 
-You can install everything on Arch Linux using `bin/dots neovim install`, assuming you have `yay` installed.
+```
+pkg install npm fzf rust-analyzer stylua lua-language-server
+doas npm i -g typescript vls vscode-langservers-extracted pyright cssmodules-language-server @fsouza/prettierd
+```
 
-[`fzy`]: https://github.com/jhawthorn/fzy
+[`fzf`]: https://github.com/junegunn/fzf
 [`npm`]: https://nodejs.org
 [`rust-analyzer`]: https://rust-analyzer.github.io/manual.html
 [`sumneko/lua-language-server`]: https://github.com/sumneko/lua-language-server

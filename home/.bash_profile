@@ -10,6 +10,3 @@ fi
 #    then exec startx 
 #fi
 
-# opam configuration
-test -r /home/syntax/.opam/opam-init/init.sh && . /home/syntax/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-

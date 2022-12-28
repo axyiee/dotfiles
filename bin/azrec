@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
 export LIBVA_DRIVER_NAME=radeonsi
-RESOLUTION_W=1920
-RESOLUTION_H=1080
+RESOLUTION_W=1366
+RESOLUTION_H=768
 FPS=${FPS:-60}
 FN=~/Videos/recording-$(date +"%d-%m-%Y-%H-%M")
 FILENAME=${1:-$FN}
@@ -9,7 +10,7 @@ DEVICE=/dev/dri/card0
 VAAPI_DEVICE=/dev/dri/renderD128
 THREAD_QUEUE_SIZE=140048
 # You can list your audio devices by using the 'pactl list' command.
-AUDIO_DEVICES=("alsa_output.usb-C-Media_Electronics_Inc._USB_PnP_Sound_Device-00.analog-stereo.monitor" "alsa_input.usb-Sony_Interactive_Entertainment_Wireless_Controller-00.analog-stereo")
+AUDIO_DEVICES=("oss_output.dsp6.monitor")
 
 # Stop recording if the provided argument is equals to 'stop'.
 if [ "$1" == "stop" ]; then
@@ -19,25 +20,20 @@ if [ "$1" == "stop" ]; then
 fi
 
 if [ "$1" == "cap" ]; then
-    sudo setcap cap_sys_admin+ep /usr/bin/ffmpeg
+    doas setcap cap_sys_admin+ep /usr/bin/ffmpeg
     echo "> Uncapped. Now you can record normally!"
     exit
 fi
 
-# If output return any errors, run the command 'setcap cap_sys_admin+ep /usr/bin/ffmpeg' as super-user and edit the above variables if needed.
-# You'll need tmux to record both audio and screen.
-tmux new-session -d
-tmux set-option remain-on-exit on
-
 echo "> Starting video recording in $FPS FPS => $FILENAME"
 
 # Record the screen
-tmux split-window "ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12 -c:v hevc_vaapi -qp:v 0 $FILENAME.mp4"
+ffmpeg -vaapi_device $VAAPI_DEVICE -device $DEVICE -framerate $FPS -thread_queue_size $THREAD_QUEUE_SIZE -f kmsgrab -i - -vf hwmap=derive_device=vaapi,crop=$RESOLUTION_W:$RESOLUTION_H:0:$RESOLUTION_H,scale_vaapi=w=$RESOLUTION_W:h=$RESOLUTION_H:format=nv12 -c:v hevc_vaapi -qp:v 0 $FILENAME.mp4
 
 # Record audio devices
 for index in "${!AUDIO_DEVICES[@]}"; do 
     device=${AUDIO_DEVICES[$index]}
-    tmux split-window "ffmpeg -thread_queue_size $THREAD_QUEUE_SIZE -f pulse -ac 2 -i $device $FILENAME-audio-$index.opus"
+    ffmpeg -thread_queue_size $THREAD_QUEUE_SIZE -f pulse -ac 2 -i $device $FILENAME-audio-$index.opus
 done
 
 echo "> The recording started. To stop, use '$0 stop'."

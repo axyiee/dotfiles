@@ -20,6 +20,7 @@ return {
 	exec = function(root, shortcuts, rust, lua, scala)
 		root.lsp_colors.setup({})
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		capabilities.offsetEncoding = "utf-8"
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		local on_attach = shortcuts.on_attach
 		local lsp = {
@@ -33,6 +34,8 @@ return {
 			"html",
 			"jsonls",
 			"pyright",
+			"prismals",
+			"clangd",
 		}
 		for _, lang in ipairs(lsp) do
 			if type(lang) == "string" then

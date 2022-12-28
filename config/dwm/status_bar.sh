@@ -11,12 +11,12 @@ print_with_icon() {
 
 datetime() {
     local date=`date +"%a, %d %b"`
-    echo "[  $date]"
+    echo "[ $date]"
 }
 
 clock() {
     local date=`date +"%H:%M"`
-    echo "[  $date]"
+    echo "[ $date]"
 }
 
 volume() {
@@ -35,12 +35,12 @@ volume() {
         fi
         volume="$volume%"
     fi
-    echo "[$icon  $volume]"
+    echo "[$icon $volume]"
 }
 
 ram() {
     local ram=`free -m | grep Mem: | awk '{print $3}'`
-    echo "[  ${ram}MiB]"
+    echo "[ ${ram}MiB]"
 }
 
 while true; do

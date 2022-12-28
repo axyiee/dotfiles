@@ -3,9 +3,9 @@ return {
 		"api.shortcut",
 	},
 	exec = function(_, shortcut)
-		shortcut.map_cmd("i", "<C-s>", "update!")
-		shortcut.map_cmd("v", "<C-s>", "update!")
-		shortcut.map_cmd("s", "<C-s>", "update!")
+		shortcut.map_cmd("i", "<C-s>", "w!")
+		shortcut.map_cmd("v", "<C-s>", "w!")
+		shortcut.map_cmd("n", "<C-s>", "w!")
 		shortcut.map_cmd("n", "<A-,>", "BufferPrevious") -- Switch to the previous tab.
 		shortcut.map_cmd("n", "<A-.>", "BufferNext") -- Switch to the next tab.
 		for tab = 1, 9 do

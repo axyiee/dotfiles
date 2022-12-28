@@ -11,7 +11,7 @@ return {
     end,
     exec = function(root, highlight)
         root.setup()
-        highlight.setup({
+        highlight.configs.setup({
             autotag = {
                 enable = true,
             },

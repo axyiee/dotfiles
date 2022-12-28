@@ -3,7 +3,7 @@ return {
         "saecki/crates.nvim",
     },
     api = {
-	"nvim-lua/plenary.nvim"
+        "nvim-lua/plenary.nvim",
     },
     data = function()
         return {
