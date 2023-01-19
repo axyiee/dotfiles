@@ -22,6 +22,7 @@
 // Allow custom theming on Firefox
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("layout.css.color-mix.enabled", true);
+user_pref("layout.css.has-selector.enabled", true);
 
 // [start] WaveFox-specific configuration
 user_pref("userChrome.ProtonTabs-Enabled", true); // Enable Proton tabs

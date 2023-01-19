@@ -10,9 +10,11 @@ eval "$(zoxide init bash)"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='ls -la'
+
+PHOTOS="export WINEPREFIX=/secondary/Apps/.photoshop WINEARCH=win64"
 export EDITOR="nvim"
 
-binary_directories=("$HOME/.bin" "$HOME/.local/bin" "$HOME/go/bin" "$HOME/cargo/bin" "$HOME/.config/mpv/bin" "/usr/local/wine-proton/bin")
+binary_directories=("$HOME/.bin" "$HOME/.local/bin" "$HOME/go/bin" "$HOME/.cargo/bin" "$HOME/.config/mpv/bin" "/usr/local/wine-proton/bin")
 for dir in "${binary_directories[@]}"; do
     if [ -d "$dir" ]; then
         PATH="$dir:$PATH"
@@ -20,12 +22,12 @@ for dir in "${binary_directories[@]}"; do
 done
 unset binary_directories
 
-(xrdb -merge ~/.Xresources && kill -s USR1 $PPID &)
+(xrdb -merge ~/.config/xrdb/root && kill -s USR1 $PPID &)
 nvim() {
     xrdb -merge <<< "st.borderpx: 0"
     kill -s USR1 $PPID
     /usr/local/bin/nvim "$@"
-    xrdb -merge ~/.Xresources
+    xrdb -merge ~/.config/xrdb/root
     kill -s USR1 $PPID
 }
 
@@ -37,9 +39,3 @@ sumr() {
     ps -ax -o rss,command | grep -E "$1" | grep -v grep | awk '{sum+=$1} END {print sum}' | awk '{print $1/1024}'
 }
 
-# pnpm
-export PNPM_HOME="/home/axy/.local/share/pnpm"
-if [ -d "$PNPM_HOME" ]
-  then PATH="$PNPM_HOME:$PATH"
-fi
-# pnpm end

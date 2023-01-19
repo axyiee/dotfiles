@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ "$1" == "init" ]; then
+    musicpd
+    yams
+    exit 0
+fi
+ncmpcpp

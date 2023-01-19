@@ -6,6 +6,13 @@ if test -z "${XDG_RUNTIME_DIR}"; then
     fi
 fi
 
+# pnpm
+export PNPM_HOME="/home/axy/.local/share/pnpm"
+if [ -d "$PNPM_HOME" ]
+  then PATH="$PNPM_HOME:$PATH"
+fi
+# pnpm end
+
 #if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
 #    then exec startx 
 #fi
