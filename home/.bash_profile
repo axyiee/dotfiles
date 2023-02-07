@@ -13,7 +13,7 @@ if [ -d "$PNPM_HOME" ]
 fi
 # pnpm end
 
-#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
-#    then exec startx 
-#fi
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
+    then exec ~/.bin/hyprland
+fi
 

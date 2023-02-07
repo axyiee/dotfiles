@@ -4,87 +4,65 @@
 
 <img src="gallery/current.png" align="right" width="400" />
 
-my personal [dwm] desktop for a simple gaming, studying and software development workflow on freebsd
+my personal [Hyprland] desktop for gaming, studying and software development workflow
 
--   🎨 [pywal] is being used as color scheme
--   🖥️ [st] is being used as terminal emulator
--   📜 [neovim] is being used as text editor
--   💥 [picom] is being used as x.org compositor
--   🔔 [dunst] is being used as notification daemon
+- 🎨 [pywal] is being used as color scheme
+- 🖥️ [foot] is being used as terminal emulator
+- 📜 [neovim] is being used as text editor
+- 💥 [picom] is being used as x.org compositor
+- 🔔 [dunst] is being used as notification daemon
+- 📸 [grim] and [slurp] are being used as screenshot tools
+- 📊 [waybar] is being used as status bar
+- [Lora] as serif font, [Inter] as sans-serif font, and [Iosevka] [(nerd variant here)] as monospaced font
 
-[dwm]: https://code.syntax.lol/dwm
-[st]: https://code.syntax.lol/st
 [pywal]: https://github.com/dylanaraps/pywal
 [neovim]: https://github.com/neovim/neovim
 [picom]: https://github.com/dccsilag/picom
 [dunst]: https://github.com/dunst-project/dunst
+[foot]: https://codeberg.org/dnkl/foot
+[Artix Linux]: https://artixlinux.org/
+[Hyprland]: https://github.com/hyprwm/Hyprland
+[grim]: https://sr.ht/~emersion/grim/
+[slurp]: https://github.com/emersion/slurp
+[waybar]: https://github.com/Alexays/Waybar/
+[Lora]: https://fonts.google.com/specimen/Lora
+[Inter]: https://fonts.google.com/specimen/Inter
+[Iosevka]: https://typeof.net/Iosevka/
+[(nerd variant here)]: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka
 
-## installation process
+## installation
 
 <img src="assets/club-penguin-dancing.gif" align="right" width="400" />
 
-**1. installing xorg**
+**1. packages**
+
+- wayland: `wayland`, `wayland-protocols`, `wl-clipboard`
+- seat management: `seatd`
+- screenshot: `grim`, `slurp`
+- notifications: `dunst`
+- compositor: `hyprland-git`, `swaybg`, `waybar-hyprland-git`
+- browser: `firefox`
+- terminal emulator: `foot`
+- color scheme: `pywal`, `pywalfox`, `imagemagick`
+- audio: `pipewire`, `pipewire-alsa`, `pipewire-pulse`
+- amdgpu: `mesa-tkg-git`, `libva-utils`, `ffmpeg-git`, `vulkan-icd-loader-git`, `mesa-vdpau`
+- amdgpu [lib32]: `lib32-mesa-tkg-git`, `lib32-mesa-vdpau`, `lib32-vulkan-icd-loader-git`
+- fonts: `ttf-iosevka`, `ttf-iosevka-nerd`, `lora-cyrillic-git`, `inter-font`, `ttf-twemoji`
+
+**2. symlinking configuration files**
 
 ```bash
-doas pkg install xorg xrdb
+shopt -s dotglob
+git clone https://code.runtime.ee/dotfiles.git .dots && cd .dots
+doas mv /usr/share/fontconfig/conf.avail /usr/share/fontconfig/config.avail.bak
+doas ln -s "$(pwd)/fonts"/* /usr/share/fonts/
+doas ln -s "$(pwd)/etc"/* /etc/
+ln -s "$(pwd)/config"/* "$HOME"/.config/
+ln -s "$(pwd)/home"/* "$HOME"/
+ln -s "$(pwd)/bin"/* "$HOME"/.bin/
 ```
 
-**2. installing the window manager**
+## troubleshooting and fixes
 
-```bash
-git clone https://code.axyria.dev/dwm.git && cd dwm
-doas pkg install libxft libx11 libxinerama fontconfig
-doas pkg install py39-matplotlib py39-numpy # bash status bar
-doas make clean install
-```
-
-**3. installing the status bar and notifications**
-
-```bash
-doas pkg -S playerctl dunst
-```
-
-**4. installing the terminal emulator**
-
-```bash
-doas pkg install xclip
-git clone https://code.axyria.dev/st.git && cd st
-doas make clean install
-```
-
-**5. installing the x.org compositor**
-
-```bash
-doas pkg install picom
-```
-
-**6. installing the color scheme generator**
-
-```bash
-doas pkg install py-pip imagemagick7 feh
-doas pip install pywal
-```
-
-**7. adding audio and video support**
-
-```bash
-doas pkg install drm-kmod xf86-video-amdgpu mesa-gallium-va mesa-gallium-vdpau libva-glx libva-utils mesa-dri libosmesa mesa-libs
-sysctl hw.snd.default_unit=6 # Replace 6 with the needed PCM number from `cat /dev/sndstat
-                             # To make it permanent you can add it to /etc/sysctl.conf
-# Add the following to your `rc.conf`. Those marked as `#(*)` are just a few system optional tweaks:
-# sendmail_enable="NONE" #(*)
-# kld_list="amdgpu"
-```
-
-**8. symlinking configuration files**
-
-⚠️ make sure that you moved your dotfiles directory to a place you wouldn't delete by accident before
-running this.
-
-```bash
-./scripts/symlink.sh
-./scripts/bin.sh
-```
-
-And that's it! You can now enjoy this just by using the `startx` command on TTY or using any display
-manager.
+- [minecraft runs on xwayland](https://github.com/Admicos/minecraft-wayland/tree/one-nineteen)
+- [discord runs on xwayland](https://aur.archlinux.org/packages/discord_arch_electron)

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function clamp {
+    local min=$1
+    local max=$2
+    local val=$3
+    if [[ $val -lt $min ]]; then
+        echo $min
+    elif [[ $val -gt $max ]]; then
+        echo $max
+    else
+        echo $val
+    fi
+}
+
+direction=$1
+current=$2
+if [[ $direction == "up" ]]; then
+    next=$(clamp 1 10 $((current + 1)))
+elif [[ $direction == "down" ]]; then
+    next=$(clamp 1 10 $((current - 1)))
+else
+    next=0
+fi
+hyprctl dispatch workspace $next

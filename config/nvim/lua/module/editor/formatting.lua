@@ -21,6 +21,8 @@ return {
                     filetypes = { "markdown" },
                 }),
                 root.builtins.diagnostics.editorconfig_checker,
+                root.builtins.formatting.isort,
+                root.builtins.formatting.black,
             },
         })
     end,

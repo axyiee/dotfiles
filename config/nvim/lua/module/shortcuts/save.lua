@@ -8,7 +8,7 @@ return {
 				local current_file = vim.fn.expand("%:p")
 				local parent_dir = vim.fn.fnamemodify(current_file, ":h")
 				vim.fn.mkdir(parent_dir, "p")
-				vim.cmd("silent! write")
+				vim.cmd("update")
 			end,
 		}
 	end,

@@ -9,9 +9,13 @@
 //             - Set up a blocking mode: https://github.com/gorhill/uBlock/wiki/Blocking-mode
 //             - > Filter lists > AdGuard URL Tracking Protection [ON]
 //             - > Filter lists > Custom > Import > https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt
-//     - [...] Dark Reader
+//     - [...] Dark Reader (optional)
 //             - Settings > Detect dark theme [ON]
 //     - Skip Redirect
+//     - enhanced h264ify
+//     - [...] FastForward
+//     - [Visual]: Old Twitter Layout (2022), YouTube Redux
+//
 // [+] Firefox Built-in Settings
 //     - [|] ☰ Settings > Privacy & Security
 //           - Enhanced Tracking Protection: Strict

@@ -33,6 +33,7 @@ local M = {
 	"editor.illuminate",
 	"editor.centerpad",
 	"language.java",
+	"language.fennel",
 	"shortcuts.leader",
 	"shortcuts.buffer",
 	"shortcuts.comment",

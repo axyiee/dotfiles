@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+function get_raw_output {
+    hyperctl activewindow -j
+}
+
+function get_formatted_output {    
+    get_raw_output | jq -r '.title'
+}
+get_formatted_output
