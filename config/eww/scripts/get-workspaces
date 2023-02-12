@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+sequence=$(seq 1 6)
+
+find_workspace_name() {
+    local id=$1
+    case $id in
+        1) echo "[cmd]" ;;
+        2) echo "[www]" ;;
+        3) echo "[dev]" ;;
+        4) echo "chat" ;;
+        5) echo "sys" ;;
+        6) echo "med" ;;
+    esac
+}
+
+find_workspace_color() {
+    local id=$1
+    case $id in
+        1) echo "#CB769E" ;;
+        2) echo "#5AD2F4" ;;
+        3) echo "#FED9B7" ;;
+        4) echo "#D3F3EE" ;;
+        5) echo "#B2B1CF" ;;
+        6) echo "#ADBCA5" ;;
+    esac
+}
+
+colors=$(for i in $sequence; do find_workspace_color $i; done)
+names=$(for i in $sequence; do find_workspace_name $i; done)
+ids=$(for i in $sequence; do echo $i; done)
+# merge into a jq {id: {name: "", color: ""}} list
+jq -n --argjson ids "$ids" --argjson names "$names" --argjson colors "$colors" \
+    '[$ids[] | {id: ., name: $names[. - 1], color: $colors[. - 1]}]'

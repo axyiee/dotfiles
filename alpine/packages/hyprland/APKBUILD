@@ -1,0 +1,43 @@
+# Contributor: Pedro <you@runtime.ee>
+# Maintainer: Pedro <you@runtime.ee>
+
+
+_pver=0.21.0
+_pversuffix=beta
+_pverfull=$_pver$_pversuffix
+_pkgversuffix=beta
+pkgname=Hyprland
+pkgver=$_pver
+pkgrel=0
+pkgdesc="Highly customizable dynamic tiling Wayland compositor that doessn't sacrifice on its looks."
+url="https://hyprland.org"
+arch="all"
+license="BSD3"
+makedepends="cmake meson ninja libdrm-dev cairo-dev eudev-dev libevdev-dev wayland-dev libxkbcommon-dev libinput-dev pixman-dev xwayland-dev libseat-dev libxfixes-dev libx11-dev vulkan-validation-layers-dev vulkan-loader-dev libxcb-dev hwdata-dev xcb-util-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev libcap-utils"
+depends="vulkan-loader vulkan-headers vulkan-validation-layers xorgproto xwayland libdrm eudev wayland wayland-protocols xcb-util-wm libxkbcommon pixman seatd libxfixes xcb-proto xcb-util xcb-util-keysyms xcb-util-renderutil xcb-util-wm libx11 libxcb cairo pango"
+source="$pkgname-$_pverfull.tar.gz::https://github.com/hyprwm/$pkgname/releases/download/v$_pverfull/source-v$_pverfull.tar.gz"
+builddir="$srcdir/hyprland-source"
+options="!check"
+
+build() {
+    sed -ie 's/^        OpenGL/        GL/' CMakeLists.txt
+    make clear
+    make fixwlr
+    (cd ./subprojects/wlroots && meson build/ --buildtype=release && ninja -C build/)
+    make protocols
+    mkdir -p build && cmake --no-warn-unused-cli -DNO_SYSTEMD:STRING=true -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja
+    cmake --build ./build --config Release --target all -j`nproc`
+    (cd hyprctl && make all)
+}
+
+package() {
+    mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib
+    (cd ./subprojects/wlroots && cp ./build/libwlroots.so.12032 "$pkgdir"/usr/lib)
+    cp ./build/Hyprland "$pkgdir"/usr/bin
+    cp ./hyprctl/hyprctl "$pkgdir"/usr/bin
+    setcap cap_sys_nice=+ep "$pkgdir"/usr/bin/Hyprland
+}
+
+sha512sums="
+3afc495b0e7162b8a22cee56c008faba5b98c0bc0651a73f6ee742669b6993b52065afdfed85ac929e0ec35cfc3c85afddc541b323d01a29be743864deeaa5a2  Hyprland-0.21.0beta.tar.gz
+"

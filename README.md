@@ -12,7 +12,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - 💥 [picom] is being used as x.org compositor
 - 🔔 [dunst] is being used as notification daemon
 - 📸 [grim] and [slurp] are being used as screenshot tools
-- 📊 [waybar] is being used as status bar
+- 📊 [eww] is being used as status bar
 - [Lora] as serif font, [Inter] as sans-serif font, and [Iosevka] [(nerd variant here)] as monospaced font
 
 [pywal]: https://github.com/dylanaraps/pywal
@@ -24,7 +24,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [grim]: https://sr.ht/~emersion/grim/
 [slurp]: https://github.com/emersion/slurp
-[waybar]: https://github.com/Alexays/Waybar/
+[eww]: https://github.com/elkowar/eww
 [Lora]: https://fonts.google.com/specimen/Lora
 [Inter]: https://fonts.google.com/specimen/Inter
 [Iosevka]: https://typeof.net/Iosevka/
@@ -36,11 +36,14 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 
 **1. packages**
 
+<details>
+<summary><strong>Arch Linux</strong></summary>
 - wayland: `wayland`, `wayland-protocols`, `wl-clipboard`
 - seat management: `seatd`
 - screenshot: `grim`, `slurp`
 - notifications: `dunst`
-- compositor: `hyprland-git`, `swaybg`, `waybar-hyprland-git`
+- compositor: `hyprland-git`, `hyprpaper-git`
+- status bar: `eww-wayland`
 - browser: `firefox`
 - terminal emulator: `foot`
 - color scheme: `pywal`, `pywalfox`, `imagemagick`
@@ -48,6 +51,26 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - amdgpu: `mesa-tkg-git`, `libva-utils`, `ffmpeg-git`, `vulkan-icd-loader-git`, `mesa-vdpau`
 - amdgpu [lib32]: `lib32-mesa-tkg-git`, `lib32-mesa-vdpau`, `lib32-vulkan-icd-loader-git`
 - fonts: `ttf-iosevka`, `ttf-iosevka-nerd`, `lora-cyrillic-git`, `inter-font`, `ttf-twemoji`
+- gtk/qt theme: `qt5ct`, `qt5-styleplugins`, `kora-icon-theme`, `wpgtk`
+</details>
+
+<details>
+<summary><strong>Alpine Linux</strong></summary>
+- wayland: `wayland wayland-protocols wl-clipboard`
+- seat management: `seatd eudev dbus`
+- screenshot: `grim slurp`
+- notifiations: `dunst`
+- compositor: `./alpine/packages/hyprland`, `./alpine/packages/hyprpaper`
+- status bar: `eww`
+- browser: `firefox`
+- terminal emulator: `foot`
+- color scheme: `py3-pywal`, `python3 py3-pip + pip install pywalfox`
+- audio server: `pipewire pipewire-alsa pipewire-pulse wireplumber`
+- amdgpu: `mesa mesa-dri-gallium mesa-va-gallium mesa-gl mesa-gles mesa-egl mesa-glapi mesa-utils vulkan-loader vulkan-headers mesa-vulkan-layers mesa-gbm libva-glx ffmpeg`
+- fonts: `font-noto-cjk font-iosevka-nerd font-inter font-noto-extra ttf-font-awesome ttf-dejavu fontconfig`
+- zsh utils: `zoxide`
+- gtk/qt theme: `qt5ct qt5-qtwayland qt6-qtwayland`
+</details>
 
 **2. symlinking configuration files**
 
@@ -62,7 +85,22 @@ ln -s "$(pwd)/home"/* "$HOME"/
 ln -s "$(pwd)/bin"/* "$HOME"/.bin/
 ```
 
+**3. generating gtk/qt theme**
+
+make sure to install the required packages first and generated your color scheme with pywal,
+then you can run:
+
+```bash
+wpg-install.sh -g
+wallpaper=$(cat ~/.fehbg | cut -d\' -f2 | sed -e 's|#!/bin/sh||' | xargs)
+wpg -s $wallpaper
+```
+
 ## troubleshooting and fixes
 
 - [minecraft runs on xwayland](https://github.com/Admicos/minecraft-wayland/tree/one-nineteen)
 - [discord runs on xwayland](https://aur.archlinux.org/packages/discord_arch_electron)
+
+```
+
+```

@@ -15,11 +15,4 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export PAGER="less"
 
-binary_directories=("$HOME/.bin" "$HOME/.local/bin" "$HOME/go/bin" "$HOME/.cargo/bin" "$HOME/.config/mpv/bin")
-for dir in "${binary_directories[@]}"; do
-    if [ -d "$dir" ]; then
-        PATH="$dir:$PATH"
-    fi
-done
-unset binary_directories
 

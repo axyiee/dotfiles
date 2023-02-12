@@ -2,6 +2,7 @@ return {
     packer = {
         "windwp/nvim-autopairs",
         "windwp/nvim-ts-autotag",
+        "mrjones2014/nvim-ts-rainbow",
     },
     depends = {
         "editor.highlight",
@@ -14,6 +15,11 @@ return {
         highlight.configs.setup({
             autotag = {
                 enable = true,
+            },
+            rainbow = {
+                enable = true,
+                extended_mode = true,
+                max_file_lines = nil,
             },
         })
     end,

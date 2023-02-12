@@ -3,6 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         "folke/lsp-colors.nvim",
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        "elkowar/yuck.vim"
     },
     data = function()
         return {

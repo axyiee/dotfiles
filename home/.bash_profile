@@ -6,14 +6,10 @@ if test -z "${XDG_RUNTIME_DIR}"; then
     fi
 fi
 
-# pnpm
-export PNPM_HOME="/home/axy/.local/share/pnpm"
-if [ -d "$PNPM_HOME" ]
-  then PATH="$PNPM_HOME:$PATH"
+if [ -x ~/.bin/start-hyprland ] && [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
+    ~/.bin/start-hyprland
 fi
-# pnpm end
-
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]
-    then exec ~/.bin/hyprland
-fi
+#if [ -x ~/.bin/start-sway ] && [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
+   #~/.bin/start-sway
+#fi
 

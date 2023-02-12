@@ -1,0 +1,33 @@
+# Contributor: Pedro <you@runtime.ee>
+# Maintainer: Pedro <you@runtime.ee>
+
+_gitcommit=44a38bfedc009bcc05eed571e80a397a80075a9f
+pkgname=hyprpaper
+pkgver=0.0.1
+pkgrel=0
+pkgdesc="Highly customizable dynamic tiling Wayland compositor that doessn't sacrifice on its looks."
+url="https://hyprland.org"
+arch="all"
+license="BSD3"
+makedepends="cmake meson ninja cairo-dev pango-dev xorgproto wayland-protocols wlroots-dev jpeg-dev"
+depends="wayland"
+source="$pkgname-$_gitcommit.tar.gz::https://github.com/hyprwm/$pkgname/archive/$_gitcommit.tar.gz"
+builddir="$srcdir/$pkgname-$_gitcommit"
+options="!check"
+
+build() {
+    sed -ie 's/^        OpenGL/        GL/' CMakeLists.txt
+    make clear
+    make protocols
+    mkdir -p build && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja
+    cmake --build ./build --config Release --target all -j`nproc`
+}
+
+package() {
+    mkdir -p "$pkgdir"/usr/bin "$pkgdir"/usr/lib
+    cp ./build/hyprpaper "$pkgdir"/usr/bin
+}
+
+sha512sums="
+79f6ca1fa55bafee4bd65fb0d52879f77098244283a3ae2d9d72e2a7c4fd4511d8f4ef7e0d2c0163ab5da04e68b6bb9286a5432583d001bde2af6c77d8bc55ff  hyprpaper-44a38bfedc009bcc05eed571e80a397a80075a9f.tar.gz
+"
