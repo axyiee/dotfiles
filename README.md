@@ -69,7 +69,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - amdgpu: `mesa mesa-dri-gallium mesa-va-gallium mesa-gl mesa-gles mesa-egl mesa-glapi mesa-utils vulkan-loader vulkan-headers mesa-vulkan-layers mesa-gbm libva-glx ffmpeg`
 - fonts: `font-noto-cjk font-iosevka-nerd font-inter font-noto-extra ttf-font-awesome ttf-dejavu fontconfig`
 - zsh utils: `zoxide`
-- gtk/qt theme: `qt5ct qt5-qtwayland qt6-qtwayland`
+- gtk/qt theme: `qt5ct qt5-qtwayland qt6-qtwayland adwaita-cursor-theme`
 </details>
 
 **2. symlinking configuration files**

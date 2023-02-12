@@ -1,10 +1,14 @@
 <div align="center">
-    <h1>🌌 fromsyntax/dotfiles/config/nvim</h1>
+    <h1>🌊 ocean.nvim</h1>
 </div>
 
 my personal neovim dotfiles optimized for a productive web and game development workflow
 
+thanks to @datwaft/nvim.conf for giving me initial steps on how to make a proper neovim configuration with fennel
+
 **🎨 themes.** pywal
+
+
 
 ## keybinds
 
