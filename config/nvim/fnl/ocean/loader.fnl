@@ -8,20 +8,20 @@
   "Checks if [x] parameter matches component table model."
   (assert (tbl? x) "expected table for x" x)
   (assert (or (nil? x.post-install) (fn? x.post-install)) "expected nil or function for x.post-install" x)
-  (assert (fn? x.lazy "expected function for x.lazy" x))
-  true)
+  (assert (fn? x.lazy "expected function for x.lazy" x)) true)
 
 (lambda load-module [path ?M]
   "Appends a component to the list of modules to be loaded."
   (assert (or (nil? ?M) (tbl? ?M)) "expected nil or table for M" ?M)
   (let [modules (or ?M {}) component (require (.. "ocean." path))]
     (assert (comp? component) "expected table for component" component)
-    (let [result (component.lazy)]
-      	(tset result :config component.post-install)
-	(let [final {}]
-	  (each [module (pairs modules)]
-	    (table.insert final module))
-	  (table.insert final result) final) result)))
+    (if (nil? component.lazy) (component.post-install)
+	(let [result (component.lazy)]
+	  (tset result :config component.post-install)
+	  (let [final {}]
+	    (each [module (pairs modules)]
+	      (table.insert final module))
+	    (table.insert final result) final) result))))
 
 (lambda finish [M ?opts]
   "Finally, tells lazy.nvim to lazy-load all components."
