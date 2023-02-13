@@ -38,24 +38,29 @@ Then you can proceed with your installation as normal, for example:
 
 <details>
 <summary><strong>Hostname and rc.conf</strong></summary>
+
 ```bash
 # echo ocean > /etc/hostname
 # sed -ie 's/#HOSTNAME="void-live"/HOSTNAME="ocean"/' /etc/rc.conf
 # sed -ie 's/#TIMEZONE="Europe\/Madrid"/TIMEZONE="America\/Sao_Paulo"/' /etc/rc.conf
 # sed -ie 's/#KEYMAP="es"/KEYMAP="en"/' /etc/rc.conf
 ```
+
 </details>
 
 <details>
 <summary><strong>Installing bootloader</strong></summary>
+
 ```bash
 # grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id="Void"
 # xbps-reconfigure -fa
 ```
+
 </details>
 
 <details>
 <summary><strong>Adding DHCP support, root password, and creating a new user</strong></summary>
+
 ```bash
 # ln -s /usr/bin/doas /usr/bin/sudo
 # echo 'permit persist :wheel' > /etc/doas.conf
@@ -66,6 +71,7 @@ Then you can proceed with your installation as normal, for example:
 # ln -s /etc/sv/udevd /etc/runit/runsvdir/default/
 # (cd /etc/runit/runsvdir/default && unlink agetty-tty3 && unlink agetty-tty4 && unlink agetty-tty5 && unlink agetty-tty6)
 ```
+
 </details>
 
 With everything mentioned above, you can enjoy a clean system of around `66` packages!
@@ -74,7 +80,9 @@ Post-installation, whenever you got into a TTY or something similar:
 
 <details>
 <summary><strong>Adding extra DNS resolvers</strong></summary>
+
 ```bash
 # echo $'nameserver 8.8.8.8\nnameserver 8.8.4.4' >> /etc/resolv.conf && chattr +i /etc/resolv.conf
 ```
+
 </details>

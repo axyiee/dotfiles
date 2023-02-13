@@ -38,6 +38,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 
 <details>
 <summary><strong>Arch Linux</strong></summary>
+
 - wayland: `wayland`, `wayland-protocols`, `wl-clipboard`
 - seat management: `seatd`
 - screenshot: `grim`, `slurp`
@@ -52,10 +53,12 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - amdgpu [lib32]: `lib32-mesa-tkg-git`, `lib32-mesa-vdpau`, `lib32-vulkan-icd-loader-git`
 - fonts: `ttf-iosevka`, `ttf-iosevka-nerd`, `lora-cyrillic-git`, `inter-font`, `ttf-twemoji`
 - gtk/qt theme: `qt5ct`, `qt5-styleplugins`, `kora-icon-theme`, `wpgtk`
+
 </details>
 
 <details>
 <summary><strong>Alpine Linux</strong></summary>
+
 - wayland: `wayland wayland-protocols wl-clipboard`
 - seat management: `seatd eudev dbus`
 - screenshot: `grim slurp`
@@ -70,6 +73,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - fonts: `font-noto-cjk font-iosevka-nerd font-inter font-noto-extra ttf-font-awesome ttf-dejavu fontconfig`
 - zsh utils: `zoxide`
 - gtk/qt theme: `qt5ct qt5-qtwayland qt6-qtwayland adwaita-cursor-theme`
+
 </details>
 
 **2. symlinking configuration files**
