@@ -9,15 +9,13 @@
 (lambda load-module [path ?M]
   "Appends a component to the list of modules to be loaded."
   (assert (or (nil? ?M) (tbl? ?M)) "expected nil or table for M" ?M)
-  (let [modules (or ?M {}) component (require (.. "ocean." path))]
+  (let [modules (or ?M {}) component (require path)]
     (assert (comp? component) "expected table for component" component)
     (if (nil? component.lazy) modules
 	(let [result (component.lazy)]
 	  (tset result :config component.post-install)
-	  (let [final {}]
-	    (each [module (pairs modules)]
-	      (table.insert final module))
-	    (table.insert final result) final) result))))
+	  (let [final modules]
+	    (table.insert final result) final)))))
 
 (lambda finish [M ?opts]
   "Finally, tells lazy.nvim to lazy-load all components."
