@@ -1,0 +1,61 @@
+# Contributor: Pedro <you@runtime.ee>
+# Maintainer: Pedro <you@runtime.ee>
+
+pkgname=glfw-wayland-minecraft
+pkgver=3.4.0
+pkgrel=2
+gitlog=62e175ef9fae75335575964c845a302447c012c7
+pkgdesc="Multi-platform library for OpenGL and Vulkan application development (Wayland, patched for Minecraft)"
+options="!check" # tests requires a working wayland session
+url="https://github.com/Admicos/minecraft-wayland/tree/one-nineteen"
+arch="all !armhf" # Limited by extra-cmake-modules
+license="Zlib"
+depends_dev="
+	extra-cmake-modules
+	libxkbcommon-dev
+	libxrandr-dev
+	libxinerama-dev
+	libxcursor-dev
+	libxi-dev
+	linux-headers
+	mesa-dev
+	wayland-dev
+	wayland-protocols
+	"
+makedepends="$depends_dev cmake samurai"
+subpackages="$pkgname-dbg $pkgname-dev"
+source="glfw-$gitlog.tar.gz::https://github.com/glfw/glfw/archive/$gitlog.tar.gz
+	0003-Don-t-crash-on-calls-to-focus-or-icon.patch
+	0004-wayland-fix-broken-opengl-screenshots-on-mutter.patch
+	0005-Add-warning-about-being-an-unofficial-patch.patch
+	0007-Platform-Prefer-Wayland-over-X11.patch
+	" # 0006-Don-t-crash-getting-scancode-name.patch is broken
+builddir="$srcdir/glfw-$gitlog"
+
+provides="glfw=$pkgver-r$pkgrel"
+replaces="glfw glfw-wayland"
+
+build() {
+	if [ "$CBUILD" != "$CHOST" ]; then
+		CMAKE_CROSSOPTS="-DCMAKE_SYSTEM_NAME=Linux -DCMAKE_HOST_SYSTEM_NAME=Linux"
+	fi
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=MinSizeRel \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DBUILD_SHARED_LIBS=ON \
+		-DGLFW_USE_WAYLAND=ON \
+		$CMAKE_CROSSOPTS
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+}
+sha512sums="
+c405f8fb4fd023a80664cfb9f31e3665cb0cd4b2c3c9028138d16f6d87d118927ca70de495f175876484ee6d993a64638828c6bc5ea1e0241a3dd79334352deb  glfw-62e175ef9fae75335575964c845a302447c012c7.tar.gz
+9c6f6e81de1feafeed93988207999d21754c93ff97c8c3158aee43f38b291f4589feaf83e42081445cf89c9209c86e56a0102fccf0d0a97740874dd88e84a746  0003-Don-t-crash-on-calls-to-focus-or-icon.patch
+3c6d317c0c129effd6da48e183228da952a28286acd09abaec4d934031e39a5531d44306e4308c75b33b515113eb54942ca18885edd49b14254af24085de52da  0004-wayland-fix-broken-opengl-screenshots-on-mutter.patch
+d8e8b704e19652bb30c7799300a1bd0db1619ad17e8e36a3ee51673933eba6a8c47dbd615f4a9a385021bdfaa1ddedb2f24e8c05b670ef5278c71d217e91146e  0005-Add-warning-about-being-an-unofficial-patch.patch
+c524857950180090fd774c5650a8467357e91eea0d6bef49bd28f2ef52981767f28f3dbb1649f98e25188e56bfa41855aca9bf99e335111c9557ff8e069588e7  0007-Platform-Prefer-Wayland-over-X11.patch
+"

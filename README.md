@@ -43,7 +43,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - seat management: `seatd`
 - screenshot: `grim`, `slurp`
 - notifications: `dunst`
-- compositor: `hyprland-git`, `hyprpaper-git`
+- compositor: `hyprland-git`, `hyprpaper-git`, `socat`
 - status bar: `eww-wayland`
 - browser: `firefox`
 - terminal emulator: `foot`
@@ -63,7 +63,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - seat management: `seatd eudev dbus`
 - screenshot: `grim slurp`
 - notifiations: `dunst`
-- compositor: `./alpine/packages/hyprland`, `./alpine/packages/hyprpaper`
+- compositor: `./alpine/packages/hyprland`, `./alpine/packages/hyprpaper`, `socat`
 - status bar: `eww`
 - browser: `firefox`
 - terminal emulator: `foot`

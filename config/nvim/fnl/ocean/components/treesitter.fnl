@@ -1,7 +1,7 @@
 (import-macros {: lazy-plugin} :ocean.macros.lazy)
 
 (fn lazy []
-  "A simple initial step for setting up lazy.nvim functions."
+  "A simple initial step for setting up lazy.nvim plugin."
   (lazy-plugin :nvim-treesitter/nvim-treesitter
               {:dependencies [:JoosepAlviste/nvim-ts-context-commentstring
 			      :windwp/nvim-ts-autotag

@@ -1,7 +1,7 @@
 (import-macros {: lazy-plugin} :ocean.macros.lazy)
 
 (fn lazy []
-  "A simple initial step for setting up lazy.nvim functions."
+  "A simple initial step for setting up lazy.nvim plugins."
   (lazy-plugin :jose-elias-alvarez/null-ls.nvim {:dependencies [:nvim-lua/plenary.nvim
 								:jay-babu/mason-null-ls.nvim]}))
 

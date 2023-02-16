@@ -10,6 +10,6 @@ if [ -x ~/.bin/start-hyprland ] && [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; 
     ~/.bin/start-hyprland
 fi
 #if [ -x ~/.bin/start-sway ] && [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
-   #~/.bin/start-sway
+#   ~/.bin/start-sway
 #fi
 

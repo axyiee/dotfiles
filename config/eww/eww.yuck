@@ -1,21 +1,56 @@
 (defwidget status-bar []
-  (centerbox :orientation "h"
-    (box :halign "start"  :orientation "h" :space-evenly false (workspaces))
-    (box :halign "center" :orientation "h" :space-evenly false 
-      (box :halign "start"  :orientation "h" :space-evenly false (window-title))
-      (box :halign "center" :orientation "h" :space-evenly false (music)))
-    (box :halign "end"    :orientation "h" :space-evenly false (datetime) (volume))))
+  (centerbox :class "status-bar-inner" :orientation "h"
+    (box :halign "start" :orientation "h" :space-evenly false :spacing 24
+	 (box :halign "start" :orientation "h" :space-evenly false (workspaces))
+	 (box :halign "end" :orientation "h" :space-evenly false (window-title)))
+    (box :halign "center" :orientation "h" :space-evenly false (current-song))
+    (box :halign "end" :orientation "h" :space-evenly false :class "last-corner" :spacing 24
+	 (box :orientation "h" :space-evenly false (date-time))
+	 (box :orientation "h" :space-evenly false (volume)))))	
 
-(deflisten workspaces :initial "[]")
+(deflisten current-window-title :initial "[Empty]" "~/.config/eww/scripts/get-active-title")
+(defwidget window-title []
+  (box :orientation "h" :class "window-title-widget" :space-evenly false :spacing 8
+    (label :text "${current-window-title}")))
+
+(deflisten workspaces :initial "[]" "~/.config/eww/scripts/get-workspaces")
+(deflisten current-workspace :initial "1" "~/.config/eww/scripts/get-active-workspace")
+
+(defpoll player-metadata :interval "1s" :initial "No players found" `~/.config/eww/scripts/get-current-audio`)
+(defwidget current-song []
+  (box :orientation "h" :space-evenly false :class "current-song-widget" :spacing 8
+    (label :text "${player-metadata}")
+    (label :class "icon default-font-size" :text "")))
+
+(defwidget metric [label var varname value onchange ?class ?transition ?duration]
+  (eventbox :onhover "eww update ${varname}=true" :onhoverlost "eww update ${varname}=false"
+    (box :orientation "h" :class "hovering-widget metric ${class}" :space-evenly false
+      (revealer :reveal var :transition {transition ?: "slideleft"} :duration {duration ?: "500ms"}
+        (scale :min 0 :max 101 :active {onchange != ""} :value value :onchange onchange))
+      (label :class "icon" :text label))))
+
+(defvar revealVolume false)
+(defpoll current-sink-volume :interval "3s" :initial "100" "~/.config/eww/scripts/get-audio-volume")
+(defwidget volume []
+  (metric :label " " :value current-sink-volume :var revealVolume :varname "revealVolume" :onchange "~/.config/eww/scripts/set-audio-volume {}"))
+
+(defvar revealDateTime false)
+(defpoll polling-date-time :interval "30s" :initial "00:00" `date '+%b %d, %Y at %H:%M'`)
+(defwidget date-time []
+  (eventbox :onhover "eww update revealDateTime=true" :onhoverlost "eww update revealDateTime=false"
+    (box :orientation "h" :class "hovering-widget metric" :space-evenly false :spacing 16
+      (revealer :reveal revealDateTime :transition "slideleft" :duration "500ms"
+      	(label :text "${polling-date-time}"))
+      (label :class "icon" :text " "))))
 
 (defwidget workspaces []
   (eventbox :onscroll "~/.config/eww/scripts/switch-workspace {} ${current-workspace}"
             :class "workspaces-widget"
-            (box :space-evenly false
+            (box :space-evenly false :orientation "h" :class "workspaces-inner" :spacing 8
               (for workspace in workspaces
                 (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
-                          :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""}"
-                          (label :text "${workspace.name}))))))
+                          :class "workspace-entry ${workspace.id == current-workspace ? "current" : ""}"
+                          (label :text "${workspace.name}"))))))
 
 
 (defwindow status-bar
@@ -24,8 +59,8 @@
   :stacking "fg"
   :exclusive true
   :geometry (geometry :x "0%"
-                      :y "100%"
-                      :width "100%"
-                      :height "20px"
+                      :y "1%"
+                      :width "99%"
+                      :height "30px"
                       :anchor "top center")
   (status-bar))

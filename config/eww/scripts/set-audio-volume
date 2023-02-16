@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+INPUT=$(echo "scale=2; $1 / 100" | bc -l)
+wpctl set-volume @DEFAULT_AUDIO_SINK@ $INPUT
+

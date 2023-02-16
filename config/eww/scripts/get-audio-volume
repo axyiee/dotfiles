@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/^Volume: //') * 100 / 1" | bc

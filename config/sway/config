@@ -24,6 +24,8 @@ set $menu wofi --show drun
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/wallpapers/wallhaven-7ppwyv.jpg fill
+gaps outer 10
+gaps inner 5
 
 ### Input configuration
 #
@@ -201,5 +203,6 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+font Overpass Regular 0.1
 
 include /etc/sway/config.d/*
