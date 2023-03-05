@@ -1,0 +1,6 @@
+width=600
+height=400
+mode=drun,run
+filter_rate=100
+insensitive=true
+allow-images

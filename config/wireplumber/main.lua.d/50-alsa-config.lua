@@ -10,7 +10,7 @@ alsa_monitor.properties = {
   -- Reserve devices via org.freedesktop.ReserveDevice1 on D-Bus
   -- Disable if you are running a system-wide instance, which
   -- doesn't have access to the D-Bus user session
-  ["alsa.reserve"] = true,
+  ["alsa.reserve"] = false,
   --["alsa.reserve.priority"] = -20,
   --["alsa.reserve.application-name"] = "WirePlumber",
 

@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
-INPUT=$(playerctl metadata --format '{{ artist }} - {{ title }}' || echo 'No players found')
-echo "$INPUT" | awk 'length > 36{$0=substr($0,0,37)"..."}1'
+INPUT=$(playerctl metadata --format '{{ artist }} - {{ title }}' | awk 'length > 32{$0=substr($0,0,33)"..."}1')
+[ -z "$INPUT" ] && echo "No players found" || echo "$INPUT"
+

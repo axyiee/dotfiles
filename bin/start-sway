@@ -3,4 +3,4 @@
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_QPA_PLATFORM="wayland;xcb"
 export MOZ_ENABLE_WAYLAND=1
-exec dbus-run-session sway
+exec sway

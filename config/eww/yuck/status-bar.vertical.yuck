@@ -1,0 +1,42 @@
+(defwidget status-bar []
+  (box :class "status-bar-widget status-bar-vertical" :orientation "v"
+    (box :valign "start" :orientation "v" :space-evenly false (workspaces))
+    (box :valign "end" :orientation "v" :space-evenly false :spacing 8
+      (box :orientation "v" :valign "start" :space-evenly false (date-time-vertical))
+      (box :orientation "v" :valign "end" :space-evenly false (quit)))))
+
+(defpoll date-time-hour :interval "30s" :initial "00:00" `date '+%H'`)
+(defpoll date-time-minute :interval "30s" :initial "00:00" `date '+%M'`)
+(defwidget date-time-vertical []
+  (eventbox :onclick "eww open --toggle control-center-background-input && eww open --toggle -a 'left bottom' control-center"
+    (box :space-evenly false :orientation "v" :class "date-time-widget" :space-evenly false :spacing 8
+      (box :space-evenly false :orientation "v" :class "date-time-current" :space-evenly false :spacing 8
+        (label :text "${date-time-hour}")
+        (label :text "${date-time-minute}"))
+      (label :class "sb-icon" :text ""))))
+
+(defwidget quit []
+  (eventbox :onclick "hyprctl dispatch exit x"
+    (box :space-evenly false :orientation "v" :class "quit-widget" :space-evenly false :spacing 8
+      (label :class "sb-icon sb-red-text" :text ""))))
+
+(deflisten workspaces :initial "[]" "~/.config/eww/scripts/get-workspaces")
+(deflisten current-workspace :initial "1" "~/.config/eww/scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox :onscroll "~/.config/eww/scripts/switch-workspace {} ${current-workspace}"
+            (box :space-evenly false :orientation "v" :class "workspaces-widget" :spacing 24
+              (for workspace in workspaces
+                (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+                          :class "sb-workspace-entry ${workspace.id == current-workspace ? "current" : ""}"
+                          (label :text "${workspace.name}"))))))
+
+(defwindow status-bar
+  :monitor 0
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "30px"
+                      :height "100%"
+                      :anchor "left center")
+  (status-bar))

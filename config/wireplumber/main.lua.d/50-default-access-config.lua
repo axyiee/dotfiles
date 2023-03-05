@@ -4,7 +4,7 @@ default_access.properties = {
   -- Enable the use of the flatpak portal integration.
   -- Disable if you are running a system-wide instance, which
   -- doesn't have access to the D-Bus user session
-  ["enable-flatpak-portal"] = true,
+  ["enable-flatpak-portal"] = false,
 }
 
 default_access.rules = {

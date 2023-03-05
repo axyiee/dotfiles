@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-hyprctl activewindow -j | jq -r '.title' | awk 'length > 36{$0=substr($0,0,37)"..."}1'
+hyprctl activewindow -j | jq -r '.title' | awk 'length > 32{$0=substr($0,0,33)"..."}1'
 socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r event; do
-	input=$(echo "$event" | grep "^activewindow>>" | awk -F '>>|,' '{print $3}' | awk 'length > 32{$0=substr($0,0,33)"..."}1')
-	[ ! -z "$input" ] && echo "$input"
+	echo "$event" | grep "^activewindow>>" | awk -F '>>|,' '{print $3}' | awk 'length > 32{$0=substr($0,0,33)"..."}1'
 done

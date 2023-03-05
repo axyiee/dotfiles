@@ -24,7 +24,7 @@ const blocked = [
     /http(s)?:\/\/(.*).oracle.com/,
     /http(s)?:\/\/www.fiverr.com/,
     /http(s)?:\/\/www.upwork.com/,
-    /http(s)?:\/\/(.*).minecraft.net/,
+    /http(s)?:\/\/(.*)minecraft.net/,
     /http(s)?:\/\/www.google.com(.br)?/,
     /http(s)?:\/\/coolors.co/,
     /http(s)?:\/\/wallhaven.cc/,
@@ -42,6 +42,6 @@ DarkReader.enable({{
     brightness: 100,
     contrast: 100,
     sepia: 0,
-    lightSchemeBackgroundColor: "{background}",
-    lightSchemeTextColor: "{foreground}",
+    darkSchemeBackgroundColor: "{background}",
+    darkSchemeTextColor: "{foreground}",
 }});

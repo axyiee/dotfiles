@@ -1,0 +1,15 @@
+ @import '/home/run/.cache/wal/colors.scss';
+
+* {
+	all: unset;
+}
+
+$--red: adjust-color(change-color($color4, $hue: 10deg), $saturation: 20%);
+//$--lavender: adjust-color(change-color($color1, $hue: 250deg), $saturation: 20%, $lightness: 10%);
+
+$lighter-shade: adjust-color($color0, $lightness: 1%);
+$lighter-shade1: adjust-color($lighter-shade, $lightness: 1%);
+$lighter-shade4: adjust-color($color0, $lightness: 4%);
+$lighter-shade5: adjust-color($color0, $lightness: 6%);
+$--regular-font: 'Operator Mono Medium', 'Noto Color Emoji';
+$--symbols-font: 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'Symbols Nerd Font Mono';

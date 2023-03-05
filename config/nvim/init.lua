@@ -1,53 +1,38 @@
 local plugins_path = vim.fn.stdpath("data") .. "/lazy"
 
+function bootstrap(name, kind, git, git_params)
+	local path = plugins_path .. "/" .. name
+	if not vim.loop.fs_stat(path) then
+		vim.notify(string.format("Bootstrapping %s (%s)...", kind, name), vim.log.levels.INFO)
+		local init = { "git", "clone", "--filter=blob:none", "--single-branch" }
+		for _, value in ipairs(git_params) do 
+			table.insert(init, value)
+		end
+		table.insert(init, git)
+		table.insert(init, path)
+		vim.fn.system(init)
+	end
+	vim.opt.rtp:prepend(path)
+end
+
 -- Bootstrap lazy.nvim [Package manager]
-local lazy_path = plugins_path .. "/lazy.nvim"
-if not vim.loop.fs_stat(lazy_path) then
-  vim.notify("Bootstrapping package manager (lazy.nvim)...", vim.log.levels.INFO)
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazy_path,
-  })
-end
+bootstrap("lazy.nvim", "Package manager", "https://github.com/folke/lazy.nvim.git", {})
 
--- Boostrap hotpot.nvim [Fennel support]
-local hotpot_path = plugins_path .. "/hotpot.nvim"
-if not vim.loop.fs_stat(hotpot_path) then 
-  vim.notify("Bootstrapping Fennel support (hotpot.nvim)...", vim.log.levels.INFO)
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "-b",
-    "nightly",
-    "--single-branch",
-    "https://github.com/rktjmp/hotpot.nvim.git",
-    hotpot_path,
-  })
-end
-
--- Append required components to the runtime path variables
-vim.opt.rtp:prepend(lazy_path)
-vim.opt.rtp:prepend(hotpot_path)
-
--- Set up Fennel support
-require("hotpot").setup({
-    provide_required_fennel = true,
-    enable_hotpot_diagnostics = false,
-    compiler = {
-        modules = {
-	    correlate = true,
+-- Boostrap tangerine.nvim [Fennel support]
+bootstrap("hotpot.nvim", "Fennel support",  "https://github.com/rktjmp/hotpot.nvim.git", {})
+require("hotpot").setup {
+	provide_require_fennel = true,
+	enable_hotpot_diagnostics = false,
+	compiler = {
+		modules = {
+			correlate = true,
+		},
+		macros = {
+			env = "_COMPILER",
+			compilerEnv = _G,
+			allowGlobals = true,
+		},
 	},
-	macros = {
-	    env = "_COMPILER",
-	    compilerEnv = _G,
-	    allowGlobals = true,
-        },
-    }
-})
+}
 
-require('ocean')
+require("ocean")

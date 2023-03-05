@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+xrandr --output HDMI-1 --mode 1920x1080 --rate 60 --set underscan on  --set "underscan hborder" 100 --set "underscan vborder" 50
+export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
+xset -dpms
+xset s off
+if ! pidof pipewire-pulse &>/dev/null
+	then /usr/libexec/pipewire-launcher &
+fi
+flatpak kill com.valvesoftware.Steam
+flatpak run com.valvesoftware.Steam -bigpicture &
+openbox --replace --config-file ~/.config/steam-session/openbox.xml

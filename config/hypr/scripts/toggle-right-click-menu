@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+current_workspace=$(hyprctl monitors -j | jq --raw-output '.[0].activeWorkspace.id')
+clients=$(hyprctl clients -j | jq --argjson current "$current_workspace" \
+	'[.[] | select(.workspace.id == $current)] | length')
+if [ "$clients" = "0" ]
+	then eww open --toggle control-center
+fi

@@ -1,15 +1,8 @@
-(local {: load-module : finish} (require :ocean.loader))
-(local {: nil?} (require :ocean.macros.types))
+(import-macros {: build-all!} :ocean.macros.lazy)
 
-"The holding context for all modules to be loaded."
-(var M nil)
-
-(fn $load-module [name]
-  "Loads a module and sets module registry back."
-  (let [module (.. :ocean.components. name) component (require module)]
-    (if (nil? component.lazy) (component.post-install) (set M (load-module module M)))))
-
-(let [profile [:leader :language-server :formatting :treesitter]]
-  (each [_ component (pairs profile)]
-    ($load-module component))
-  (finish M))
+(build-all! (> root :core) (> keybindings :leader :lsp)
+            (> editor :language-server :null :code-folding :indent-guide
+               :code-completion.copilot :code-completion :highlight.treesitter
+               :lang.rust) (> code-checking :diagnostics.lsp-lines)
+            (> integration :git)
+            (> ui :status-line :file-tree :progress :theme.lushwal))

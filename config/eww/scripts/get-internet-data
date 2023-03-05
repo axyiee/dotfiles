@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+case "$1" in
+	"iface")
+		ip -o -4 route show to default | awk '{print $5}' ;;
+	"type")
+		tail -n+3 /proc/net/wireless | grep -q . && echo "Wireless" || echo "Wired" ;;
+	*)
+		 [ "$(ping -c1 8.8.8.8)" ] && echo On || echo Off ;;
+esac

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-pkill -u "${USER}" -x pipewire\|wireplumber 1>/dev/null 2>&1
-pipewire &
-pipewire-pulse &
-sleep 1
-exec wireplumber

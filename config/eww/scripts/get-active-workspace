@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-hyprctl monitors -j | jq --raw-output '.[0].activeWorkspace.id' | awk 'length > 36{$0=substr($0,0,37)"..."}1'
+hyprctl monitors -j | jq --raw-output '.[0].activeWorkspace.id'
 socat -u UNIX-CONNECT:/tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock - | while read -r event; do
 	input=$(echo "$event" | grep "^workspace>>" | awk -F '>>|,' '{print $2}')
 	[ ! -z "$input" ] && echo "$input"

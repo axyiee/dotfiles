@@ -1,0 +1,129 @@
+# Contributor: <xmingske@gmail.com>
+# Contributor: Sascha Paunovic <azarus@posteo.net>
+# Contributor: Patrycja Rosa <alpine@ptrcnull.me>
+# Contributor: Pedro <you@runtime.ee>
+# Maintainer: Pedro <you@runtime.ee>
+pkgname=minetest-git
+pkgver=5.7.0
+pkgrel=1
+pkgdesc="An infinite-world block sandbox game and a game engine"
+url="https://www.minetest.net/"
+# riscv64 blocked by luajit
+arch="all !riscv64"
+license="LGPL-2.1-or-later AND CC-BY-SA-3.0"
+pkgusers="minetest"
+pkggroups="minetest"
+install="$pkgname-server.pre-install"
+depends="$pkgname-common"
+replaces="minetest"
+makedepends="
+	bzip2-dev
+	cmake
+	curl-dev
+	freetype-dev
+	gettext-dev
+	hiredis-dev
+	libjpeg-turbo-dev
+	libogg-dev
+	libpng-dev
+	libvorbis-dev
+	libxi-dev
+	luajit-dev
+	mesa-dev
+	openal-soft-dev
+	openssl-dev>3
+	samurai
+	sqlite-dev
+	zstd-dev
+	"
+subpackages="$pkgname-doc
+	$pkgname-lang
+	$pkgname-common::noarch
+	$pkgname-server
+	$pkgname-server-openrc:openrc
+	"
+_irrlichtver="1.9.0mt8"
+source="$pkgname-$pkgver.tar.gz::https://github.com/minetest/minetest/archive/refs/heads/master.tar.gz
+	irrlichtmt-git.tar.gz::https://github.com/minetest/irrlicht/archive/refs/heads/master.tar.gz
+	$pkgname-game-git.tar.gz::https://github.com/minetest/minetest_game/archive/refs/heads/master.tar.gz
+	$pkgname-server.confd
+	$pkgname-server.initd
+	0001-CMake-link-with-Intl-when-necessary.patch
+	"
+builddir="$srcdir/minetest-master"
+
+prepare() {
+	default_prepare
+	mv "$srcdir"/irrlicht-master "$srcdir"/minetest-master/lib/irrlichtmt
+}
+
+build() {
+	cmake -G Ninja -B build_client \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCUSTOM_BINDIR=/usr/bin \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCUSTOM_DOCDIR="/usr/share/doc/$pkgname" \
+		-DCUSTOM_SHAREDIR="/usr/share/$pkgname" \
+		-DBUILD_CLIENT=1 \
+		-DBUILD_SERVER=0 \
+		-DENABLE_REDIS=0 \
+		-DENABLE_CURL=1 \
+		-DRUN_IN_PLACE=0
+	cmake --build build_client
+
+	cmake -G Ninja -B build_server \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCUSTOM_BINDIR=/usr/bin \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCUSTOM_DOCDIR="/usr/share/doc/$pkgname" \
+		-DCUSTOM_SHAREDIR="/usr/share/$pkgname" \
+		-DBUILD_CLIENT=0 \
+		-DBUILD_SERVER=1 \
+		-DENABLE_REDIS=1 \
+		-DENABLE_CURL=1 \
+		-DRUN_IN_PLACE=0
+	cmake --build build_server
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build_client
+}
+
+common() {
+	pkgdesc="Minetest files used by both client & server"
+	depends=""
+
+	install -o minetest -g minetest -d "$subpkgdir"/var/lib/minetest
+	amove usr/share/$pkgname/builtin
+	mkdir -p "$subpkgdir"/usr/share/$pkgname/games
+	cp -r "$srcdir"/minetest_game-master "${subpkgdir}"/usr/share/$pkgname/games/minetest
+}
+
+server() {
+	pkgdesc="Minetest server"
+	depends="$pkgname-common"
+
+	cd "$builddir"
+	install -Dm644 minetest.conf.example \
+		"$subpkgdir"/etc/minetest/minetest.conf
+	install -Dm755 bin/minetestserver \
+		-t "$subpkgdir"/usr/bin
+}
+
+openrc() {
+	pkgdesc="Minetest server (OpenRC init scripts)"
+	install_if="$pkgname-server openrc"
+
+	install -Dm755 "$srcdir"/$pkgname-server.initd \
+		"$subpkgdir"/etc/init.d/$pkgname-server
+	install -Dm644 "$srcdir"/$pkgname-server.confd \
+		"$subpkgdir"/etc/conf.d/$pkgname-server
+}
+sha512sums="
+691ea778f58a9856405163ba5a3ecef04c6779b53b41b9933a8070121d12abfaa19b19914f555e2d8f08ab38032a9724ae5582e6b594a2f3b621257fad34866a  minetest-git-5.7.0.tar.gz
+c43c50289fd45826b688cd5320efc85391c2a350e1c8bbd9ea42582f603eae26845d86bbba45bd84f42ada1eae6b218f8f77c655be648ee9cd86326fddd115e1  irrlichtmt-git.tar.gz
+7de320e637dc392b9a0def5b773c16d811ddf595333d6d7d0be081ff11bb67769a906f2eacb1a0fa19831099e0c88197a05d931280d3a4fe1e661eab5ebc29de  minetest-git-game-git.tar.gz
+502cd89da25ece8c834d842ed8c09f02822e1738140b185d1878ead9ff29841bb5701ffe75559062a69120641bc9b156f606caedb9ef5e4164406d2067c81b0f  minetest-git-server.confd
+5ab13a230401360145c78b35c07d450f8110a702d025f86d87223366a4071fc254b0442d4383e112e135e32a70e85da02cfef97555c12192a02df0f5cb647d48  minetest-git-server.initd
+c815e6c9c5433e4fda9b8559b662086e18b14461e4fd8626b4d5178554a2423c9b243450845d49710825b627dede91de8411655adff7a960672c639735499533  0001-CMake-link-with-Intl-when-necessary.patch
+"

@@ -1,0 +1,97 @@
+# Contributor: Daniel Sabogal <dsabogalcc@gmail.com>
+# Contributor: Jakub Jirutka <jakub@jirutka.cz>
+# Maintainer: Pedro <you@runtime.ee>
+#
+# TODO: Try to trim the base package to include only common syntax files etc.
+pkgname=neovim-nightly
+pkgver=0.9.0
+pkgrel=0
+pkgdesc="Vim-fork focused on extensibility and agility"
+url="https://neovim.io/"
+arch="all"
+license="Apache-2.0 AND Vim"
+makedepends="
+	cmake
+	gettext-dev
+	gperf
+	libtermkey-dev
+	libuv-dev
+	libvterm-dev
+	lua-luv-dev
+	lua5.1-lpeg
+	lua5.1-mpack
+	msgpack-c-dev
+	samurai
+	tree-sitter-dev
+	unibilium-dev
+	"
+# Build neovim with lua instead of luajit on s390x
+# See https://github.com/neovim/neovim/issues/7879
+case "$CARCH" in
+	riscv64 | s390x) makedepends="$makedepends lua5.1-dev lua5.1-bitop" ;;
+	*) makedepends="$makedepends luajit-dev" ;;
+esac
+subpackages="$pkgname-lang $pkgname-doc"
+source="https://github.com/neovim/neovim/archive/nightly/neovim-nightly.tar.gz
+	nodoc.txt
+	"
+builddir="$srcdir/neovim-nightly"
+# secfixes:
+#   0.3.6-r0:
+#     - CVE-2019-12735
+#   0.2.0-r0:
+#     - CVE-2017-5953
+#     - CVE-2017-6349
+#     - CVE-2017-6350
+#   0.1.6-r1:
+#     - CVE-2016-1248
+
+build() {
+	local cmakeoptions=
+	case "$CARCH" in
+		riscv64 | s390x) cmakeoptions="-DPREFER_LUA=ON" ;;
+	esac
+
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=MinSizeRel \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DENABLE_JEMALLOC=FALSE \
+		-DENABLE_LTO=TRUE \
+		-DCMAKE_VERBOSE_MAKEFILE=TRUE \
+		$cmakeoptions
+	cmake --build build
+}
+
+package() {
+	DESTDIR="$pkgdir" cmake --install build
+
+	# Tree-sitter grammars are packaged separately and installed into
+	# /usr/lib/tree-sitter.
+	ln -s ../../../lib/tree-sitter "$pkgdir"/usr/share/nvim/runtime/parser
+}
+
+doc() {
+	default_doc
+
+	pkgdesc="$pkgdesc (documentation and help pages)"
+	replaces="$pkgname"
+	local docdir="usr/share/nvim/runtime/doc"
+
+	mkdir -p "$subpkgdir"/$docdir
+	mv "$pkgdir"/$docdir/*.txt "$subpkgdir"/$docdir/
+
+	# When user execute ":help <pattern>", neovim will open nodoc.txt
+	# with information why docs are not available and how to install them.
+	install -D "$srcdir"/nodoc.txt \
+		"$pkgdir"/$docdir/nodoc.txt
+	local f; for f in "$subpkgdir"/$docdir/*.txt; do
+		ln -s nodoc.txt "$pkgdir"/$docdir/$(basename $f)
+	done
+}
+
+
+sha512sums="
+892bce43b22b5ffe118a14467385577a06c74bba3d48af2f591bcf04686eacdc8abbb003997074fbb2a511212a94e898d4d3d5a579a2faa6e9b0d516ef7d4550  neovim-nightly.tar.gz
+44bc920ba9c7cc39fdc8417d81beb26a04383cca0128c55fe14561508bf3593fdee169dded8c3f5dd78b448deb15e967875440f98a4f58bf719f68b5bde9cf61  nodoc.txt
+"

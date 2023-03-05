@@ -1,0 +1,53 @@
+window {
+	background-color: --wofi-color0;
+	border: 2px solid black;
+	font-family: monospace;
+	border-radius: 10px;
+}
+
+#input {
+	margin: 16px;
+	padding: 5px 16px 5px 16px;
+	background-color: rgba(0, 0, 0, 0.25);
+	border-radius: 16px;
+	border: none;
+	color: --wofi-color8;
+}
+
+#input image {
+	color: --wofi-color4;
+	margin-right: 8px;
+}
+
+#scroll {
+	margin: 0;
+	border: none;
+}
+
+#inner-box {
+	margin: 5px;
+	border: none;
+	padding: 0 16px 0 16px;
+	border-radius: 25px;
+}
+
+#outer-box {
+	margin: 5px;
+	border: none;
+}
+
+#entry {
+	padding: 8px;
+	font-family: 'Operator Mono Medium';
+}
+#entry #text {
+	color: --wofi-color8;
+}
+#entry:selected {
+	background-color: --wofi-color1;
+	border-radius: 8px;
+	outline: none;
+}
+#entry #text:selected {
+	color: --wofi-color0;
+}

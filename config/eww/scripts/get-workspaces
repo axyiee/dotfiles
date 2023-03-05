@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 entries() {
-	local names='["󱆃", "󰈹", "󰅩", "󰙯", "󰄀", "󱓞"]'
+	local names='["", "", "", "", "", ""]'
 	seq 0 5 | jq --argjson names "$names" --slurp -Mc 'map(tostring) | map({id: (.|tonumber+1|tostring), name: ($names[.|tonumber])})'
 }
 entries

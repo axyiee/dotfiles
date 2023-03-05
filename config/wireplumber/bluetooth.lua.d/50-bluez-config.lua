@@ -63,7 +63,7 @@ bluez_monitor.properties = {
   -- pipewire and wireplumber).
   -- This requires access to the D-Bus user session; disable if you are running
   -- a system-wide instance of wireplumber.
-  ["with-logind"] = true,
+  ["with-logind"] = false,
 }
 
 bluez_monitor.rules = {

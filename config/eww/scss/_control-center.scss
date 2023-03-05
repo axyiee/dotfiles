@@ -1,0 +1,86 @@
+.entry-icon, .cc-metric-icon {
+	font-family: $--symbols-font;
+	font-size: 1.25rem;
+}
+
+.control-center {
+	border-radius: 10px;
+	font-family: $--regular-font;
+	font-size: 0.95em;
+ 	background-color: $lighter-shade;
+	color: $color8;
+}
+
+.cc-wrapper {
+	color: $foreground;
+	padding: 24px;
+}
+
+.cc-wrapper .cc-header {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.cc-wrapper .cc-entry-box {
+	background-color: $lighter-shade4;
+	border-radius: 16px;
+	padding: 16px;
+}
+
+.cc-wrapper .cc-entry-box.enabled {
+	background-color: $color1;
+}
+
+.cc-wrapper .cc-entry-box .cc-entry-expand {
+	margin-left: 32px;
+	font-size: 1.35rem;
+}
+
+.cc-wrapper .cc-entry-box.enabled label {
+	color: $color0;
+}
+
+.cc-wrapper .cc-entry-header {
+	font-weight: 600;
+}
+
+.cc-wrapper .cc-entry-icon {
+	font-size: 1.75rem;
+}
+
+.cc-wrapper .cc-entry-subdesc {
+	font-family: $--regular-font;
+}
+
+.cc-metric scale trough highlight {
+  background-color: $color1;
+  border-radius: 10px;
+  color: $foreground;
+  border-radius: 10px;
+}
+
+.cc-metric scale trough {
+  background-color: $lighter-shade5;
+  border-radius: 50px;
+  min-height: 5px;
+  min-width: 400px;
+  margin-left: 16px;
+}
+
+.cc-metric .cc-metric-value {
+	font-family: $--regular-font;
+	font-weight: 500;
+}
+
+.cc-user-entries {
+	padding: 10px;
+	border-radius: 10px;
+	background-color: $lighter-shade;
+}
+
+.cc-smaller {
+	font-size: 0.75rem;
+	font-weight: 400;
+	color: $color8;
+}
+         	 

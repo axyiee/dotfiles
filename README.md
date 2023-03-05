@@ -51,7 +51,7 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - audio: `pipewire`, `pipewire-alsa`, `pipewire-pulse`
 - amdgpu: `mesa-tkg-git`, `libva-utils`, `ffmpeg-git`, `vulkan-icd-loader-git`, `mesa-vdpau`
 - amdgpu [lib32]: `lib32-mesa-tkg-git`, `lib32-mesa-vdpau`, `lib32-vulkan-icd-loader-git`
-- fonts: `ttf-iosevka`, `ttf-iosevka-nerd`, `lora-cyrillic-git`, `inter-font`, `ttf-twemoji`
+- fonts: `ttf-iosevka`, `lora-cyrillic-git`, `inter-font`, `noto-fonts-emoji`, `ttf-font-awesome`
 - gtk/qt theme: `qt5ct`, `qt5-styleplugins`, `kora-icon-theme`, `wpgtk`
 
 </details>
@@ -59,8 +59,8 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 <details>
 <summary><strong>Alpine Linux</strong></summary>
 
-- wayland: `wayland wayland-protocols wl-clipboard`
-- seat management: `seatd eudev dbus`
+- wayland: `wayland wayland-protocols wl-clipboard xdg-desktop-portal-wlr`
+- seat management: `seatd eudev`
 - screenshot: `grim slurp`
 - notifiations: `dunst`
 - compositor: `./alpine/packages/hyprland`, `./alpine/packages/hyprpaper`, `socat`
@@ -69,8 +69,8 @@ my personal [Hyprland] desktop for gaming, studying and software development wor
 - terminal emulator: `foot`
 - color scheme: `py3-pywal`, `python3 py3-pip + pip install pywalfox`
 - audio server: `pipewire pipewire-alsa pipewire-pulse wireplumber`
-- amdgpu: `mesa mesa-dri-gallium mesa-va-gallium mesa-gl mesa-gles mesa-egl mesa-glapi mesa-utils vulkan-loader vulkan-headers mesa-vulkan-layers mesa-gbm libva-glx ffmpeg`
-- fonts: `font-noto-cjk font-iosevka-nerd font-inter font-noto-extra ttf-font-awesome ttf-dejavu fontconfig`
+- amdgpu: `mesa mesa-dri-gallium mesa-va-gallium mesa-vulkan-ati mesa-gl mesa-gles mesa-egl mesa-glapi mesa-utils vulkan-loader vulkan-headers mesa-vulkan-layers vulkan-validation-layers mesa-gbm libva-glx ffmpeg`
+- fonts: `font-noto-cjk font-iosevka font-inter font-noto-extra ttf-font-awesome ttf-dejavu font-noto-emoji fontconfig`
 - zsh utils: `zoxide`
 - gtk/qt theme: `qt5ct qt5-qtwayland qt6-qtwayland adwaita-cursor-theme`
 
@@ -84,6 +84,7 @@ git clone https://code.runtime.ee/dotfiles.git .dots && cd .dots
 doas mv /usr/share/fontconfig/conf.avail /usr/share/fontconfig/config.avail.bak
 doas ln -s "$(pwd)/fonts"/* /usr/share/fonts/
 doas ln -s "$(pwd)/etc"/* /etc/
+doas cp -r "$(pwd)"/plymouth-theme /usr/share/plymouth/themes/lone/
 ln -s "$(pwd)/config"/* "$HOME"/.config/
 ln -s "$(pwd)/home"/* "$HOME"/
 ln -s "$(pwd)/bin"/* "$HOME"/.bin/

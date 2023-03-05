@@ -1,0 +1,61 @@
+(defpoll date-time :interval "30s" :initial "00:00" `date '+%b %d, %Y at %H:%M'`)
+(defwidget control-center []
+  (box :class "cc-wrapper" :space-evenly false :halign "end" :orientation "v" :spacing 32
+    (box :class "cc-header" :space-evenly false :halign "start" :orientation "v" :spacing 5
+      (box :halign "start" (label :text "Control center"))
+      (box :halign "start" (label :class "cc-smaller" :text " ${date-time}")))
+    (system-entries)
+    (metric-entries)))
+
+(defwidget entry-box [icon header ?enabled ?expand]
+  (eventbox :onclick expand
+    (box :space-evenly false :class "cc-entry-box ${enabled ? "enabled" : ""}" :orientation "h" :spacing 16
+      (box :space-evenly false :class "cc-entry-icon" (label :text icon))
+      (box :space-evenly false :class "cc-entry-content" :orientation "v" :spacing 2
+        (box :class "cc-entry-header" :space-evenly false :halign "start" :orientation "h" (label :text header))
+        (box :class "cc-entry-desc" :space-evenly false :halign "start" :orientation "h" :spacing 5 (children)))
+      (box :space-evenly false :class "cc-entry-expand" (label :text "")))))
+
+(defwidget metric [label value onchange ?class]
+  (box :orientation "h" :halign "center" :class "cc-metric ${class}" :space-evenly false :spacing 8
+    (label :class "cc-metric-icon" :text label)
+    (scale :class "cc-metric-scale" :min 0 :max 101 :active {onchange != ""} :value value :onchange onchange)
+    (label :class "cc-metric-value" :text "${value}%")))
+
+(defwidget system-entries []
+  (box :class "cc-system-entries" :orientation "v" :space-evenly false :spacing 10
+    (box :class "row-left" :orientation "h" :space-evenly false :spacing 10
+      (internet-connection :enabled true)
+      (internet-connection))
+    (box :class "row-right" :orientation "h" :space-evenly false :spacing 10
+      (internet-connection)
+      (internet-connection))))
+
+(defwidget metric-entries []
+  (box :class "cc-metric-entries" :orientation "v" :space-evenly false :spacing 16
+    (volume)
+    (microphone)))
+
+(defpoll net-type :interval "30s" :initial "Undetected" "~/.config/eww/scripts/get-internet-data type")
+(defpoll net-state :interval "30s" "~/.config/eww/scripts/get-internet-data state")
+(defwidget internet-connection [?enabled]
+  (entry-box :icon {net-type == "Wired" ? "" : ""} :header "${net-type} connection" :enabled {enabled == true && net-state == "On"}
+    (label :text {enabled == true && net-state == "On" ? net-state : "Off"})))
+
+(defpoll current-sink-volume :interval "1250ms" :initial "100" "~/.config/eww/scripts/get-audio-volume")
+(defwidget volume []
+  (metric :label "󱄠" :value current-sink-volume :onchange "~/.config/eww/scripts/set-audio-volume {}"))
+
+(defpoll current-source-volume :interval "1250ms" :initial "100" "~/.config/eww/scripts/get-microphone-volume")
+(defwidget microphone []
+  (metric :label "󰍬" :value current-source-volume :onchange "~/.config/eww/scripts/set-microphone-volume {}"))
+
+(defwindow control-center
+  :monitor 0
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry :x "10px"
+                      :y "10px"
+                      :anchor "top right")
+  (control-center))
+ 

@@ -1,0 +1,88 @@
+.status-bar {
+	color: $foreground;
+	font-family: $--regular-font;
+}
+
+.status-bar-widget {
+	padding: 10px;
+	padding-bottom: 0;
+}
+
+.sb-icon, .sb-workspace-entry label {
+	color: $foreground;
+	font-family: $--symbols-font;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.sb-workspace-entry.current label {
+	background-color: $color4;
+	color: $color0;
+}
+
+.sb-status-bar {
+	font-size: 0.95rem;
+}
+
+.workspaces-widget, .quit-widget, .current-song-widget, .sb-end {
+	padding: 5px 16px 5px 16px;
+	background-color: $lighter-shade;
+	border-radius: 8px;
+}
+
+.quit-widget, .sb-end {
+	padding: 5px 8px 5px 8px;
+}
+
+.sb-end {
+	$--radius: 5px;
+	.sb-icon { color: black }
+	.sb-2-left, .sb-2-right { padding: 0 10px 0 10px; color: black; }
+	.sb-2-left { border-radius: $--radius 0 0 $--radius}
+	.sb-2-right { border-radius: 0 $--radius $--radius 0 }
+}
+
+.date-time-widget {
+	.sb-2-left { background-color: #9fe5d8 }
+	.sb-2-right { background-color: #79dac8 }
+}
+
+.clock-widget {
+	.sb-2-left { background-color: #f6bfd2 }
+	.sb-2-right { background-color: #f4b0c8 }
+}
+
+.current-song-widget {
+	font-family: 'Space Grotesk';
+	font-weight: 800;
+}
+
+.audio-volume-widget {
+	.sb-2-left { background-color: #ffdfa6 }
+	.sb-2-right { background-color: #ffd791 }
+}
+
+.sb-red-text, .sb-end .sb-red-text {
+	color: $--red;
+}
+// ----------------
+// Vertical support
+// ----------------
+
+.status-bar-widget.status-bar-vertical {
+	background-color: $lighter-shade;
+	border-radius: 8px;
+	margin: 10px;
+	margin-right: 0;
+	padding: 16px 5px 16px 5px;
+}
+
+.status-bar-widget.status-bar-vertical .workspaces-widget {
+	background-color: $lighter-shade1;
+}
+
+.status-bar-widget.status-bar-vertical .date-time-widget {
+	font-size: 1.16rem;
+	font-weight: 500;
+}
+
